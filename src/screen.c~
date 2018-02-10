@@ -96,7 +96,7 @@ void hexdumpN(char a){
 }
 
 void hexdump(long a){
-	hexdumpN((char)((a << 1 ) & 0x0f));
+	hexdumpN((char)((a >> 1 ) & 0x0f));
 	hexdumpN((char)((a << 0 ) & 0x0f));
 }
 
