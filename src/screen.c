@@ -99,6 +99,7 @@ void printf(const char* format,...){
 				long c = (long) va_arg(parameters, long);
 				char* x = {0};
 				char* y = itoa(c,x,16);
+				puts("0x");
 				puts(y);
 			}
 		}else{
