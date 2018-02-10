@@ -37,7 +37,11 @@ void printf(const char* format,...){
 	char deze;
 	while((deze = format[xcount++])!='\0'){
 		if(deze=='%'){
-			
+			deze = format[xcount++];
+			if(deze=='c'){
+				char c = (char) va_arg(parameters, int /* char promotes to int */);
+				putc(c);
+			}
 		}else{
 			putc(deze);
 		}
