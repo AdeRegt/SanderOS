@@ -15,5 +15,5 @@ else
 fi
 rm -r build
 git add --all .
-git commit -a 
+git commit -a -m "auto"
 git push origin master

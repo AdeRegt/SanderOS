@@ -76,6 +76,36 @@ void putc(const char a){
 	}
 }
 
+void hexdumpN(char a){
+	if(a==0x00){putc('0');return;}
+	if(a==0x01){putc('1');return;}
+	if(a==0x02){putc('2');return;}
+	if(a==0x03){putc('3');return;}
+	if(a==0x04){putc('4');return;}
+	if(a==0x05){putc('5');return;}
+	if(a==0x06){putc('6');return;}
+	if(a==0x07){putc('7');return;}
+	if(a==0x08){putc('8');return;}
+	if(a==0x09){putc('9');return;}
+	if(a==0x0A){putc('A');return;}
+	if(a==0x0B){putc('B');return;}
+	if(a==0x0C){putc('C');return;}
+	if(a==0x0D){putc('D');return;}
+	if(a==0x0E){putc('E');return;}
+	if(a==0x0F){putc('F');return;}
+}
+
+void hexdump(long a){
+	hexdumpN(a & 0xf0000000);
+	hexdumpN(a & 0x0f000000);
+	hexdumpN(a & 0x00f00000);
+	hexdumpN(a & 0x000f0000);
+	hexdumpN(a & 0x0000f000);
+	hexdumpN(a & 0x00000f00);
+	hexdumpN((char)((a & 0x000000f0) >> 1) & 0xff);
+	hexdumpN(a & 0x0000000f);
+}
+
 void printf(const char* format,...){
 	va_list parameters;
 	va_start(parameters, format);
@@ -97,9 +127,7 @@ void printf(const char* format,...){
 				puts(c);
 			}else if(deze=='x'){
 				long c = (long) va_arg(parameters, long);
-				char* x = "       ";
-				char* y = itoa(c,x,16);
-				puts(y);
+				hexdump(c);
 			}
 		}else{
 			putc(deze);

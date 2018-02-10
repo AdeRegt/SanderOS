@@ -14,6 +14,6 @@ else
   echo the file is not multiboot
 fi
 rm -r build
-git add --all *
+git add --all .
 git commit -a 
 git push origin master
