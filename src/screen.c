@@ -96,6 +96,7 @@ void hexdumpN(char a){
 }
 
 void hexdump(long a){
+	if(a==0xabc){puts("OKE");}
 	hexdumpN((char) (((a & 0x000000f0)))&0x0f);
 }
 
