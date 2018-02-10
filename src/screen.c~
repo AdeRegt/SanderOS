@@ -104,7 +104,8 @@ void printf(const char* format,...){
 			if(deze=='\['){
 				deze = format[xcount++];
 				if(deze=='3'){
-					deze = format[xcount++];;
+					deze = format[xcount++];
+					backgroundcolor = (backgroundcolor & 0xF0) | (nibble1 & 0xF);;
 					deze = format[xcount++];
 					if(deze=='m'){
 						continue;
