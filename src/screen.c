@@ -96,7 +96,7 @@ void hexdumpN(char a){
 }
 
 void hexdump(long a){
-	hexdumpN((char) ((a & 0x000000f0)>>1));
+	hexdumpN((char) ((a & 0x000000f0)<<1));
 }
 
 void printf(const char* format,...){
