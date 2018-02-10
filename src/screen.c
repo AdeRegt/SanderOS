@@ -103,10 +103,13 @@ void printf(const char* format,...){
 		}else{
 			if(deze=='\['){
 				deze = format[xcount++];
-				if(deze=='['){
-				
-				}else{
-					xcount -= 3;
+				if(deze=='3'){
+					deze = format[xcount++];
+					backgroundcolor = 0x01;
+					deze = format[xcount++];
+					if(deze=='m'){
+						continue;
+					}
 				}
 			}
 			putc(deze);

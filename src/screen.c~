@@ -103,10 +103,12 @@ void printf(const char* format,...){
 		}else{
 			if(deze=='\['){
 				deze = format[xcount++];
-				if(deze=='['){
-				
-				}else{
-					xcount -= 3;
+				if(deze=='3'){
+					deze = format[xcount++];;
+					deze = format[xcount++];
+					if(deze=='m'){
+						continue;
+					}
 				}
 			}
 			putc(deze);
