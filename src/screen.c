@@ -97,7 +97,7 @@ void printf(const char* format,...){
 				puts(c);
 			}else if(deze=='x'){
 				long c = (long) va_arg(parameters, long);
-				char* x = {0,0};
+				char* x = {0};
 				char* y = itoa(c,x,16);
 				puts(y);
 			}
