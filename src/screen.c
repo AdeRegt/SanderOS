@@ -95,6 +95,11 @@ void printf(const char* format,...){
 			}else if(deze=='s'){
 				char* c = (char*) va_arg(parameters,char*);
 				puts(c);
+			}else if(deze=='x'){
+				long c = (long) va_arg(parameters, long);
+				char* x = "       ";
+				char* y = itoa(c,x,16);
+				puts(y);
 			}
 		}else{
 			putc(deze);
