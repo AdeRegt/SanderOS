@@ -41,7 +41,7 @@ char * itoa( int value, char * str, int base ){
     do
     {
         // Modulo is negative for negative value. This trick makes abs() unnecessary.
-        *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz"[35 + value % base];
+        *ptr++ = "ZYXWVUTSRQPONMLKJIHGFEDCBA9876543210123456789ABCDEFGHIJKLMNODPQRSTUVWXYZ"[35 + value % base];
         value /= base;
     } while ( value );
     // Terminating the string.
@@ -74,29 +74,6 @@ void putc(const char a){
 			curX = 0;
 		}
 	}
-}
-
-void hexdumpN(char a){
-	if(a==0x00){putc('0');return;}
-	if(a==0x01){putc('1');return;}
-	if(a==0x02){putc('2');return;}
-	if(a==0x03){putc('3');return;}
-	if(a==0x04){putc('4');return;}
-	if(a==0x05){putc('5');return;}
-	if(a==0x06){putc('6');return;}
-	if(a==0x07){putc('7');return;}
-	if(a==0x08){putc('8');return;}
-	if(a==0x09){putc('9');return;}
-	if(a==0x0A){putc('A');return;}
-	if(a==0x0B){putc('B');return;}
-	if(a==0x0C){putc('C');return;}
-	if(a==0x0D){putc('D');return;}
-	if(a==0x0E){putc('E');return;}
-	if(a==0x0F){putc('F');return;}
-}
-
-void hexdump(long a){
-	hexdumpN((char)((a & 0x000000f0) >> 2));
 }
 
 void printf(const char* format,...){
