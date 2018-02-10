@@ -102,7 +102,7 @@ void hexdump(long a){
 	hexdumpN(a & 0x000f0000);
 	hexdumpN(a & 0x0000f000);
 	hexdumpN(a & 0x00000f00);
-	hexdumpN((a >> 1) & 0x0000000f);
+	hexdumpN((a << 1) & 0x0000000f);
 	hexdumpN(a & 0x0000000f);
 }
 
