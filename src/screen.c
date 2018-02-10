@@ -19,9 +19,14 @@ void putc(const char a){
 	}else if(a=='\r'){
 	
 	}else{
-		videpointer = ((curY*SCREEN_MAX_X)+(curX))*2;
+		videopointer = ((curY*SCREEN_MAX_X)+(curX))*2;
 		videomemory[videopointer++] = a;
 		videomemory[videopointer++] = backgroundcolor;
+		curX++;
+		if(curX==SCREEN_MAX_X){
+			curY++;
+			curX = 0;
+		}
 	}
 }
 
