@@ -13,7 +13,8 @@ int curY = 0;
 
 void putc(const char a){
 	if(a=='\n'){
-	
+		curY++;
+		curX = 0;
 	}else if(a=='\t'){
 	
 	}else if(a=='\r'){
