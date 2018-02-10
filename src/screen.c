@@ -38,8 +38,7 @@ char * itoa( int value, char * str, int base ){
     // Remember where the numbers start.
     low = ptr;
     // The actual conversion.
-    do
-    {
+    do{
         // Modulo is negative for negative value. This trick makes abs() unnecessary.
         *ptr++ = "ZYXWVUTSRQPONMLKJIHGFEDCBA9876543210123456789ABCDEFGHIJKLMNODPQRSTUVWXYZ"[35 + value % base];
         value /= base;
@@ -47,8 +46,7 @@ char * itoa( int value, char * str, int base ){
     // Terminating the string.
     *ptr-- = '\0';
     // Invert the numbers.
-    while ( low < ptr )
-    {
+    while ( low < ptr ){
         char tmp = *low;
         *low++ = *ptr;
         *ptr-- = tmp;
@@ -103,6 +101,14 @@ void printf(const char* format,...){
 				puts(y);
 			}
 		}else{
+			if(deze=='\['){
+				deze = format[xcount++];
+				if(deze=='['){
+				
+				}else{
+					xcount -= 3;
+				}
+			}
 			putc(deze);
 		}
 	}
