@@ -90,8 +90,8 @@ void printf(const char* format,...){
 			}else if(deze=='i'){
 				long c = (long) va_arg(parameters, long);
 				char* x = "       ";
-				itoa(c,x,10);
-				puts(x);
+				char* y = itoa(c,x,10);
+				puts(y);
 			}else if(deze=='s'){
 				char* c = (char*) va_arg(parameters,char*);
 				puts(c);

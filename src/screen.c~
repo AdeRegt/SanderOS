@@ -92,6 +92,9 @@ void printf(const char* format,...){
 				char* x = "       ";
 				itoa(c,x,10);
 				puts(x);
+			}else if(deze=='s'){
+				char* c = (char*) va_arg(parameters,char*);
+				puts(c);
 			}
 		}else{
 			putc(deze);
