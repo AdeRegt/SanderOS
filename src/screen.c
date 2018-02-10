@@ -111,6 +111,14 @@ void printf(const char* format,...){
 					if(deze=='m'){
 						continue;
 					}
+				}else if(deze=='4'){
+					deze = format[xcount++];
+					char nibble1 = 0x02;
+					backgroundcolor = (backgroundcolor & 0x0F) | ((nibble1 & 0xF) << 4);
+					deze = format[xcount++];
+					if(deze=='m'){
+						continue;
+					}
 				}
 			}
 			putc(deze);
