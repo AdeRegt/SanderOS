@@ -24,4 +24,6 @@ void kernel_main(){
 	printf("\n");
 	printf("\n");
 	printf("\n");
+	
+	setupIDT();
 }
