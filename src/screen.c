@@ -120,7 +120,9 @@ void printf(const char* format,...){
 				puts(c);
 			}else if(deze=='x'){
 				long c = (long) va_arg(parameters, long);
-				hexdump(c);
+				char* x = "       ";
+				char* y = itoa(c,x,16);
+				puts(y);
 			}
 		}else{
 			putc(deze);
