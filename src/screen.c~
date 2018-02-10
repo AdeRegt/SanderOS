@@ -11,6 +11,14 @@ char backgroundcolor = 0x07;
 int curX = 0;
 int curY = 0;
 
+void puts(const char* format){
+	int xcount = 0;
+	char deze;
+	while((deze = format[xcount++])!='\0'){
+		putc(deze);
+	}
+}
+
 char * itoa( int value, char * str, int base ){
     char * rc;
     char * ptr;
@@ -79,6 +87,11 @@ void printf(const char* format,...){
 			if(deze=='c'){
 				char c = (char) va_arg(parameters, int /* char promotes to int */);
 				putc(c);
+			}else if(deze=='i'){
+				long c = (long) va_arg(parameters, long);
+				char* x = "       ";
+				itoa(c,x,10);
+				puts(x);
 			}
 		}else{
 			putc(deze);
