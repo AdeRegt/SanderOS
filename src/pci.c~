@@ -1,6 +1,6 @@
 #include <system.h>
 
-unsigned short pciConfigReadWord (uint8_t bus, uint8_t slot, uint8_t func, uint8_t offset){
+unsigned short pciConfigReadWord (unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset){
     unsigned long address;
     unsigned long lbus  = (unsigned long)bus;
     unsigned long lslot = (unsigned long)slot;
