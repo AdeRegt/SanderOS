@@ -2,6 +2,8 @@
 
 void detectDevices(){
 	int i = 0;
+	unsigned char bus;
+	unsigned char device;
 	for(bus = 0; bus < 256; bus++) {
          	for(device = 0; device < 32; device++) {
              		unsigned short result = pciConfigReadWord(bus,device,0,0);
