@@ -1,5 +1,17 @@
 #include <system.h>
 
+int memcmp(const void* aptr, const void* bptr, int size) {
+	const unsigned char* a = (const unsigned char*) aptr;
+	const unsigned char* b = (const unsigned char*) bptr;
+	for (size_t i = 0; i < size; i++) {
+		if (a[i] < b[i])
+			return -1;
+		else if (b[i] < a[i])
+			return 1;
+	}
+	return 0;
+}
+
 //
 // here is the slighlty complicated ACPI poweroff code
 //
@@ -138,13 +150,13 @@ int acpiEnable(void){
          for (i=0; i<300; i++ ){
             if ( (inportw((unsigned int) PM1a_CNT) &SCI_EN) == 1 )
                break;
-            sleep(10);
+            //sleep(10);
          }
          if (PM1b_CNT != 0)
             for (; i<300; i++ ){
                if ( (inportw((unsigned int) PM1b_CNT) &SCI_EN) == 1 )
                   break;
-               sleep(10);
+               //sleep(10);
             }
          if (i<300) {
             printf("enabled acpi.\n");
