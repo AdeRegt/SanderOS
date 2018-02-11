@@ -8,6 +8,7 @@ void puts(const char* format);
 
 // IDT
 void setupIDT();
+void lidt(void* base, unsigned short size);
 
 // ports
 void outportb(unsigned short port, unsigned char val);

@@ -25,6 +25,11 @@ void setupIDT(){
     	outportb(0x21, 0x00);
     	outportb(0xA1, 0x00);
     	
+    	// install everything
+    	for(int i = 0 ; i < IDT_MAX ; i++){
+    		installInterrupt(i,irq_defaulte);
+    	}
+    	
     	// settingup idt
     	lidt(idttable,IDT_MAX);
     	
@@ -32,12 +37,12 @@ void setupIDT(){
     	asm volatile("sti");
 }
 
-void installInterrupts(int entity,unsigned long location){
-	idttable[i].base_lo = (location & 0xFFFF);
-    	idttable[i].base_hi = (location >> 16) & 0xFFFF;
-    	idttable[i].sel = 0x10;
-    	idttable[i].always0 = 0;
-    	idttable[i].flags = 0x8E;
+void installInterrupt(int entity,unsigned long location){
+	idttable[entity].base_lo = (location & 0xFFFF);
+    	idttable[entity].base_hi = (location >> 16) & 0xFFFF;
+    	idttable[entity].sel = 0x10;
+    	idttable[entity].always0 = 0;
+    	idttable[entity].flags = 0x8E;
 }
 
 void lidt(void* base, unsigned short size){   // This function works in 32 and 64bit mode
