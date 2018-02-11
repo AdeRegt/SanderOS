@@ -9,9 +9,12 @@ void detectDevices(){
 				if(vendorID!=0xFFFF){
 					unsigned long classID = (pciConfigReadWord(busses,slots,functions,0x0A) & ~0x00FF) >> 8;
 					unsigned long suclassID = (pciConfigReadWord(busses,slots,functions,0x0A) & ~0xFF00);// >> 8;
-					unsigned long funcID = (pciConfigReadWord(busses,slots,functions,0x0C) & ~0x00FF) >> 8;
 					if(classID==0x01){
-						printf("_IDE_%x(%x)",suclassID,funcID);
+						if(suclassID==0x01){
+							printf("ATA opslagdevices");
+						}else{
+							printf("Overige opslagdevices");
+						}
 					}
 					i = i + 1;
 				}
