@@ -38,7 +38,7 @@ void setupIDT(){
 }
 
 void installInterrupt(int entity,unsigned long location){
-	register int counter asm("%%cs");
+	register unsigned short counter asm("cs");
 	idttable[entity].base_lo = (location & 0xFFFF);
     	idttable[entity].base_hi = (location >> 16) & 0xFFFF;
     	idttable[entity].sel = counter;
