@@ -19,3 +19,6 @@ void outportw(unsigned short port, unsigned short val);
 unsigned short inportw(unsigned short port);
 void outportl(unsigned short port, unsigned long val);
 unsigned long inportl(unsigned short port);
+
+// pci
+void detectDevices();
