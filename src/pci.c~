@@ -15,7 +15,7 @@ void detectDevices(){
 						}else if(suclassID==0x02){
 							// FLOPPY OPSLAG
 						}else{
-							
+							printf("UnknownOpslag");
 						}
 					}
 					i = i + 1;

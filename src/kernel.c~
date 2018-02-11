@@ -27,5 +27,6 @@ void kernel_main(){
 	
 	setupIDT();
 	detectDevices();
+	
 	for(;;);
 }
