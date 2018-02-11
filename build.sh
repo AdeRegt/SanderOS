@@ -3,7 +3,8 @@ nasm -felf32 src/boot.asm -o build/boot.o
 cc -c src/kernel.c -o build/kernel.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/screen.c -o build/screen.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/idt.c -o build/idt.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
-ld -n -T src/linker.ld -o myos.bin -O2 -nostdlib build/boot.o build/kernel.o build/idt.o build/screen.o -m elf_i386
+cc -c src/ports.c -o build/ports.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
+ld -n -T src/linker.ld -o myos.bin -O2 -nostdlib build/boot.o build/kernel.o build/idt.o build/screen.o build/ports.o -m elf_i386
 if grub-file --is-x86-multiboot myos.bin; then
   	echo multiboot confirmed
 	mkdir -p isodir/boot/grub
