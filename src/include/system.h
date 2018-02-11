@@ -22,5 +22,5 @@ unsigned long inportl(unsigned short port);
 
 // pci
 void detectDevices();
-unsigned short pciConfigReadWord (unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset);
+unsigned long pciConfigReadWord (unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset);
 extern unsigned short getcs();

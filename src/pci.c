@@ -14,7 +14,7 @@ void detectDevices(){
 	printf("PCI count: %i",i);
 }
 
-unsigned short pciConfigReadWord (unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset){
+unsigned long pciConfigReadWord (unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset){
     unsigned long address;
     unsigned long lbus  = (unsigned long)bus;
     unsigned long lslot = (unsigned long)slot;
@@ -29,6 +29,6 @@ unsigned short pciConfigReadWord (unsigned char bus, unsigned char slot, unsigne
     outportl (0xCF8, address);
     /* read in the data */
     /* (offset & 2) * 8) = 0 will choose the first word of the 32 bits register */
-    tmp = (unsigned short)((inportl (0xCFC) >> ((offset & 2) * 8)) & 0xffff);
+    tmp = (unsigned long)((inportl (0xCFC) >> ((offset & 2) * 8)) & 0xffff);
     return (tmp);
  }
