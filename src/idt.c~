@@ -40,7 +40,7 @@ void setupIDT(){
 void installInterrupt(int entity,unsigned long location){
 	idttable[entity].base_lo = (location & 0xFFFF);
     	idttable[entity].base_hi = (location >> 16) & 0xFFFF;
-    	idttable[entity].sel = getcs();
+    	idttable[entity].sel = 0x10;getcs();
     	idttable[entity].always0 = 0;
     	idttable[entity].flags = 0x8E;
 }
