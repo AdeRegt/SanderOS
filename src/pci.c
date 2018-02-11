@@ -7,8 +7,8 @@ void detectDevices(){
 			for(unsigned char functions = 0 ; functions < 8 ; functions++){
 				unsigned short vendorID = pciConfigReadWord(busses,slots,functions,0);
 				if(vendorID!=0xFFFF){
-					unsigned long deviceID = pciConfigReadWord(busses,slots,functions,2);
-					printf("VENDOR: %x |",vendorID);
+					unsigned long deviceID = pciConfigReadWord(busses,slots,functions,12) & 0xFF;
+					printf("VENDOR: %x |",deviceID);
 					i = i + 1;
 				}
 			}
