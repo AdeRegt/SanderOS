@@ -6,12 +6,12 @@ void detectDevices(){
 		for(unsigned char slots = 0 ; slots < 32 ; slots++){
 			for(unsigned char functions = 0 ; functions < 8 ; functions++){
 				if(pciConfigReadWord(busses,slots,functions,0)!=0xFFFF){
-					printf("F");
+					i = i + 1;
 				}
 			}
 		}
 	}
-	printf("PCI count: %i",i);
+	printf("PCI count: %x",i);
 }
 
 unsigned long pciConfigReadWord (unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset){
