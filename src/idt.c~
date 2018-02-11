@@ -31,16 +31,15 @@ void setupIDT(){
     	}
     	
     	// settingup idt
-    	lidt(idttable,IDT_MAX);
-    	
-    	// activating idt
-    	asm volatile("sti");
+    	    idtp.limit = (sizeof (struct IDTEntry) * IDT_MAX) - 1;
+    idtp.base = (unsigned int) &idttable;
+    asm volatile("lidt idtp\nsti");
 }
 
 void installInterrupt(int entity,unsigned long location){
 	idttable[entity].base_lo = (location & 0xFFFF);
     	idttable[entity].base_hi = (location >> 16) & 0xFFFF;
-    	idttable[entity].sel = 0x10;getcs();
+    	idttable[entity].sel = 0x10;
     	idttable[entity].always0 = 0;
     	idttable[entity].flags = 0x8E;
 }

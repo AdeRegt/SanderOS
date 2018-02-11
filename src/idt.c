@@ -9,7 +9,13 @@ typedef struct {
     unsigned short base_hi;
 } IDTEntry;
 
+struct idt_ptr {
+    unsigned short limit;
+    unsigned int base;
+}IDTPointer;
+
 IDTEntry idttable[IDT_MAX];
+IDTPointer idtp;
 
 void setupIDT(){
 
@@ -31,10 +37,9 @@ void setupIDT(){
     	}
     	
     	// settingup idt
-    	lidt(idttable,IDT_MAX);
-    	
-    	// activating idt
-    	asm volatile("sti");
+    	    idtp.limit = (sizeof (struct IDTEntry) * IDT_MAX) - 1;
+    idtp.base = (unsigned int) &idttable;
+    asm volatile("lidt idtp\nsti");
 }
 
 void installInterrupt(int entity,unsigned long location){
