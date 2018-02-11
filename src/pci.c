@@ -11,9 +11,11 @@ void detectDevices(){
 					unsigned long suclassID = (pciConfigReadWord(busses,slots,functions,0x0A) & ~0xFF00);// >> 8;
 					if(classID==0x01){
 						if(suclassID==0x01){
-							printf("ATA opslagdevices");
+							// ATA OPSLAG
+						}else if(suclassID==0x02){
+							// FLOPPY OPSLAG
 						}else{
-							printf("Overige opslagdevices");
+							printf("UnknownOpslag");
 						}
 					}
 					i = i + 1;
