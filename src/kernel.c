@@ -28,8 +28,5 @@ void kernel_main(){
 	setupIDT();
 	detectDevices();
 	initialiseKeyboard();
-	for (const char *s = "Shutdown"; *s; ++s) {
-  outportb(0x8900, *s);
-}
 	for(;;);
 }
