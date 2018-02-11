@@ -15,5 +15,9 @@ irq_defaulte:
     pop es
     pop ds
     popa
-;    add esp,8
     iret
+    
+global getcs
+getcs:
+mov eax,cs
+ret
