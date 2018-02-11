@@ -1,5 +1,13 @@
 #include <system.h>
 
+void detectDevices(){
+	for(bus = 0; bus < 256; bus++) {
+         	for(device = 0; device < 32; device++) {
+             		
+         	}
+     	}
+}
+
 unsigned short pciConfigReadWord (unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset){
     unsigned long address;
     unsigned long lbus  = (unsigned long)bus;

@@ -1,6 +1,17 @@
 #include <system.h>
 
-void detectDevices(){}
+void detectDevices(){
+	int i = 0;
+	for(bus = 0; bus < 256; bus++) {
+         	for(device = 0; device < 32; device++) {
+             		unsigned short result = pciConfigReadWord(bus,slot,0,0);
+             		if(result!=0xFFFF){
+             			i++;
+             		}
+         	}
+     	}
+     	printf("PCI declares %i devices!\n",i);
+}
 
 unsigned short pciConfigReadWord (unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset){
     unsigned long address;
