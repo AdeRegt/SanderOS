@@ -27,7 +27,7 @@ void setupIDT(){
     	
     	// install everything
     	for(int i = 0 ; i < IDT_MAX ; i++){
-    		installInterrupt(i,(unsigned long)irq_defaulte);
+    		installInterrupt(i,(unsigned long)&irq_defaulte);
     	}
     	
     	// settingup idt
