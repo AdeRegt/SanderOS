@@ -1,7 +1,17 @@
 #include <system.h>
 
 void detectDevices(){
-	
+	unsigned int i = 0;
+	for(unsigned char busses = 0 ; busses < 250 ; busses++){
+		for(unsigned char slots = 0 ; slots < 32 ; slots++){
+			for(unsigned char functions = 0 ; functions < 8 ; functions++){
+				if(pciConfigReadWord(busses,slots,functions,0)!=0xFFFF){
+					i++;
+				}
+			}
+		}
+	}
+	printf("PCI count: %i",i);
 }
 
 unsigned short pciConfigReadWord (unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset){

@@ -7,8 +7,6 @@
 
 #define IDT_SIZE 256
 
-extern void irq_defaulte();
-extern void irq_error();
 
 /* Defines an IDT entry */
 
@@ -38,14 +36,10 @@ void setInterrupt(int i, unsigned long base) {
 }
 
 
-extern void irq_ata();
-extern void irq_kbd();
-extern void irq_mou();
-
 /**
  * Let the CPU know where the idt is
  */
-void lidt() {
+void setupIDT() {
     // setup PIC http://www.osdever.net/bkerndev/Docs/whatsleft.htm
     outportb(0x20, 0x11);
     outportb(0xA0, 0x11);
@@ -62,15 +56,10 @@ void lidt() {
     for (i = 0; i < IDT_SIZE; i++) {
         setInterrupt(i, (unsigned long) &irq_defaulte);
     }
-    for(i = 0 ; i < 10 ; i++){
-        setInterrupt(i, (unsigned long) &irq_error);
-    }
     //for(i = 30 ; i < 33 ; i++){//35
     //setInterrupt(32, (unsigned long) &irq_timer);
     //}
-    setInterrupt(32+1, (unsigned long) &irq_kbd);
-    setInterrupt(32+14, (unsigned long) &irq_ata);
-    setInterrupt(32+12, (unsigned long) &irq_mou);
+    //setInterrupt(32+1, (unsigned long) &irq_kbd);
     idtp.limit = (sizeof (struct idt_entry) * IDT_SIZE) - 1;
     idtp.base = (unsigned int) &idt;
     asm volatile("lidt idtp\nsti");
