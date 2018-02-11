@@ -1,14 +1,11 @@
 global irq_defaulte
 irq_defaulte:
-	cli
-	hlt
     pusha
     push ds
     push es
     push fs
     push gs
     push eax
-    
     mov al,0x20
     out 0x20,al
     pop eax
