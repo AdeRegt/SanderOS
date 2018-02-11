@@ -23,7 +23,7 @@ void setupIDT(){
     	outportb(0xA1, 0x01);
     	outportb(0x21, 0x00);
     	outportb(0xA1, 0x00);
-    	
+    	lidt(idttable,IDT_MAX);
 }
 
 static inline void lidt(void* base, unsigned short size){   // This function works in 32 and 64bit mode

@@ -26,7 +26,7 @@ void setupIDT(){
     	lidt(idttable,IDT_MAX);
 }
 
-static inline void lidt(void* base, unsigned short size){   // This function works in 32 and 64bit mode
+void lidt(void* base, unsigned short size){   // This function works in 32 and 64bit mode
     struct {
         unsigned short length;
         void*    base;
