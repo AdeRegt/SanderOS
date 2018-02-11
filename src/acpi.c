@@ -129,20 +129,20 @@ int acpiCheckHeader(unsigned int *ptr, char *sig){
 
 int acpiEnable(void){
    // check if acpi is enabled
-   if ( (inw((unsigned int) PM1a_CNT) &SCI_EN) == 0 ){
+   if ( (inportw((unsigned int) PM1a_CNT) &SCI_EN) == 0 ){
       // check if acpi can be enabled
       if (SMI_CMD != 0 && ACPI_ENABLE != 0){
-         outb((unsigned int) SMI_CMD, ACPI_ENABLE); // send acpi enable command
+         outportb((unsigned int) SMI_CMD, ACPI_ENABLE); // send acpi enable command
          // give 3 seconds time to enable acpi
          int i;
          for (i=0; i<300; i++ ){
-            if ( (inw((unsigned int) PM1a_CNT) &SCI_EN) == 1 )
+            if ( (inportw((unsigned int) PM1a_CNT) &SCI_EN) == 1 )
                break;
             sleep(10);
          }
          if (PM1b_CNT != 0)
             for (; i<300; i++ ){
-               if ( (inw((unsigned int) PM1b_CNT) &SCI_EN) == 1 )
+               if ( (inportw((unsigned int) PM1b_CNT) &SCI_EN) == 1 )
                   break;
                sleep(10);
             }
