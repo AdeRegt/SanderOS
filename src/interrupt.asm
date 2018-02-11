@@ -1,5 +1,7 @@
 global irq_defaulte
 irq_defaulte:
+	cli
+	hlt
     pusha
     push ds
     push es
