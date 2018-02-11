@@ -11,7 +11,7 @@ void detectDevices(){
 			}
 		}
 	}
-	printf("PCI count: %i",i);
+	printf("PCI count: %x",i);
 }
 
 unsigned long pciConfigReadWord (unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset){
