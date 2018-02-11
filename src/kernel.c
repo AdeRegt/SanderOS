@@ -26,7 +26,5 @@ void kernel_main(){
 	printf("\n");
 	
 	setupIDT();
-	detectDevices();
-	printf("I should not get here");
 	for(;;);
 }
