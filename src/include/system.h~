@@ -9,6 +9,7 @@ void puts(const char* format);
 // IDT
 void setupIDT();
 void lidt(void* base, unsigned short size);
+extern void irq_defaulte();
 
 // ports
 void outportb(unsigned short port, unsigned char val);
