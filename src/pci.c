@@ -7,19 +7,18 @@ void detectDevices(){
 			for(unsigned char functions = 0 ; functions < 8 ; functions++){
 				unsigned short vendorID = pciConfigReadWord(busses,slots,functions,0);
 				if(vendorID!=0xFFFF){
-					unsigned long classID = (pciConfigReadWord(busses,slots,functions,10) & ~0x00FF) >> 8;
-					unsigned long suclassID = (pciConfigReadWord(busses,slots,functions,10) & ~0xFF00);// >> 8;
+					unsigned long classID = (pciConfigReadWord(busses,slots,functions,0x0A) & ~0x00FF) >> 8;
+					unsigned long suclassID = (pciConfigReadWord(busses,slots,functions,0x0A) & ~0xFF00);// >> 8;
+					unsigned long funcID = (pciConfigReadWord(busses,slots,functions,0x0C) & ~0x00FF) >> 8;
 					if(classID==0x01){
-						printf("_IDE_%x",suclassID);
+						printf("_IDE_%x(%x)",suclassID,funcID);
 					}
-					//if(classID==0x02){printf("_NET_");}
-					//if(classID==0x03){printf("_DIS_");}
 					i = i + 1;
 				}
 			}
 		}
 	}
-	printf("PCI count: %x",i);
+	printf(" | PCI count: %x",i);
 }
 
 unsigned long pciConfigReadWord (unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset){
