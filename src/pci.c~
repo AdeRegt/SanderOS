@@ -7,7 +7,7 @@ void detectDevices(){
 	for(bus = 0; bus < 250; bus++) {
          	for(device = 0; device < 32; device++) {
          		unsigned short vendor;
-             		if ((vendor = pciConfigReadWord(bus,slot,0,0)) != 0xFFFF) {
+             		if ((vendor = pciConfigReadWord(bus,device,0,0)) != 0xFFFF) {
              			i++;
              		}
          	}
