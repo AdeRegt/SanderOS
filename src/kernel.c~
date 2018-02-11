@@ -27,6 +27,7 @@ void kernel_main(){
 	
 	setupIDT();
 	detectDevices();
+	initialiseKeyboard();
 	
 	for(;;);
 }
