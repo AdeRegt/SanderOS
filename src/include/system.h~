@@ -10,6 +10,7 @@ void puts(const char* format);
 void setupIDT();
 void lidt(void* base, unsigned short size);
 extern void irq_defaulte();
+void installInterrupt(int entity,unsigned long location);
 
 // ports
 void outportb(unsigned short port, unsigned char val);

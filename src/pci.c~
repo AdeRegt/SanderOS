@@ -9,7 +9,7 @@ unsigned short pciConfigReadWord (unsigned char bus, unsigned char slot, unsigne
  
     /* create configuration address as per Figure 1 */
     address = (unsigned long)((lbus << 16) | (lslot << 11) |
-              (lfunc << 8) | (offset & 0xfc) | ((uint32_t)0x80000000));
+              (lfunc << 8) | (offset & 0xfc) | ((unsigned long)0x80000000));
  
     /* write out the address */
     outportl (0xCF8, address);
