@@ -67,9 +67,9 @@ unsigned int *acpiCheckRSDPtr(unsigned int *ptr){
       if (check == 0) {
          /*
           if (desc->Revision == 0)
-            wrstr("acpi 1");
+            printf("acpi 1");
          else
-            wrstr("acpi 2");
+            printf("acpi 2");
          */
          return (unsigned int *) rsdp->RsdtAddress;
       }
@@ -147,18 +147,18 @@ int acpiEnable(void){
                sleep(10);
             }
          if (i<300) {
-            wrstr("enabled acpi.\n");
+            printf("enabled acpi.\n");
             return 0;
          } else {
-            wrstr("couldn't enable acpi.\n");
+            printf("couldn't enable acpi.\n");
             return -1;
          }
       } else {
-         wrstr("no known way to enable acpi.\n");
+         printf("no known way to enable acpi.\n");
          return -1;
       }
    } else {
-      //wrstr("acpi was already enabled.\n");
+      //printf("acpi was already enabled.\n");
       return 0;
    }
 }
@@ -238,20 +238,20 @@ int initAcpi(void){
 
                      return 0;
                   } else {
-                     wrstr("\\_S5 parse error.\n");
+                     printf("\\_S5 parse error.\n");
                   }
                } else {
-                  wrstr("\\_S5 not present.\n");
+                  printf("\\_S5 not present.\n");
                }
             } else {
-               wrstr("DSDT invalid.\n");
+               printf("DSDT invalid.\n");
             }
          }
          ptr++;
       }
-      wrstr("no valid FACP present.\n");
+      printf("no valid FACP present.\n");
    } else {
-      wrstr("no acpi.\n");
+      printf("no acpi.\n");
    }
 
    return -1;
@@ -267,9 +267,9 @@ void acpiPowerOff(void){
    acpiEnable();
 
    // send the shutdown command
-   outw((unsigned int) PM1a_CNT, SLP_TYPa | SLP_EN );
+   outportw((unsigned int) PM1a_CNT, SLP_TYPa | SLP_EN );
    if ( PM1b_CNT != 0 )
-      outw((unsigned int) PM1b_CNT, SLP_TYPb | SLP_EN );
+      outportw((unsigned int) PM1b_CNT, SLP_TYPb | SLP_EN );
 
-   wrstr("acpi poweroff failed.\n");
+   printf("acpi poweroff failed.\n");
 }
