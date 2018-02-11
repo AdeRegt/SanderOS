@@ -6,7 +6,8 @@ void detectDevices(){
 	unsigned char device;
 	for(bus = 0; bus < 250; bus++) {
          	for(device = 0; device < 32; device++) {
-             		if(pciConfigReadWord(bus,device,0,0)!=0xFFFF){
+         		unsigned short vendor;
+             		if ((vendor = pciConfigReadWord(bus,slot,0,0)) != 0xFFFF) {
              			i++;
              		}
          	}
