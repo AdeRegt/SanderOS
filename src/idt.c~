@@ -9,7 +9,7 @@ typedef struct {
     unsigned short base_hi;
 } IDTEntry;
 
-struct idt_ptr {
+typedef struct {
     unsigned short limit;
     unsigned int base;
 }IDTPointer;
@@ -37,7 +37,7 @@ void setupIDT(){
     	}
     	
     	// settingup idt
-    	    idtp.limit = (sizeof (struct IDTEntry) * IDT_MAX) - 1;
+    	    idtp.limit = (sizeof (IDTEntry) * IDT_MAX) - 1;
     idtp.base = (unsigned int) &idttable;
     asm volatile("lidt idtp\nsti");
 }
