@@ -40,6 +40,7 @@ void setupIDT(){
     	idtp.limit = (sizeof (IDTEntry) * IDT_MAX) - 1;
     	idtp.base = (unsigned int) &idttable;
     	asm volatile("lidt idtp");
+    	asm volatile("sti");
 }
 
 void installInterrupt(int entity,unsigned long location){
