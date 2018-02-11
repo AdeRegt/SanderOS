@@ -56,7 +56,6 @@ void setupIDT() {
     for (i = 0; i < IDT_SIZE; i++) {
         setInterrupt(i, (unsigned long) &irq_defaulte);
     }
-    //setInterrupt(32+1, (unsigned long) &irq_kbd);
     idtp.limit = (sizeof (struct idt_entry) * IDT_SIZE) - 1;
     idtp.base = (unsigned int) &idt;
     asm volatile("lidt idtp\nsti");

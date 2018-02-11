@@ -56,9 +56,6 @@ void setupIDT() {
     for (i = 0; i < IDT_SIZE; i++) {
         setInterrupt(i, (unsigned long) &irq_defaulte);
     }
-    //for(i = 30 ; i < 33 ; i++){//35
-    //setInterrupt(32, (unsigned long) &irq_timer);
-    //}
     //setInterrupt(32+1, (unsigned long) &irq_kbd);
     idtp.limit = (sizeof (struct idt_entry) * IDT_SIZE) - 1;
     idtp.base = (unsigned int) &idt;
