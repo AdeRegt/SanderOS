@@ -259,8 +259,7 @@ int initAcpi(void){
 
 
 
-void acpiPowerOff(void)
-{
+void acpiPowerOff(void){
    // SCI_EN is set to 1 if acpi shutdown is possible
    if (SCI_EN == 0)
       return;

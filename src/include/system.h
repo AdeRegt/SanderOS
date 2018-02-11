@@ -27,3 +27,6 @@ extern unsigned short getcs();
 
 // keyboard
 void initialiseKeyboard();
+
+// power
+void acpiPowerOff(void);
