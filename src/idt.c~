@@ -38,10 +38,10 @@ void setupIDT(){
 }
 
 void installInterrupt(int entity,unsigned long location){
-	register unsigned short i asm("cs");
+	register unsigned short cs asm("cs");
 	idttable[entity].base_lo = (location & 0xFFFF);
     	idttable[entity].base_hi = (location >> 16) & 0xFFFF;
-    	idttable[entity].sel = i;
+    	idttable[entity].sel = cs;
     	idttable[entity].always0 = 0;
     	idttable[entity].flags = 0x8E;
 }
