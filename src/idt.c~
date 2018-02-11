@@ -25,6 +25,11 @@ void setupIDT(){
     	outportb(0x21, 0x00);
     	outportb(0xA1, 0x00);
     	
+    	// install everything
+    	for(int i = 0 ; i < IDT_MAX ; i++){
+    		installInterrupt(i,irq_defaulte);
+    	}
+    	
     	// settingup idt
     	lidt(idttable,IDT_MAX);
     	
