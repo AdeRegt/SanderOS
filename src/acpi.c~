@@ -65,7 +65,7 @@ unsigned int *acpiCheckRSDPtr(unsigned int *ptr){
    struct RSDPtr *rsdp = (struct RSDPtr *) ptr;
    unsigned char *bptr;
    unsigned char check = 0;
-   int i;
+   unsigned int i;
 
    if (memcmp(sig, rsdp, 8) == 0){
       // check checksum rsdpd

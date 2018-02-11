@@ -170,7 +170,7 @@ int acpiEnable(void){
          return -1;
       }
    } else {
-      //printf("acpi was already enabled.\n");
+      printf("acpi was already enabled.\n");
       return 0;
    }
 }
