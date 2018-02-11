@@ -9,7 +9,7 @@ typedef struct {
     unsigned short base_hi;
 } IDTEntry;
 
-struct idt_ptr {
+typedef struct {
     unsigned short limit;
     unsigned int base;
 }IDTPointer;
