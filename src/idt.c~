@@ -1,3 +1,36 @@
 #include <system.h>
+#define IDT_MAX 256
 
-void setupIDT(){}
+typedef struct {
+    unsigned short base_lo;
+    unsigned short sel; /* Our kernel segment goes here! */
+    unsigned char always0; /* This will ALWAYS be set to 0! */
+    unsigned char flags; /* Set using the above table! */
+    unsigned short base_hi;
+} IDTEntry;
+
+IDTEntry idttable[IDT_MAX];
+
+void setupIDT(){
+	// settingup PIC
+	outportb(0x20, 0x11);
+    	outportb(0xA0, 0x11);
+    	outportb(0x21, 0x20);
+    	outportb(0xA1, 0x28);
+    	outportb(0x21, 0x04);
+    	outportb(0xA1, 0x02);
+    	outportb(0x21, 0x01);
+    	outportb(0xA1, 0x01);
+    	outportb(0x21, 0x00);
+    	outportb(0xA1, 0x00);
+    	
+}
+
+static inline void lidt(void* base, unsigned short size){   // This function works in 32 and 64bit mode
+    struct {
+        unsigned short length;
+        void*    base;
+    } __attribute__((packed)) IDTR = { size, base };
+ 
+    asm ( "lidt %0" : : "m"(IDTR) );  // let the compiler choose an addressing mode
+}

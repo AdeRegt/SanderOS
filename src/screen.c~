@@ -74,6 +74,19 @@ void putc(const char a){
 	}
 }
 
+char nib2col(char a){
+	if(a=='0'){return 0x00;}
+	if(a=='1'){return 0x01;}
+	if(a=='2'){return 0x02;}
+	if(a=='3'){return 0x03;}
+	if(a=='4'){return 0x04;}
+	if(a=='5'){return 0x05;}
+	if(a=='6'){return 0x06;}
+	if(a=='7'){return 0x07;}
+	if(a=='8'){return 0x08;}
+	if(a=='9'){return 0x09;}
+}
+
 void printf(const char* format,...){
 	va_list parameters;
 	va_start(parameters, format);
@@ -105,7 +118,7 @@ void printf(const char* format,...){
 				deze = format[xcount++];
 				if(deze=='3'){
 					deze = format[xcount++];
-					char nibble1 = 0x01;
+					char nibble1 = nib2col(deze);
 					backgroundcolor = (backgroundcolor & 0xF0) | (nibble1 & 0xF);;
 					deze = format[xcount++];
 					if(deze=='m'){
@@ -113,7 +126,7 @@ void printf(const char* format,...){
 					}
 				}else if(deze=='4'){
 					deze = format[xcount++];
-					char nibble1 = 0x02;
+					char nibble1 = nib2col(deze);
 					backgroundcolor = (backgroundcolor & 0x0F) | ((nibble1 & 0xF) << 4);
 					deze = format[xcount++];
 					if(deze=='m'){
