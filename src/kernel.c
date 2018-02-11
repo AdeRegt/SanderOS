@@ -28,6 +28,7 @@ void kernel_main(){
 	setupIDT();
 	detectDevices();
 	initialiseKeyboard();
+	acpiEnable();
 	acpiPowerOff();
 	for(;;);
 }

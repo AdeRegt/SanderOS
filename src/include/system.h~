@@ -1,3 +1,5 @@
+#define NULL 0
+
 void kernel_main();
 
 // screen
