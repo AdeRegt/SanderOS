@@ -72,9 +72,9 @@ void detectATAdevice(ata_device dev){
                 //kernel_print(" NUL ");
         }else if(atapi_device_init(dev)){
 //              kernel_print(" CDR ");
-                
+                printf(" CDROM ");
         }else if(ata_device_init(dev)){
-                
+                printf(" HDD ");
                 //registerMount((char*)"HARDISK",dev,0,0,0);
         }else{
                 //kernel_print(" ??? ");

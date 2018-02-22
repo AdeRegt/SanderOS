@@ -21,6 +21,12 @@ void ata_wait(ata_device dev){
         inportb(dev.control);
 }
 
+void ata_wait2(ata_device dev){
+        ata_wait(dev);
+        char status = 0;
+        while((status=inportb(dev.io_base+0x07))&0x80){}
+}
+
 int atapi_device_init(ata_device dev){
         outportb(dev.io_base+0x01,1);
         outportb(dev.control,0);
