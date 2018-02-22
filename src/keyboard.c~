@@ -1,3 +1,16 @@
 #include <system.h>
 
-void initialiseKeyboard(){}
+void keyboard_send_cmd(char val){
+	while(!(inportb(0x64) & 0b00000010));
+        outportb(0x60,val);
+}
+
+void keyboard_send_and_get_response_cmd(char val){
+        keyboard_send_cmd(val);
+        while(!(inportb(0x64) & 0b00000001));
+        while(inportb(0x60)!=0xFA);
+}
+
+void initialiseKeyboard(){
+	
+}

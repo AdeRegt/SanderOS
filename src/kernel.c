@@ -30,5 +30,6 @@ void kernel_main(){
 	initialiseKeyboard();
 	//acpiEnable();
 	//acpiPowerOff();
+	printf("READY");
 	for(;;);
 }
