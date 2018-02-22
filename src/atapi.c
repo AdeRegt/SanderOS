@@ -76,16 +76,16 @@ void detectATAdevice(ata_device dev){
         unsigned char ch = inportb(dev.io_base + 0x05);
 
         if(cl==0xFF&&ch==0xFF){
-                //kernel_print(" NUL ");
+                //printf(" NUL ");
         }else if(atapi_device_init(dev)){
-//              kernel_print(" CDR ");
+//              printf(" CDR ");
 		cdromdevice = dev;
                 printf(" CDROM ");
         }else if(ata_device_init(dev)){
                 printf(" HDD ");
                 //registerMount((char*)"HARDISK",dev,0,0,0);
         }else{
-                //kernel_print(" ??? ");
+                //printf(" ??? ");
         }
 }
 
@@ -111,17 +111,17 @@ void readRawCDROM(long lba,char count,char* locationx){//E
         // POLL UNTILL UNBUSSY
         char status;
         while((status = inportb(cdromdevice.io_base+7)) & 0x80 ){
-                if((status >> 0) & 1){kernel_print("READERROR");for(;;);}
+                if((status >> 0) & 1){printf("READERROR");for(;;);}
                 asm volatile("pause");
         }
-        if((status >> 0) & 1){kernel_print("READERROR");for(;;);}
+        if((status >> 0) & 1){printf("READERROR");for(;;);}
         while(!((status = inportb(cdromdevice.io_base+7))&0x8) && !(status & 0x1)){
-                if((status >> 0) & 1){kernel_print("READERROR");for(;;);}
+                if((status >> 0) & 1){printf("READERROR");for(;;);}
                 asm volatile("pause");
         }
-        if((status >> 0) & 1){kernel_print("READERROR");for(;;);}
+        if((status >> 0) & 1){printf("READERROR");for(;;);}
         if(status & 0x1){
-                kernel_print("FATAL ERROR: status & 0x1 ");for(;;);
+                printf("FATAL ERROR: status & 0x1 ");for(;;);
         }
         ata_int_ready();
         read_cmd[9] = count;

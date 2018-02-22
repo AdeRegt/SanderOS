@@ -93,7 +93,7 @@ void detectATAdevice(ata_device dev){
 // C D R O M   M A N A G E R
 //
 //
-
+#define ATAPI_SECTOR_SIZE 2048
 char read_cmd[12] = {0xA8,0,0,0,0,0,0,0,0,0,0,0};
 short* readw = (short*) &read_cmd;
 
