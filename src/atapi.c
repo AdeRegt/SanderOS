@@ -28,7 +28,10 @@ void ata_wait2(ata_device dev){
         while((status=inportb(dev.io_base+0x07))&0x80){}
 }
 
+extern void irq_hdd();
+
 int atapi_device_init(ata_device dev){
+	setInterrupt(32+14, (unsigned long) &irq_hdd);
         outportb(dev.io_base+0x01,1);
         outportb(dev.control,0);
         outportb(dev.io_base+0x06,0xA0 | dev.slave <<4 );
