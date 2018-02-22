@@ -9,12 +9,11 @@ void keyboard_send_cmd(char val,char first){
 
 void keyboard_wait_for_ACK(){
 	while(!(inportb(0x64) & 0b00000001));
-	printf("__AA__");
         while(inportb(0x60)!=0xFA);
 }
 
 void keyboard_send_and_get_response_cmd(char val){
-        keyboard_send_cmd(val);
+        keyboard_send_cmd(val,1);
         keyboard_wait_for_ACK();
 }
 

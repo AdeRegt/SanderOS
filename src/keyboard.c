@@ -1,15 +1,14 @@
 #include <system.h>
 
 void keyboard_send_cmd(char val,char first){
-	if(first){
-		while(!(inportb(0x64) & 0b00000010));
-	}
+	//if(first){
+	//	while(!(inportb(0x64) & 0b00000010));
+	//}
         outportb(0x60,val);
 }
 
 void keyboard_wait_for_ACK(){
 	while(!(inportb(0x64) & 0b00000001));
-	printf("__AA__");
         while(inportb(0x60)!=0xFA);
 }
 
