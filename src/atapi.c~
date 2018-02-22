@@ -13,6 +13,7 @@ ata_device ata_primairy_master  = {.io_base = 0x1F0, .control = 0x3F6, .slave = 
 ata_device ata_primairy_slave   = {.io_base = 0x1F0, .control = 0x3F6, .slave = 1};
 ata_device ata_secondary_master = {.io_base = 0x170, .control = 0x376, .slave = 0};
 ata_device ata_secondary_slave  = {.io_base = 0x170, .control = 0x376, .slave = 1};
+ata_device cdromdevice;
 
 void ata_wait(ata_device dev){
         inportb(dev.control);
@@ -78,6 +79,7 @@ void detectATAdevice(ata_device dev){
                 //kernel_print(" NUL ");
         }else if(atapi_device_init(dev)){
 //              kernel_print(" CDR ");
+		cdromdevice = dev;
                 printf(" CDROM ");
         }else if(ata_device_init(dev)){
                 printf(" HDD ");
