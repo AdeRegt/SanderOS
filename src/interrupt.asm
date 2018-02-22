@@ -16,6 +16,26 @@ irq_defaulte:
     popa
     iret
     
+global irq_keyboard
+extern keyboard_int
+irq_keyboard:
+    pusha
+    push ds
+    push es
+    push fs
+    push gs
+    push eax
+    mov al,0x20
+    out 0x20,al
+    call keyboard_int
+    pop eax
+    pop gs
+    pop fs
+    pop es
+    pop ds
+    popa
+    iret
+    
 global getcs
 getcs:
 mov eax,cs

@@ -14,8 +14,17 @@ void keyboard_send_and_get_response_cmd(char val){
         keyboard_wait_for_ACK();
 }
 
+void keyboard_int(){
+	unsigned char deze = inportb(0x60);
+	if(deze & 0x60){
+		printf("YAY");
+	}
+}
+
+extern void irq_keyboard();
+
 void initialiseKeyboard(){
-	keyboard_send_cmd(0xED);
-	keyboard_send_cmd(0xFF);
+	setInterrupt(32+1, (unsigned long) &irq_keyboard);
+	keyboard_send_cmd(0xF4);
 	keyboard_wait_for_ACK();
 }
