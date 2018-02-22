@@ -36,3 +36,4 @@ int acpiEnable();
 
 // atapi
 void detectATAPI();
+void readRawCDROM(long lba,char count,char* locationx);
