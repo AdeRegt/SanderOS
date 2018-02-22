@@ -28,6 +28,17 @@ void ata_wait2(ata_device dev){
         while((status=inportb(dev.io_base+0x07))&0x80){}
 }
 
+void ata_int_ready(){
+        ((char*)0x1000)[0]=0x00;
+}
+
+void ata_int_wait(){
+        int i = 0;
+        while(((char*)0x1000)[0]!='X'){
+                i++;
+        }
+}
+
 extern void irq_hdd();
 
 int atapi_device_init(ata_device dev){
