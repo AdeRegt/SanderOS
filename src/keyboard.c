@@ -7,6 +7,7 @@ void keyboard_send_cmd(char val){
 
 void keyboard_wait_for_ACK(){
 	while(!(inportb(0x64) & 0b00000001));
+	printf("__AA__");
         while(inportb(0x60)!=0xFA);
 }
 
