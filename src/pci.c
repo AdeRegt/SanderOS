@@ -12,6 +12,7 @@ void detectDevices(){
 					if(classID==0x01){
 						if(suclassID==0x01){
 							// ATA OPSLAG
+							detectATAPI();
 						}else if(suclassID==0x02){
 							// FLOPPY OPSLAG
 						}else{

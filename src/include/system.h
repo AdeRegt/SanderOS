@@ -33,3 +33,6 @@ void initialiseKeyboard();
 // power
 void acpiPowerOff(void);
 int acpiEnable();
+
+// atapi
+void detectATAPI();
