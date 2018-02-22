@@ -19,7 +19,7 @@ void keyboard_send_and_get_response_cmd(char val){
 }
 
 void initialiseKeyboard(){
-	keyboard_send_cmd(0xED);
-	keyboard_send_cmd(0xFF);
+	keyboard_send_cmd(0xED,1);
+	keyboard_send_cmd(0xFF,0);
 	keyboard_wait_for_ACK();
 }

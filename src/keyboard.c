@@ -14,7 +14,7 @@ void keyboard_wait_for_ACK(){
 }
 
 void keyboard_send_and_get_response_cmd(char val){
-        keyboard_send_cmd(val);
+        keyboard_send_cmd(val,1);
         keyboard_wait_for_ACK();
 }
 
