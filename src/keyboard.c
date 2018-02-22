@@ -1,7 +1,9 @@
 #include <system.h>
 
-void keyboard_send_cmd(char val){
-	//while(!(inportb(0x64) & 0b00000010));
+void keyboard_send_cmd(char val,char first){
+	if(first){
+		while(!(inportb(0x64) & 0b00000010));
+	}
         outportb(0x60,val);
 }
 
@@ -17,7 +19,7 @@ void keyboard_send_and_get_response_cmd(char val){
 }
 
 void initialiseKeyboard(){
-	keyboard_send_cmd(0xED);
-	keyboard_send_cmd(0xFF);
+	keyboard_send_cmd(0xED,1);
+	keyboard_send_cmd(0xFF,0);
 	keyboard_wait_for_ACK();
 }
