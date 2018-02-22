@@ -16,7 +16,7 @@ void keyboard_send_and_get_response_cmd(char val){
 
 void keyboard_int(){
 	unsigned char deze = inportb(0x60);
-	if(deze & 0x60){
+	if(deze & 0x80){
 		printf("YAY");
 	}
 }
