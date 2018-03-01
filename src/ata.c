@@ -8,9 +8,11 @@ void loadHDDSector(ata_device dev,char* location,long LBA,long count){
 	outportb(0x1F4, (unsigned char)(LBA >> 8));
 	outportb(0x1F5, (unsigned char)(LBA >> 16));
 	outportb(0x1F7, 0x20);
-	insw(0x1F0, location,count);
+	insw(0x1F0, location,count*512);
 }
 
 void detectHDDFilesystems(ata_device dev){
-	printf(">>OKE<<");
+	char* xXx = (char*) 0x2000;
+	loadHDDSector(dev,xXx,1,count);
+	for(int i = 0 ; i < 10 ; i++){printf("%c",xXx[i]);}
 }
