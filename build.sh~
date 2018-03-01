@@ -8,7 +8,8 @@ cc -c src/ports.c -o build/ports.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wex
 cc -c src/pci.c -o build/pci.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/acpi.c -o build/acpi.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/keyboard.c -o build/keyboard.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
-ld -n -T src/linker.ld -o myos.bin -O2 -nostdlib build/boot.o build/kernel.o build/acpi.o build/keyboard.o build/pci.o build/idt.o build/interrupt.o build/screen.o build/ports.o -m elf_i386
+cc -c src/atapi.c -o build/atapi.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
+ld -n -T src/linker.ld -o myos.bin -O2 -nostdlib build/boot.o build/kernel.o build/acpi.o build/keyboard.o build/pci.o build/atapi.o build/idt.o build/interrupt.o build/screen.o build/ports.o -m elf_i386
 if grub-file --is-x86-multiboot myos.bin; then
   	echo multiboot confirmed
 	mkdir -p isodir/boot/grub

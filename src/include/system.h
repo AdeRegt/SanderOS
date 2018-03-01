@@ -34,6 +34,15 @@ void initialiseKeyboard();
 void acpiPowerOff(void);
 int acpiEnable();
 
+typedef struct {
+	unsigned int io_base;
+	unsigned int control;
+	unsigned int slave;
+	unsigned long read;
+	unsigned long write;
+	unsigned long eject;
+}ata_device;
+
 // atapi
 void detectATAPI();
 void readRawCDROM(long lba,char count,char* locationx);

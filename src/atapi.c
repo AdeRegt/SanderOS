@@ -1,14 +1,5 @@
 #include <system.h>
 
-typedef struct {
-	unsigned int io_base;
-	unsigned int control;
-	unsigned int slave;
-	unsigned long read;
-	unsigned long write;
-	unsigned long eject;
-}ata_device;
-
 ata_device ata_primairy_master  = {.io_base = 0x1F0, .control = 0x3F6, .slave = 0};
 ata_device ata_primairy_slave   = {.io_base = 0x1F0, .control = 0x3F6, .slave = 1};
 ata_device ata_secondary_master = {.io_base = 0x170, .control = 0x376, .slave = 0};
@@ -96,7 +87,7 @@ void detectATAdevice(ata_device dev){
 		cdromdevice = dev;
                 printf(" CDROM ");
                 readRawCDROM(0,1,0x1000);
-                for(int i = 0 ; i < 10 ; i++){printf("%c",((char*)0x1000)[505+i]);}
+                //for(int i = 0 ; i < 10 ; i++){printf("%c",((char*)0x1000)[505+i]);}
         }else if(ata_device_init(dev)){
                 printf(" HDD ");
                 //registerMount((char*)"HARDISK",dev,0,0,0);
