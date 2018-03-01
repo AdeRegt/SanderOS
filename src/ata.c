@@ -13,6 +13,6 @@ void loadHDDSector(ata_device dev,char* location,long LBA,long count){
 
 void detectHDDFilesystems(ata_device dev){
 	char* xXx = (char*) 0x2000;
-	loadHDDSector(dev,xXx,1,count);
+	loadHDDSector(dev,xXx,1,1);
 	for(int i = 0 ; i < 10 ; i++){printf("%c",xXx[i]);}
 }
