@@ -12,5 +12,5 @@ void loadHDDSector(ata_device dev,char* location,long LBA,long count){
 }
 
 void detectHDDFilesystems(ata_device dev){
-	
+	printf(">>OKE<<");
 }
