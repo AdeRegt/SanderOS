@@ -1,14 +1,5 @@
 #include <system.h>
 
-typedef struct {
-	unsigned int io_base;
-	unsigned int control;
-	unsigned int slave;
-	unsigned long read;
-	unsigned long write;
-	unsigned long eject;
-}ata_device;
-
 ata_device ata_primairy_master  = {.io_base = 0x1F0, .control = 0x3F6, .slave = 0};
 ata_device ata_primairy_slave   = {.io_base = 0x1F0, .control = 0x3F6, .slave = 1};
 ata_device ata_secondary_master = {.io_base = 0x170, .control = 0x376, .slave = 0};

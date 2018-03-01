@@ -90,6 +90,7 @@ void detectATAdevice(ata_device dev){
                 //for(int i = 0 ; i < 10 ; i++){printf("%c",((char*)0x1000)[505+i]);}
         }else if(ata_device_init(dev)){
                 printf(" HDD ");
+                detectHDDFilesystems(dev);
                 //registerMount((char*)"HARDISK",dev,0,0,0);
         }else{
                 //printf(" ??? ");

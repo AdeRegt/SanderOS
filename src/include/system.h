@@ -22,6 +22,8 @@ unsigned short inportw(unsigned short port);
 void outportl(unsigned short port, unsigned long val);
 unsigned long inportl(unsigned short port);
 
+void insw (unsigned short port, void *addr, unsigned long cnt);
+
 // pci
 void detectDevices();
 unsigned long pciConfigReadWord (unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset);
@@ -46,3 +48,6 @@ typedef struct {
 // atapi
 void detectATAPI();
 void readRawCDROM(long lba,char count,char* locationx);
+
+// ata
+void detectHDDFilesystems(ata_device dev);

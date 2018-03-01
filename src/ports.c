@@ -46,4 +46,9 @@ unsigned long inportl(unsigned short port){
     return ret;
 }
 
+void insw (unsigned short port, void *addr, unsigned long cnt){
+  /* See [IA32-v2a] "INS". */
+  asm volatile ("rep insw" : "+D" (addr), "+c" (cnt) : "d" (port) : "memory");
+}
+
 
