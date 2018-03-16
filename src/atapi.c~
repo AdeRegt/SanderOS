@@ -12,6 +12,8 @@ unsigned char buffer[ATAPI_SECTOR_SIZE];
 void initCDROM(){
 	readRawCDROM(0,1,(unsigned char*)buffer);
 	printf("CDROM: Disk %s bootable!\n",(buffer[510]==0x55&&buffer[511]==0xAA)?"is":"isnot");
+	unsigned long pvd = 0;
+	printf("CDROM: Primairy Volume Descriptor is at %x \n",pvd);
 }
 
 //
@@ -105,7 +107,6 @@ void detectATAdevice(ata_device dev){
 //              printf(" CDR ");
 		cdromdevice = dev;
                 printf(" CDROM ");
-                readRawCDROM(0,1,0x1000);
                 initCDROM();
         }else if(ata_device_init(dev)){
                 printf(" HDD ");
