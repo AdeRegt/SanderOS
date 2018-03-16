@@ -55,7 +55,6 @@ unsigned char* readCDROM(char* path){
 				unsigned char lengthofrecord = getB(d);
 				unsigned char textsize = getB(d+32);
 				if(textsize==y||textsize==(y+2)){
-					printf("This could be...");
 					int q = 0;
 					for(q = 0 ; q < y ; q++){
 						char w = getB(d+33+q);
@@ -68,7 +67,7 @@ unsigned char* readCDROM(char* path){
 					printf("THINKING...");
 					goto goahead;
 				}else{
-					printf("SYSSKIP");
+					//printf("SYSSKIP");
 				}
 				nextone:
 				d += lengthofrecord;
