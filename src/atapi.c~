@@ -26,13 +26,14 @@ unsigned char* readCDROM(char* path){
 	printf("CDROM: Now reading %s \n",path);
 	if(path[0]=='/'){
 		readRawCDROM(dirtableloc,1,(unsigned char*) buffer);
-		int lbaroot = getL(2);
-		readRawCDROM(lbaroot,1,(unsigned char*) buffer);
+		int lbaroot = getS(2);
 		char nmebffr[50];
 		int here = 1;
 		char type = 0;// 0=file 1=dire
 		char deze;
+		unsigned int floor = lbaroot;
 		while(type!=1){
+			readRawCDROM(floor,1,(unsigned char*) buffer);
 			// grab next token
 			int y = 0;
 			while(1){
@@ -47,11 +48,32 @@ unsigned char* readCDROM(char* path){
 					nmebffr[y++] = deze;
 				}
 			}
-			nmebffr[y++] = 0x00;
-			printf("XMO: %s \n",nmebffr);
+			nmebffr[y] = 0x00;
+			printf("CDROM - trv : %s \n",nmebffr);
+			// lookup in level
+			int d = 0;
+			while(1){
+				unsigned char lengthofrecord = getB(d);
+				unsigned char textsize = getB(d+32);
+				int q = 0;
+				for(q = 0 ; q < y ; q++){
+					char w = getB(d+33+q);
+					char e = nmebffr[q];
+					if(w!=e){
+						goto nextone;
+					}
+				}
+				goto goahead;
+				nextone:
+				d += lengthofrecord;
+			}
+			goto exception;
+			goahead:
+			floor = getL(d+2);
 		}
 	}
-	return "<<ERROR>>";
+	exception:
+	return "<<FILE NOT FOUND EXCEPTION>>";
 }
 
 
