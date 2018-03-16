@@ -75,7 +75,7 @@ unsigned char* readCDROM(char* path){
 			}
 			goto exception;
 			goahead:
-			floor = getL(d+2);
+			printf("GOAHEADCALLED");
 		}
 		printf("IT SEEMS TO WORK\n");
 	}
