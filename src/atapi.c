@@ -87,7 +87,7 @@ void detectATAdevice(ata_device dev){
 		cdromdevice = dev;
                 printf(" CDROM ");
                 readRawCDROM(0,1,0x1000);
-                //for(int i = 0 ; i < 10 ; i++){printf("%c",((char*)0x1000)[505+i]);}
+                for(int i = 0 ; i < 10 ; i++){printf("%c",((char*)0x1000)[505+i]);}
         }else if(ata_device_init(dev)){
                 printf(" HDD ");
                 detectHDDFilesystems(dev);
