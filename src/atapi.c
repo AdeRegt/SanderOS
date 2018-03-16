@@ -68,6 +68,8 @@ unsigned char* readCDROM(char* path){
 					}
 					printf("THINKING...");
 					goto goahead;
+				}else{
+					printf("SYSSKIP");
 				}
 				nextone:
 				d += lengthofrecord;
