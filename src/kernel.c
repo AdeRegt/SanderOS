@@ -1,7 +1,7 @@
 #include <system.h>
 
 void kernel_main(){
-	if(0){
+	if(1){
 		printf("\n                                                                       ");
 		printf("\n                _/ _/ _/         _/ _/ _/          _/ _/ _/                 ");
 		printf("\n             _/               _/         _/     _/                          ");
