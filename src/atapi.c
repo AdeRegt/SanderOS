@@ -55,16 +55,20 @@ unsigned char* readCDROM(char* path){
 			while(1){
 				unsigned char lengthofrecord = getB(d);
 				unsigned char textsize = getB(d+32);
-				int q = 0;
-				for(q = 0 ; q < y ; q++){
-					char w = getB(d+33+q);
-					char e = nmebffr[q];
-					if(w!=e){
-						goto nextone;
+				if(textsize==y||textsize==(y+2)){
+					printf("This could be...");
+					int q = 0;
+					for(q = 0 ; q < y ; q++){
+						char w = getB(d+33+q);
+						char e = nmebffr[q];
+						printf("%c",w);
+						if(w!=e){
+							goto nextone;
+						}
 					}
+					printf("THINKING...");
+					goto goahead;
 				}
-				printf("THINKING...");
-				goto goahead;
 				nextone:
 				d += lengthofrecord;
 			}
