@@ -70,6 +70,7 @@ unsigned char* readCDROM(char* path){
 				goto exception;
 			}
 		}
+		return "SUCCESS";
 	}
 	exception:
 	return "<<FILE NOT FOUND EXCEPTION>>";
