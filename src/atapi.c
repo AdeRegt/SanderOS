@@ -65,6 +65,7 @@ unsigned char* readCDROM(char* path){
 				for(int u = 0 ; u < y ; u++){
 					printf("%c-%c|",nmebffr[u],buffer[i+33+u]);
 				}
+				break;
 				i += buffer[i];
 			}
 		}
