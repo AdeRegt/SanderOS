@@ -48,7 +48,7 @@ unsigned char* readCDROM(char* path){
 				}
 			}
 			nmebffr[y] = 0x00;
-			printf("CDROM - trv : %s \n",nmebffr);
+			printf("CDROM - trv : %s [%x]\n",nmebffr,y);
 			// lookup in level
 			int i = 0;
 			int cursor = 0;
