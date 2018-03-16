@@ -105,6 +105,7 @@ char read_cmd[12] = {0xA8,0,0,0,0,0,0,0,0,0,0,0};
 short* readw = (short*) &read_cmd;
 
 void readRawCDROM(long lba,char count,char* locationx){//E
+	printf("READING CDROMSECT LBA=%i\n",lba);
         outportb(cdromdevice.io_base+6,0xE0|(cdromdevice.slave <<4) | ((lba >> 24) & 0x0f));//cdromdevice.slave & ( 1 << 4 ));
         outportb(cdromdevice.io_base+1,0x00);
         outportb(cdromdevice.io_base+4,ATAPI_SECTOR_SIZE & 0xFF );
