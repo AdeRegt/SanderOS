@@ -62,7 +62,7 @@ unsigned char* readCDROM(char* path){
 			// lookup in level
 			unsigned char i = 0;
 			while(1){
-				if(strcmp(nmebffr,buffer+i+33,y)==1){
+				if(strcmp(&nmebffr,&buffer+i+33,y)==1){
 					printf("_A_");
 				}
 				i += buffer[i];
