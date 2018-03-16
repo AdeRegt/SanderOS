@@ -105,12 +105,8 @@ char read_cmd[12] = {0xA8,0,0,0,0,0,0,0,0,0,0,0};
 short* readw = (short*) &read_cmd;
 
 void readRawCDROM(long lba,char count,char* locationx){//E
+	printf("READING CDROMSECT LBA=%i\n",lba);
         outportb(cdromdevice.io_base+6,0xE0|(cdromdevice.slave <<4) | ((lba >> 24) & 0x0f));//cdromdevice.slave & ( 1 << 4 ));
-        // wachtend
-        //int u = 0;
-        //for(u = 0 ; u < 5 ; u++){
-        //      inportb(cdromdevice.io_base+0x206);
-        //}
         outportb(cdromdevice.io_base+1,0x00);
         outportb(cdromdevice.io_base+4,ATAPI_SECTOR_SIZE & 0xFF );
         outportb(cdromdevice.io_base+5,ATAPI_SECTOR_SIZE >> 8);
@@ -144,9 +140,7 @@ void readRawCDROM(long lba,char count,char* locationx){//E
         ata_int_wait();
         int size = (((int)inportb(cdromdevice.io_base+5))<<8)|(int)(inportb(cdromdevice.io_base+4));
         if(size!=ATAPI_SECTOR_SIZE){printf("FATAL ERROR size!=ATAPI_SECTOR_SIZE");for(;;);}
-        //short *readev = (short*) locationx;//0x2000;
         int i = 0;
-        //ata_int_ready();
         int U = 0;
         while((status = inportb(cdromdevice.io_base+7)) & 0x80 ){
                 if((status >> 0) & 1){printf("READERROR");for(;;);}
@@ -159,11 +153,7 @@ void readRawCDROM(long lba,char count,char* locationx){//E
                 char B = (X >> 0x08); //& 0xFF;
                 locationx[U++] = A;
                 locationx[U++] = B;
-//              putc(A);putc(B);
         }
-        //ata_int_wait();
-        //while((status = inportb(cdromdevice.io_base+7)) & 0x88 ){asm volatile("pause"); }
-
 }
 
 void detectATAPI(){
