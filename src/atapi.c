@@ -66,12 +66,12 @@ unsigned char* readCDROM(char* path){
 				gevonden = 1;
 				break;
 				fail:
-				cursor += lengthofrecord;
+				cursor += lenghtofrecord;
 			}
 			if(gevonden==0){
 				goto exception;
 			}
-			printf("++++");
+			printf("CDROM - nop : found %s\n",nmebffr);
 		}
 		
 		printf("IT SEEMS TO WORK\n");
