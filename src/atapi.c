@@ -47,6 +47,7 @@ unsigned char* readCDROM(char* path){
 					nmebffr[y++] = deze;
 				}
 			}
+			nmebffr[y++] = 0x00;
 			printf("XMO: %s \n",nmebffr);
 		}
 	}
