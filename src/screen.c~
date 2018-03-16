@@ -67,7 +67,6 @@ char * itoa( int value, char * str, int base ){
 }
 
 void putc(const char a){
-	if(curY>=SCREEN_MAX_Y){cls();}
 	if(a=='\n'){
 		curY++;
 		curX = 0;
@@ -106,6 +105,7 @@ void printf(const char* format,...){
 	va_start(parameters, format);
 	int xcount = 0;
 	char deze;
+	if(curY>=SCREEN_MAX_Y){cls();}
 	while((deze = format[xcount++])!='\0'){
 		if(deze=='%'){
 			deze = format[xcount++];
