@@ -13,7 +13,7 @@ unsigned char getB(int a){
 }
 
 unsigned short getS(unsigned short a){
-	return ((unsigned short)((unsigned short*)&buffer[a])[0])0xFFFF;
+	return ((unsigned short)((unsigned short*)&buffer[a])[0]) & 0xFFFF;
 }
 
 
