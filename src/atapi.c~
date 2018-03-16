@@ -31,7 +31,7 @@ unsigned char* readCDROM(char* path){
 		int here = 1;
 		char type = 0;// 0=file 1=dire
 		char deze;
-		unsigned int floor = lbaroot;
+		int floor = lbaroot;
 		while(type!=1){
 			readRawCDROM(floor,1,(unsigned char*) buffer);
 			// grab next token
