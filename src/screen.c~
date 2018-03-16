@@ -11,6 +11,18 @@ char backgroundcolor = 0x07;
 int curX = 0;
 int curY = 0;
 
+void cls(){
+	curX = 0;
+	curY = 0;
+	int x = 0;
+	int y = 0;
+	for(y = 0 ; y < SCREEN_MAX_Y ; y++){
+		for(x = 0 ; x < SCREEN_MAX_X ; x++){
+			putc(' ');
+		}
+	}
+}
+
 void puts(const char* format){
 	int xcount = 0;
 	char deze;
@@ -55,6 +67,7 @@ char * itoa( int value, char * str, int base ){
 }
 
 void putc(const char a){
+	if(curY>=SCREEN_MAX_Y){cls();}
 	if(a=='\n'){
 		curY++;
 		curX = 0;
