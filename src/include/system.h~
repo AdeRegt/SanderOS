@@ -51,3 +51,18 @@ void readRawCDROM(long lba,char count,char* locationx);
 
 // ata
 void detectHDDFilesystems(ata_device dev);
+
+typedef struct {
+	unsigned long read;
+	unsigned long write;
+	unsigned long eject;
+	unsigned long identifier;
+}Device;
+
+typedef struct {
+	unsigned long read;
+	unsigned long write;
+	unsigned long list;
+	unsigned long remove;
+	unsigned long device;
+}Filesystem;

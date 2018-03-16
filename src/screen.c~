@@ -85,6 +85,7 @@ char nib2col(char a){
 	if(a=='7'){return 0x07;}
 	if(a=='8'){return 0x08;}
 	if(a=='9'){return 0x09;}
+	return 0x00;
 }
 
 void printf(const char* format,...){
