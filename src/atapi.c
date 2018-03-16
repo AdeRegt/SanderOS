@@ -63,6 +63,7 @@ unsigned char* readCDROM(char* path){
 						goto nextone;
 					}
 				}
+				printf("THINKING...");
 				goto goahead;
 				nextone:
 				d += lengthofrecord;

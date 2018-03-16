@@ -71,6 +71,7 @@ unsigned char* readCDROM(char* path){
 			goahead:
 			floor = getL(d+2);
 		}
+		printf("IT SEEMS TO WORK\n");
 	}
 	exception:
 	return "<<FILE NOT FOUND EXCEPTION>>";
