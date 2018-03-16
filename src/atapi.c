@@ -1,11 +1,18 @@
 #include <system.h>
+#define ATAPI_SECTOR_SIZE 2048
 
 //
 // INIT ISO
 //
 //
 
-void initCDROM(){}
+char buffer[ATAPI_SECTOR_SIZE];
+
+//void readRawCDROM(long lba,char count,char* locationx)
+void initCDROM(){
+	readRawCDROM(1,1,&buffer);
+	printf("CDROM: Disk %s bootable!\n",(buffer[510]==0x55&&buffer[511]==0xAA)?"is":"isnot");
+}
 
 //
 // INIT DEVICES
@@ -112,7 +119,6 @@ void detectATAdevice(ata_device dev){
 // C D R O M   M A N A G E R
 //
 //
-#define ATAPI_SECTOR_SIZE 2048
 char read_cmd[12] = {0xA8,0,0,0,0,0,0,0,0,0,0,0};
 short* readw = (short*) &read_cmd;
 
