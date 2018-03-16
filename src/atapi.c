@@ -23,7 +23,7 @@ unsigned long getL(long a){
 }
 
 int strcmp(unsigned char* A,unsigned char* B,unsigned int C){
-	for(int cursor = 0 ; cursor < C ; cursor++){
+	for(unsigned int cursor = 0 ; cursor < C ; cursor++){
 		if(A[cursor]!=B[cursor]){return 0;}
 	}
 	return 1;
@@ -62,7 +62,7 @@ unsigned char* readCDROM(char* path){
 			int gevonden = 0;
 			for(i = 0 ; i < 20 ; i++){
 				unsigned char lenghtofrecord = getB(cursor);
-				if(strcmp(nmebffr,(char*)buffer+cursor+33,y)){
+				if(strcmp(nmebffr,(char*)buffer+cursor+33,y)==1){
 					printf("__SAME__");
 				}
 				gevonden = 1;
