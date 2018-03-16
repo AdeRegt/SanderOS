@@ -39,7 +39,7 @@ void initCDROM(){
 	printf("CDROM: Primairy Volume Descriptor is at %x \n",pvd);
 	readRawCDROM(pvd,1,(unsigned char*) buffer);
 	unsigned short sectorsize = getS(128);
-	printf("CDROM: Sectorsize is %s \n",(sectorsize!=ATAPI_SECTOR_SIZE)?"valid","invalid");
+	printf("CDROM: Sectorsize is %s \n",(sectorsize!=ATAPI_SECTOR_SIZE)?"valid":"invalid");
 }
 
 //
