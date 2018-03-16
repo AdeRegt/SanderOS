@@ -22,15 +22,6 @@ unsigned long getL(long a){
 	return ((unsigned long)((unsigned long*)buffer[a])[0]);
 }
 
-int strcmp(unsigned char* A,unsigned char* B,unsigned int C){
-	for(unsigned int cursor = 0 ; cursor < C ; cursor++){
-		unsigned char C = A[cursor];
-		unsigned char D = B[cursor];
-		printf("%c - %c - %x | ",C,D,C==D);
-		if(C!=D){return 0;}
-	}
-	return 1;
-}
 
 unsigned char* readCDROM(char* path){
 	printf("CDROM: Now reading %s \n",path);
@@ -61,11 +52,20 @@ unsigned char* readCDROM(char* path){
 			printf("CDROM - trv : %s [ %x ]\n",nmebffr,y);
 			// lookup in level
 			unsigned char i = 0;
+			int gevonden = 0;
 			for(int h = 0 ; h < 10 ; h++){
 				for(int u = 0 ; u < y ; u++){
-					printf("%c-%c|",nmebffr[u],buffer[i+33+u]);
+					if(nmebffr[u]!=buffer[i+33+u]){
+						goto mislukt;
+					}
 				}
+				gevonden = 1;
+				break;
+				mislukt:
 				i += buffer[i];
+			}
+			if(gevonden){
+				printf("__TAAT__");
 			}
 		}
 	}
