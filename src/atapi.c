@@ -36,7 +36,7 @@ unsigned char* readCDROM(char* path){
 			// grab next token
 			int y = 0;
 			while(1){
-				deze = buffer[here++];
+				deze = path[here++];
 				if(deze=='/'){
 					type=0;
 					break;

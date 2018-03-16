@@ -37,7 +37,7 @@ unsigned char* readCDROM(char* path){
 			int y = 0;
 			while(1){
 				deze = buffer[here++];
-				if(deze=='\'){
+				if(deze=='/'){
 					type=0;
 					break;
 				}else if(deze=='\0'){
