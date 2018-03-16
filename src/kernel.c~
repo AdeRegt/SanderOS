@@ -29,7 +29,8 @@ void kernel_main(){
 	setupIDT();
 	detectDevices();
 	initialiseKeyboard();
-	readCDROM("/boot");
+	char* msx = (char*)readCDROM("/boot");
+	printf("%s",msx);
 	//acpiEnable();
 	//acpiPowerOff();
 	for(;;);
