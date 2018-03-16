@@ -61,11 +61,10 @@ unsigned char* readCDROM(char* path){
 			printf("CDROM - trv : %s [ %x ]\n",nmebffr,y);
 			// lookup in level
 			unsigned char i = 0;
-			while(1){
+			for(int h = 0 ; h < 10 ; h++){
 				for(int u = 0 ; u < y ; u++){
 					printf("%c-%c|",nmebffr[u],buffer[i+33+u]);
 				}
-				break;
 				i += buffer[i];
 			}
 		}
