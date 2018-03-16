@@ -13,12 +13,12 @@ unsigned char getB(int a){
 }
 
 unsigned short getS(short a){
-	return (short)((short*)buffer[a])[0];
+	return (unsigned short)((unsigned short*)buffer[a])[0];
 }
 
 
 unsigned long getL(long a){
-	return (long)((long*)buffer[a])[0];
+	return (unsigned long)((unsigned long*)buffer[a])[0];
 }
 
 //void readRawCDROM(long lba,char count,char* locationx)
