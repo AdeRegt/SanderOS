@@ -19,6 +19,7 @@ void initCDROM(){
 		if(buffer[1]=='C'&&buffer[2]=='D'&&buffer[3]=='0'&&buffer[4]=='0'&&buffer[5]=='1'){
 			if(buffer[0]==1){
 				pvd = 0x10+i;
+				break;
 			}
 		}
 	}
