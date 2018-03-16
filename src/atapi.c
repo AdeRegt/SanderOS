@@ -50,10 +50,30 @@ unsigned char* readCDROM(char* path){
 			nmebffr[y] = 0x00;
 			printf("CDROM - trv : %s \n",nmebffr);
 			// lookup in level
-			for(int i = 0 ; i < 500 ; i++){
-				printf("%c",buffer[i]);
+			int i = 0;
+			int cursor = 0;
+			int gevonden = 0;
+			for(i = 0 ; i < 20 ; i++){
+				unsigned char lenghtofrecord = getB(cursor);
+				unsigned char textsize = getB(cursor+32);
+				for(int u = 0 ; u < y ; u++){
+					char f = getB(cursor+33+y);
+					char g = nmebffr[y];
+					if(f!=g){
+						goto fail;
+					}
+				}
+				gevonden = 1;
+				break;
+				fail:
+				cursor += lengthofrecord;
 			}
+			if(gevonden==0){
+				goto exception;
+			}
+			printf("++++");
 		}
+		
 		printf("IT SEEMS TO WORK\n");
 	}
 	exception:
