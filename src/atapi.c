@@ -7,6 +7,7 @@
 //
 
 unsigned char buffer[ATAPI_SECTOR_SIZE];
+unsigned short dirtableloc;
 
 unsigned char getB(int a){
 	return buffer[a] & 0xff;
@@ -21,9 +22,11 @@ unsigned long getL(long a){
 	return ((unsigned long)((unsigned long*)buffer[a])[0]);
 }
 
-unsigned char* hello = (unsigned char*)"YAAAAY";
 unsigned char* readCDROM(char* path){
-	return hello;
+	if(path[0]=='/'){
+		return "OKE";
+	}
+	return "<<ERROR>>";
 }
 
 
@@ -45,7 +48,7 @@ void initCDROM(){
 	printf("CDROM: Primairy Volume Descriptor is at %x \n",pvd);
 	readRawCDROM(pvd,1,(unsigned char*) buffer);
 	unsigned short sectorsize = getS(128);
-	unsigned short dirtableloc = getB(140);
+	dirtableloc = getB(140);
 	printf("CDROM: Sectorsize is %s \n",(sectorsize!=ATAPI_SECTOR_SIZE)?"valid":"invalid");
 	printf("CDROM: Directorytable is at %x \n",dirtableloc);
 }
