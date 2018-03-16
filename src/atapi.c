@@ -26,8 +26,28 @@ unsigned char* readCDROM(char* path){
 	printf("CDROM: Now reading %s \n",path);
 	if(path[0]=='/'){
 		readRawCDROM(dirtableloc,1,(unsigned char*) buffer);
-		while(1){
-			
+		int lbaroot = getL(2);
+		readRawCDROM(lbaroot,1,(unsigned char*) buffer);
+		char nmebffr[50];
+		int here = 1;
+		char type = 0;// 0=file 1=dire
+		char deze;
+		while(type!=1){
+			// grab next token
+			int y = 0;
+			while(1){
+				deze = buffer[here++];
+				if(deze=='\'){
+					type=0;
+					break;
+				}else if(deze=='\0'){
+					type=1;
+					break;
+				}else{
+					nmebffr[y++] = deze;
+				}
+			}
+			printf("XMO: %s \n",nmebffr);
 		}
 	}
 	return "<<ERROR>>";
