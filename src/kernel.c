@@ -28,7 +28,7 @@ void kernel_main(){
 	}
 	setupIDT();
 	detectDevices();
-	unsigned char* msx = readCDROM("/BOOT/MYOS.BIN");
+	unsigned char* msx = readCDROM("/BOOT/MYOS.BIN;1");
 	printf(">>>>>>>>>>>>>>%s",msx);
 	initialiseKeyboard();
 	//acpiEnable();
