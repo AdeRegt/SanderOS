@@ -26,7 +26,7 @@ unsigned char* readCDROM(char* path){
 	printf("CDROM: Now reading %s \n",path);
 	if(path[0]=='/'){
 		readRawCDROM(dirtableloc,1,(unsigned char*) buffer);
-		unsigned long lbaroot = ((unsigned long*)buffer+2)[0];
+		unsigned short lbaroot = ((unsigned short*)buffer+2)[0];
 		char nmebffr[50];
 		int here = 1;
 		char type = 0;// 0=file 1=dire
