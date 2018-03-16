@@ -21,7 +21,7 @@ unsigned long getL(long a){
 	return ((unsigned long)((unsigned long*)buffer[a])[0]);
 }
 
-char* hello = "YAAAAY";
+unsigned char* hello = "YAAAAY";
 unsigned char* readCDROM(char* path){
 	return hello;
 }
