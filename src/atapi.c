@@ -65,7 +65,9 @@ unsigned char* readCDROM(char* path){
 				i += buffer[i];
 			}
 			if(gevonden){
-				printf("__TAAT__");
+				readRawCDROM(getL(i+2),1,(unsigned char*) buffer);
+			}else{
+				goto exception;
 			}
 		}
 	}
