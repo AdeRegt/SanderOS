@@ -21,7 +21,6 @@ unsigned long getL(long a){
 	return (unsigned long)((unsigned long*)buffer[a])[0];
 }
 
-unsigned short dirtableloc;
 
 //void readRawCDROM(long lba,char count,char* locationx)
 void initCDROM(){
@@ -42,8 +41,8 @@ void initCDROM(){
 	readRawCDROM(pvd,1,(unsigned char*) buffer);
 	unsigned short sectorsize = getS(128);
 	printf("CDROM: Sectorsize is %s \n",(sectorsize!=ATAPI_SECTOR_SIZE)?"valid":"invalid");
-	dirtableloc = getS(140);
-	printf("CDROM: Directorytable is at %x\n",dirtableloc);
+	unsigned short dirtableloc = getS(140);
+	printf("CDROM: Directorytable is at %x \n",dirtableloc);
 }
 
 //

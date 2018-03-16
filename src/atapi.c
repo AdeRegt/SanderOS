@@ -13,12 +13,12 @@ unsigned char getB(int a){
 }
 
 unsigned short getS(short a){
-	return (unsigned short)((unsigned short*)buffer[a])[0];
+	return ((unsigned short)((unsigned short*)buffer[a])[0]) & 0xFFFF;
 }
 
 
 unsigned long getL(long a){
-	return (unsigned long)((unsigned long*)buffer[a])[0];
+	return ((unsigned long)((unsigned long*)buffer[a])[0]) & 0xFFFFFFFF;
 }
 
 
