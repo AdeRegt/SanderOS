@@ -23,8 +23,12 @@ unsigned long getL(long a){
 }
 
 unsigned char* readCDROM(char* path){
+	printf("CDROM: Now reading %s \n",path);
 	if(path[0]=='/'){
-		return "OKE";
+		readRawCDROM(dirtableloc,1,(unsigned char*) buffer);
+		while(1){
+			
+		}
 	}
 	return "<<ERROR>>";
 }
