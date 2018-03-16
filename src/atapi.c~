@@ -26,7 +26,7 @@ int strcmp(unsigned char* A,unsigned char* B,unsigned int C){
 	for(unsigned int cursor = 0 ; cursor < C ; cursor++){
 		unsigned char C = A[cursor];
 		unsigned char D = B[cursor];
-		printf("%c - %c | ",C,D);
+		printf("%c - %c - %x | ",C,D,C==D);
 		if(C!=D){return 0;}
 	}
 	return 1;
