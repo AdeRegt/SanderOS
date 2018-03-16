@@ -122,7 +122,7 @@ void detectATAdevice(ata_device dev){
 char read_cmd[12] = {0xA8,0,0,0,0,0,0,0,0,0,0,0};
 short* readw = (short*) &read_cmd;
 
-void readRawCDROM(long lba,char count,char* locationx){//E
+void readRawCDROM(unsigned long lba,unsigned char count,unsigned char* locationx){//E
 	printf("READING CDROMSECT LBA=%x\n",lba);
         outportb(cdromdevice.io_base+6,0xE0|(cdromdevice.slave <<4) | ((lba >> 24) & 0x0f));//cdromdevice.slave & ( 1 << 4 ));
         outportb(cdromdevice.io_base+1,0x00);
