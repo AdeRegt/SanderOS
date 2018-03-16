@@ -24,7 +24,10 @@ unsigned long getL(long a){
 
 int strcmp(unsigned char* A,unsigned char* B,unsigned int C){
 	for(unsigned int cursor = 0 ; cursor < C ; cursor++){
-		if(A[cursor]!=B[cursor]){return 0;}
+		unsigned char C = A[cursor];
+		unsigned char D = B[cursor];
+		printf("%c - %c | ",C,D);
+		if(C!=D){return 0;}
 	}
 	return 1;
 }
