@@ -21,6 +21,11 @@ unsigned long getL(long a){
 	return ((unsigned long)((unsigned long*)buffer[a])[0]);
 }
 
+unsigned char* hello = "YAAAAY";
+unsigned long readCDROM(char* path){
+	return &hello;
+}
+
 
 //void readRawCDROM(long lba,char count,char* locationx)
 void initCDROM(){
