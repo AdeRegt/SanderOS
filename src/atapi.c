@@ -23,7 +23,7 @@ unsigned long getL(long a){
 
 char* hello = "YAAAAY";
 unsigned long readCDROM(char* path){
-	return &hello;
+	return (unsigned long)&hello;
 }
 
 
