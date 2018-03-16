@@ -50,31 +50,9 @@ unsigned char* readCDROM(char* path){
 			nmebffr[y] = 0x00;
 			printf("CDROM - trv : %s \n",nmebffr);
 			// lookup in level
-			int d = 0;
-			while(1){
-				unsigned char lengthofrecord = getB(d);
-				unsigned char textsize = getB(d+32);
-				if(textsize==y||textsize==(y+2)){
-					int q = 0;
-					for(q = 0 ; q < y ; q++){
-						char w = getB(d+33+q);
-						char e = nmebffr[q];
-						printf("%c",w);
-						if(w!=e){
-							goto nextone;
-						}
-					}
-					printf("THINKING...");
-					goto goahead;
-				}else{
-					//printf("SYSSKIP");
-				}
-				nextone:
-				d += lengthofrecord;
+			for(int i = 0 ; i < 10 ; i++){
+				printf("%c",buffer[i]);
 			}
-			goto exception;
-			goahead:
-			printf("GOAHEADCALLED");
 		}
 		printf("IT SEEMS TO WORK\n");
 	}
