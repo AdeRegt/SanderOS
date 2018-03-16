@@ -8,6 +8,19 @@
 
 unsigned char buffer[ATAPI_SECTOR_SIZE];
 
+unsigned char getB(int a){
+	return buffer[a] & 0xff;
+}
+
+unsigned short getS(short a){
+	return (short)((short*)&buffer[a])[0];
+}
+
+
+unsigned long getL(long a){
+	return (long)((long*)&buffer[a])[0];
+}
+
 //void readRawCDROM(long lba,char count,char* locationx)
 void initCDROM(){
 	readRawCDROM(0,1,(unsigned char*)buffer);
@@ -24,6 +37,9 @@ void initCDROM(){
 		}
 	}
 	printf("CDROM: Primairy Volume Descriptor is at %x \n",pvd);
+	readRawCDROM(pvd,1,(unsigned char*) buffer);
+	unsigned short sectorsize = getS(128);
+	printf("CDROM: Sectorsize is %s \n",(sectorsize!=ATAPI_SECTOR_SIZE)?"valid","invalid");
 }
 
 //
