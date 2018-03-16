@@ -8,9 +8,10 @@
 
 char buffer[ATAPI_SECTOR_SIZE];
 
+//void readRawCDROM(long lba,char count,char* locationx)
 void initCDROM(){
-	
-	printf("CDROM: Disk %s bootable!\n");
+	readRawCDROM(1,1,&buffer);
+	printf("CDROM: Disk %s bootable!\n",(buffer[510]==0x55&&buffer[511]==0xAA)?"is":"isnot");
 }
 
 //
