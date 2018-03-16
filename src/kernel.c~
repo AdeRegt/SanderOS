@@ -30,7 +30,7 @@ void kernel_main(){
 	detectDevices();
 	initialiseKeyboard();
 	unsigned char* msx = readCDROM("/boot");
-	printf("%s",msx);
+	printf(">>>>>>>>>>>>>>%s",msx);
 	//acpiEnable();
 	//acpiPowerOff();
 	for(;;);
