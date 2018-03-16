@@ -62,7 +62,7 @@ unsigned char* readCDROM(char* path){
 			int gevonden = 0;
 			for(i = 0 ; i < 20 ; i++){
 				unsigned char lenghtofrecord = getB(cursor);
-				if(strcmp(nmebffr,(char*)buffer[cursor+33],y)==1){
+				if(strcmp((char*)&nmebffr,(char*)&buffer[cursor+33],y)==1){
 					printf("__SAME__");
 				}
 				gevonden = 1;
