@@ -40,7 +40,7 @@ void initCDROM(){
 	printf("CDROM: Primairy Volume Descriptor is at %x \n",pvd);
 	readRawCDROM(pvd,1,(unsigned char*) buffer);
 	unsigned short sectorsize = getS(128);
-	unsigned short dirtableloc = getS(140);
+	unsigned short dirtableloc = getB(140);
 	printf("CDROM: Sectorsize is %s \n",(sectorsize!=ATAPI_SECTOR_SIZE)?"valid":"invalid");
 	printf("CDROM: Directorytable is at %x \n",dirtableloc);
 }
