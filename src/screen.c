@@ -105,6 +105,7 @@ void printf(const char* format,...){
 	va_start(parameters, format);
 	int xcount = 0;
 	char deze;
+	if(curY>=(SCREEN_MAX_Y-1)){cls();}
 	while((deze = format[xcount++])!='\0'){
 		if(deze=='%'){
 			deze = format[xcount++];
