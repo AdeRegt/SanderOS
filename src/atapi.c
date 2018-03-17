@@ -61,12 +61,16 @@ unsigned char* readCDROM(char* path){
 					}
 				}
 				gevonden = 1;
+				goto yay;
 				break;
 				mislukt:
 				i += buffer[i];
 			}
 			if(gevonden){
+				yay:
 				readRawCDROM(buffer[i+2],1,(unsigned char*) buffer);
+				printf("__YAY__");
+				continue;
 			}else{
 				goto exception;
 			}
