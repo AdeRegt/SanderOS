@@ -21,6 +21,8 @@ void cls(){
 			putc(' ');
 		}
 	}
+	curX = 0;
+	curY = 0;
 }
 
 void puts(const char* format){
