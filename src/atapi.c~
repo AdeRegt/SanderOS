@@ -65,7 +65,7 @@ unsigned char* readCDROM(char* path){
 				i += buffer[i];
 			}
 			if(gevonden){
-				readRawCDROM(getL(i+2),1,(unsigned char*) buffer);
+				readRawCDROM(getS(i+2),1,(unsigned char*) buffer);
 			}else{
 				goto exception;
 			}
