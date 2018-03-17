@@ -54,7 +54,7 @@ unsigned char* readCDROM(char* path){
 			unsigned char i = 0;
 			int gevonden = 0;
 			for(int h = 0 ; h < 10 ; h++){
-				if(buffer[i+33]==0x00){break;}
+				//if(buffer[i+33]==0x00){break;}
 				for(int u = 0 ; u < y ; u++){
 					if(nmebffr[u]!=buffer[i+33+u]){
 						goto mislukt;
