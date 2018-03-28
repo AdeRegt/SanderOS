@@ -72,7 +72,7 @@ unsigned char* readCDROM(char* path){
 			}else{
 				cls();
 				i = 0;
-				for(int s = 0 ; s < 50 ; s++){
+				for(int s = 0 ; s < 10 ; s++){
 					unsigned char entrysize = buffer[i];
 					unsigned char textsize = buffer[i+32];
 					printf("SZE=%x %x ",entrysize,textsize);
@@ -80,7 +80,10 @@ unsigned char* readCDROM(char* path){
 						printf("%c",buffer[i+33+q]);
 					}
 					printf("\n");
-					i += buffer[i];
+					i += entrysize;
+					if(entrysize % 2){
+						i = i + 1;
+					}
 				}
 				goto exception;
 			}
