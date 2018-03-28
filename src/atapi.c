@@ -53,7 +53,7 @@ unsigned char* readCDROM(char* path){
 			// lookup in level
 			unsigned char i = 0;
 			int gevonden = 0;
-			for(int h = 0 ; h < 10 ; h++){
+			for(int h = 0 ; h < 50 ; h++){
 				//if(buffer[i+33]==0x00){break;}
 				for(int u = 0 ; u < y ; u++){
 					if(nmebffr[u]!=buffer[i+33+u]){
@@ -65,7 +65,7 @@ unsigned char* readCDROM(char* path){
 				mislukt:
 				i += buffer[i];
 			}
-			if(gevonden){
+			if(gevonden==1){
 				readRawCDROM(buffer[i+2],1,(unsigned char*) buffer);
 			}else{
 				cls();
