@@ -61,6 +61,7 @@ unsigned char* readCDROM(char* path){
 					}
 				}
 				gevonden = 1;
+				printf("__GVNDN__");
 				break;
 				mislukt:
 				i += buffer[i];
