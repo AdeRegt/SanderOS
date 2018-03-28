@@ -78,7 +78,7 @@ unsigned char* readCDROM(char* path){
 					for(int q = 0 ; q < textsize ; q++){
 						printf("%c",buffer[i+33+q]);
 					}
-					i += entrysize;
+					i += buffer[i];
 				}
 				goto exception;
 			}
