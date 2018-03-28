@@ -60,7 +60,6 @@ unsigned char* readCDROM(char* path){
 					if(nmebffr[u]!=buffer[i+33+u]){
 						goto mislukt;
 					}
-					printf("%c",buffer[i+33+u]);
 				}
 				gevonden = 1;
 				printf("__GVNDN__");

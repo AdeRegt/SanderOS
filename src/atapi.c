@@ -65,7 +65,6 @@ unsigned char* readCDROM(char* path){
 				printf("__GVNDN__");
 				break;
 				mislukt:
-				printf("\n");
 				i += entrysize;
 			}
 			if(gevonden==1){
