@@ -70,10 +70,10 @@ unsigned char* readCDROM(char* path){
 			if(gevonden==1){
 				readRawCDROM(buffer[i+2],1,(unsigned char*) buffer);
 			}else{
-				//cls();
-				//for(int s = 0 ; s < 800 ; s++){
-				//	printf("%c",buffer[s]);
-				//}
+				cls();
+				for(int s = 0 ; s < 10 ; s++){
+					unsigned char textsize = buffer[i+32];
+				}
 				goto exception;
 			}
 		}
