@@ -72,7 +72,7 @@ unsigned char* readCDROM(char* path){
 			}else{
 				cls();
 				i = 0;
-				for(int s = 0 ; s < 10 ; s++){
+				for(int s = 0 ; s < 50 ; s++){
 					unsigned char entrysize = buffer[i];
 					unsigned char textsize = buffer[i+32];
 					for(int q = 0 ; q < textsize ; q++){
