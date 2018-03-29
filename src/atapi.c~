@@ -99,7 +99,7 @@ void initCDROM(){
 		unsigned char lengthofdirident = buffer[i];
 		unsigned char extattrlength = buffer[i+1];
 		isoroot[isorootcnt].lba 	= getL(i+2);
-		isoroot[isorootcnt].parrent 	= getS(i+6);
+		isoroot[isorootcnt].parrent 	= getB(i+6);
 		if(lengthofdirident==0){break;}
 		for(int r = 0 ; r < lengthofdirident ; r++){
 			isoroot[isorootcnt].name[r] = buffer[i+8+r];//printf("%c",buffer[i+8+r]);
