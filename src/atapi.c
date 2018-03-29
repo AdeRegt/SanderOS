@@ -65,10 +65,13 @@ void initCDROM(){
 	while(1){
 		unsigned char lengthofdirident = buffer[i];
 		unsigned char extattrlength = buffer[i+1];
-		unsigned long lba = getL(i+2);
-		unsigned short parent = getS(i+6);
+		isoroot[isorootcnt].lba 	= getL(i+2);
+		isoroot[isorootcnt].parrent 	= getS(i+6);
 		if(lengthofdirident==0){break;}
-		for(int r = 0 ; r < lengthofdirident ; r++){printf("%c",buffer[i+8+r]);}printf("'\n");
+		for(int r = 0 ; r < lengthofdirident ; r++){
+			isoroot[isorootcnt].name[r] = buffer[i+8+r];//printf("%c",buffer[i+8+r]);
+		}//printf("'\n");
+		isorootcnt++;
 		if(lengthofdirident % 2 ){
 			i = i + 1;
 		}
