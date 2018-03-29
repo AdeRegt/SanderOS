@@ -12,7 +12,7 @@ typedef struct {
 	unsigned char name[10];
 }ISOROOTTABLES;
 
-struct ISOROOTTABLES isoroot[100];
+ ISOROOTTABLES isoroot[100];
 int isorootcnt = 0;
 
 unsigned char buffer[ATAPI_SECTOR_SIZE];
