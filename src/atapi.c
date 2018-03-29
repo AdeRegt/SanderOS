@@ -53,11 +53,14 @@ unsigned char* readCDROM(char* path){
 			// lookup in level
 			unsigned char i = 0;
 			int gevonden = 0;
-			for(int h = 0 ; h < 50 ; h++){
+			for(int h = 0 ; h < 10 ; h++){
 				unsigned char entrysize = buffer[i];
 				//if(buffer[i+33]==0x00){break;}
 				for(int u = 0 ; u < y ; u++){
-					if(nmebffr[u]!=buffer[i+33+u]){
+					unsigned char alpaA = nmebffr[u];
+					unsigned char alpaB = buffer[i+33+u];
+					printf("%c-%c|",alpaA,alpaB);
+					if(alpaA!=alpaB){
 						goto mislukt;
 					}
 				}
@@ -70,11 +73,11 @@ unsigned char* readCDROM(char* path){
 			if(gevonden==1){
 				readRawCDROM(buffer[i+2],1,(unsigned char*) buffer);
 			}else{
-				cls();
-				i = 0;
-				for(int r = 0 ; r < 512 ; r++){
-					printf("%c",buffer[r]);
-				}
+//				cls();
+//				i = 0;
+//				for(int r = 0 ; r < 512 ; r++){
+//					printf("%c",buffer[r]);
+//				}
 				goto exception;
 			}
 		}
