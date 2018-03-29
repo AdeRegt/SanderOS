@@ -72,7 +72,7 @@ unsigned char* readCDROM(char* path){
 			}else{
 				cls();
 				i = 0;
-				for(int r = 0 ; r < 300 ; r++){
+				for(int r = 0 ; r < 512 ; r++){
 					printf("%c",buffer[r]);
 				}
 				goto exception;
