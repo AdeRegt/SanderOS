@@ -42,7 +42,7 @@ unsigned char* readCDROM(char* path){
 			}
 		}
 		bffx[u] = 0x00;
-		printf("%s \n",bffx);
+		printf("%s \n",(unsigned char*)&bffx);
 	}
 	return "RETURNED";
 }

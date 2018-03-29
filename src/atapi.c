@@ -41,8 +41,8 @@ unsigned char* readCDROM(char* path){
 				bffx[u++] = deze;
 			}
 		}
-		bffx[u] = 0x00;
-		printf("%s \n",(unsigned char*)&bffx);
+		bffx[u++] = 0x00;
+		printf("%s \n",(unsigned char*)bffx);
 	}
 	return "RETURNED";
 }
