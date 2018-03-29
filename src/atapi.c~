@@ -7,11 +7,13 @@
 //
 
 typedef struct ISOROOTTABLES{
-	unsigned long parrent;
+	unsigned short parrent;
+	unsigned long lba;
 	unsigned char name[10];
 };
 
-ISOROOTTABLES isoroot[100];
+struct ISOROOTTABLES isoroot[100];
+int isorootcnt = 0;
 
 unsigned char buffer[ATAPI_SECTOR_SIZE];
 unsigned short dirtableloc;
@@ -58,7 +60,16 @@ void initCDROM(){
 	printf("CDROM: Sectorsize is %s \n",(sectorsize!=ATAPI_SECTOR_SIZE)?"valid":"invalid");
 	printf("CDROM: Directorytable is at %x \n",dirtableloc);
 	readRawCDROM(dirtableloc,1,(unsigned char*)buffer);
-	
+	isorootcnt = 0;
+	i = 0;
+	while(1){
+		unsigned char lengthofdirident = buffer[i];
+		unsigned char extattrlength = buffer[i+1];
+		unsigned long lba = getL(i+2);
+		unsigned short parent = getS(i+6);
+		if(lengthofdirident==0){break;}
+		
+	}
 }
 
 //
