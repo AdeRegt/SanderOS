@@ -82,7 +82,7 @@ unsigned char* readCDROM(char* path){
 				for(int h = 0 ; h < 10 ; h++){
 					unsigned char entrysize = buffer[q];
 					unsigned char textsize = buffer[q+32];
-					for(unsigned char t = 0 ; t < textsize ; t++){
+					for(unsigned int t = 0 ; t < textsize ; t++){
 						printf("%c",buffer[q+33+t]);
 					}
 					printf("\n");
