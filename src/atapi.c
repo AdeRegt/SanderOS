@@ -83,7 +83,7 @@ unsigned char* readCDROM(char* path){
 					unsigned char entrysize = buffer[q];
 					unsigned char attr = buffer[q+1];
 					unsigned char textsize = buffer[q+32];
-					printf("%x = %x + %x || ",entrysize,attr,textsize);
+					printf("ENT=%x ATTR=%x TEXTS=%x SPC=%x ODD=%x || ",entrysize,attr,textsize,33,(q + entrysize)%2);
 					for(unsigned int t = 0 ; t < textsize ; t++){
 						printf("%c",buffer[q+33+t]);
 					}
