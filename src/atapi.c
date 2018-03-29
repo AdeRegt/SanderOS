@@ -56,8 +56,8 @@ unsigned char* readCDROM(char* path){
 		for(int g = 0 ; g < isorootcnt ; g++){
 			if(isoroot[g].parrent==floor){
 				int gevonden = 1;
-				for(int t = 0 ; t < filler ; t++){
 					printf(" | %s |",isoroot[g].name);
+				for(int t = 0 ; t < filler ; t++){
 					if(isoroot[g].name[t]!=fsbuffer[t]){
 						gevonden = 0;
 					}
