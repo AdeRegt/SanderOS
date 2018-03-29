@@ -33,6 +33,7 @@ unsigned char* readCDROM(char* path){
 	readRawCDROM(dirtableloc,1,(unsigned char*)buffer);
 	unsigned long getrootdirectorylocation = getL(buffer[2]);
 	readRawCDROM(getrootdirectorylocation,1,(unsigned char*)buffer);
+	for(int i = 0 ; i < 512 ; i++){printf("%c",buffer[i]);}
 	//
 	// FIRST, CHOP PATH IN PIECES
 	//
