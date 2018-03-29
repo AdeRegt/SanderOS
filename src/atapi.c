@@ -31,7 +31,7 @@ unsigned char* readCDROM(char* path){
 	//
 	
 	readRawCDROM(dirtableloc,1,(unsigned char*)buffer);
-	unsigned long getrootdirectorylocation = getS(buffer[2]);
+	unsigned long getrootdirectorylocation = getB(buffer[2]);
 	readRawCDROM(getrootdirectorylocation,1,(unsigned char*)buffer);
 	for(int i = 0 ; i < 512 ; i++){printf("%c",buffer[i]);}
 	//
