@@ -47,7 +47,7 @@ unsigned char* readCDROM(char* path){
 			}
 		}
 		printf("> %s \n",fsbuffer);
-		if(filler==0){break;}
+		if(cunt==100){break;}
 	}
 	return "RETURNED";
 }
