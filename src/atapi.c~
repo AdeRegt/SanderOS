@@ -39,7 +39,7 @@ unsigned char* readCDROM(char* path){
 	while(1){
 		int filler = 0;
 		while(1){
-			unsigned char deze = buffer[cunt++];
+			unsigned char deze = path[cunt++];
 			if(deze=='/'||deze==0x00){
 				break;
 			}else{
