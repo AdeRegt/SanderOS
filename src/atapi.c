@@ -36,6 +36,7 @@ unsigned char* readCDROM(char* path){
 	// bestandspad opspliten
 	unsigned int cunt = 1;
 	unsigned char fsbuffer[10];
+	unsigned short floor = 0;
 	while(1){
 		int filler = 0;
 		int end = 0;
@@ -52,6 +53,17 @@ unsigned char* readCDROM(char* path){
 		}
 		fsbuffer[filler] = 0x00;
 		printf("> %s \n",fsbuffer);
+		for(int g = 0 ; g < isorootcnt ; g++){
+			if(isoroot[g].parrent==floor){
+				int gevonden = 1;
+				for(int t = 0 ; t < filler ; t++){
+					if(isoroot[g].name[t]!=fsbuffer[t]){
+						gevonden = 0;
+					}
+				}
+				if(gevonden){printf("__CAPSONES__");}
+			}
+		}
 		if(end){break;}
 	}
 	return "RETURNED";

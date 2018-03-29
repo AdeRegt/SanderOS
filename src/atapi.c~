@@ -50,8 +50,11 @@ unsigned char* readCDROM(char* path){
 				fsbuffer[filler++] = deze;
 			}
 		}
-		sfbuffer[filler]=0x00;
+		fsbuffer[filler] = 0x00;
 		printf("> %s \n",fsbuffer);
+		for(int g = 0 ; g < isorootcnt ; g++){
+			
+		}
 		if(end){break;}
 	}
 	return "RETURNED";
