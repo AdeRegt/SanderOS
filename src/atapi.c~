@@ -73,7 +73,7 @@ unsigned char* readCDROM(char* path){
 			if(gevonden==1){
 				readRawCDROM(buffer[i+2],1,(unsigned char*) buffer);
 			}else{
-//				cls();
+				cls();
 //				i = 0;
 //				for(int r = 0 ; r < 512 ; r++){
 //					printf("%c",buffer[r]);
@@ -85,6 +85,7 @@ unsigned char* readCDROM(char* path){
 					for(unsigned char t = 0 ; t < textsize ; t++){
 						printf("%c",buffer[q+33+t]);
 					}
+					printf("\n");
 					q += entrysize;
 				}
 				goto exception;
