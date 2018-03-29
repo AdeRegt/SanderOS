@@ -58,6 +58,7 @@ void initCDROM(){
 	printf("CDROM: Sectorsize is %s \n",(sectorsize!=ATAPI_SECTOR_SIZE)?"valid":"invalid");
 	printf("CDROM: Directorytable is at %x \n",dirtableloc);
 	readRawCDROM(dirtableloc,1,(unsigned char*)buffer);
+	
 }
 
 //

@@ -11,7 +11,7 @@ typedef struct ISOROOTTABLES{
 	unsigned char name[10];
 };
 
-ISOROOTTABLES isoroot[100];
+struct ISOROOTTABLES isoroot[100];
 
 unsigned char buffer[ATAPI_SECTOR_SIZE];
 unsigned short dirtableloc;
