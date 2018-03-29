@@ -73,7 +73,7 @@ unsigned char* readCDROM(char* path){
 				cls();
 				i = 0;
 				for(int s = 0 ; s < 10 ; s++){
-					unsigned char entrysize = buffer[i];
+					unsigned char entrysize = buffer[i]+buffer[i+1];
 					unsigned char textsize = buffer[i+32];
 					printf("SZE=%x %x ",entrysize,textsize);
 					for(char q = 0 ; q < textsize ; q++){

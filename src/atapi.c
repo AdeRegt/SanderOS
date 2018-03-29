@@ -66,6 +66,9 @@ unsigned char* readCDROM(char* path){
 				break;
 				mislukt:
 				i += entrysize;
+				if(entrysize % 2){
+						i = i + 1;
+					}
 			}
 			if(gevonden==1){
 				readRawCDROM(buffer[i+2],1,(unsigned char*) buffer);
