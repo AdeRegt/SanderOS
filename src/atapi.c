@@ -104,7 +104,7 @@ void initCDROM(){
 		for(int r = 0 ; r < lengthofdirident ; r++){
 			isoroot[isorootcnt].name[r] = buffer[i+8+r];//printf("%c",buffer[i+8+r]);
 		}//printf("'\n");
-		printf("%s at %x prnt %x \n",isoroot[isorootcnt].name,isorootcnt,isoroot[isorootcnt].parrent);
+		printf("CDROM: detected %xth folder '%s' and parentdir is %x \n",isorootcnt,isoroot[isorootcnt].name,isoroot[isorootcnt].parrent);
 		isorootcnt++;
 		if(lengthofdirident % 2 ){
 			i = i + 1;
