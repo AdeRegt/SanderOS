@@ -25,25 +25,21 @@ unsigned long getL(long a){
 
 unsigned char* readCDROM(char* path){
 	printf("CDROM: Now reading %s \n",path);
-	unsigned char bffx[50];
-	int t = 1;
-	int again = 1;
-	while(again){
-		int u = 0;
-		while(1){
-			unsigned char deze = bffx[t++];
-			if(deze=='/'){
-				break;
-			}else if(deze==0x00){
-				again = 0;
-				break;
-			}else{
-				bffx[u++] = deze;
-			}
-		}
-		bffx[u++] = 0x00;
-		printf("%s \n",(unsigned char*)bffx);
-	}
+	
+	// 
+	// LOAD ROOTDIR
+	//
+	
+	readRawCDROM(dirtableloc,1,(unsigned char*)buffer);
+	unsigned long getrootdirectorylocation = getL(buffer[2]);
+	readRawCDROM(getrootdirectorylocation,1,(unsigned char*)buffer);
+	//
+	// FIRST, CHOP PATH IN PIECES
+	//
+	
+	// index starts at 1, since everything start with /!
+	unsigned int pathsearchindex = 1;
+	
 	return "RETURNED";
 }
 
@@ -179,7 +175,7 @@ char read_cmd[12] = {0xA8,0,0,0,0,0,0,0,0,0,0,0};
 short* readw = (short*) &read_cmd;
 
 void readRawCDROM(unsigned long lba,unsigned char count,unsigned char* locationx){//E
-	printf("CDROM: Reading LBA=%x\n",lba);
+//	printf("CDROM: Reading LBA=%x\n",lba);
         outportb(cdromdevice.io_base+6,0xE0|(cdromdevice.slave <<4) | ((lba >> 24) & 0x0f));//cdromdevice.slave & ( 1 << 4 ));
         outportb(cdromdevice.io_base+1,0x00);
         outportb(cdromdevice.io_base+4,ATAPI_SECTOR_SIZE & 0xFF );
