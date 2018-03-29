@@ -36,7 +36,7 @@ unsigned char* readCDROM(char* path){
 	// bestandspad opspliten
 	unsigned int cunt = 1;
 	unsigned char fsbuffer[10];
-	unsigned short floor = 1;
+	unsigned short floor = 0;
 	while(1){
 		int filler = 0;
 		int end = 0;
