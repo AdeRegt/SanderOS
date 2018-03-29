@@ -12,7 +12,7 @@ typedef struct {
 	unsigned char name[10];
 }ISOROOTTABLES;
 
-struct ISOROOTTABLES isoroot[100];
+ ISOROOTTABLES isoroot[100];
 int isorootcnt = 0;
 
 unsigned char buffer[ATAPI_SECTOR_SIZE];
@@ -33,7 +33,11 @@ unsigned long getL(long a){
 
 unsigned char* readCDROM(char* path){
 	printf("CDROM: Now reading %s \n",path);
-	
+	// bestandspad opspliten
+	unsigned int cunt = 0;
+	while(1){
+		
+	}
 	return "RETURNED";
 }
 

@@ -33,7 +33,21 @@ unsigned long getL(long a){
 
 unsigned char* readCDROM(char* path){
 	printf("CDROM: Now reading %s \n",path);
-	
+	// bestandspad opspliten
+	unsigned int cunt = 1;
+	unsigned char fsbuffer[10];
+	while(1){
+		int filler = 0;
+		while(1){
+			unsigned char deze = buffer[cunt++];
+			if(deze=='\'||deze==0x00){
+				break;
+			}else{
+				fsbuffer[filler++] = deze;
+			}
+		}
+		printf("> %s \n",fsbuffer);
+	}
 	return "RETURNED";
 }
 
