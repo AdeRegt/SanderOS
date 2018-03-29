@@ -89,6 +89,9 @@ unsigned char* readCDROM(char* path){
 					}
 					printf("\n");
 					q = q + entrysize;
+					if(q % 2 ){
+						q = q + 1;
+					}
 				}
 				goto exception;
 			}
