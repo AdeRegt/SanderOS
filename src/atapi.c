@@ -66,27 +66,14 @@ unsigned char* readCDROM(char* path){
 				break;
 				mislukt:
 				i += entrysize;
-				if(entrysize % 2){
-						i = i + 1;
-					}
 			}
 			if(gevonden==1){
 				readRawCDROM(buffer[i+2],1,(unsigned char*) buffer);
 			}else{
 				cls();
 				i = 0;
-				for(int s = 0 ; s < 10 ; s++){
-					unsigned char entrysize = buffer[i]+buffer[i+1];
-					unsigned char textsize = buffer[i+32];
-					printf("SZE=%x %x ",entrysize,textsize);
-					for(char q = 0 ; q < textsize ; q++){
-						printf("%c",buffer[i+33+q]);
-					}
-					printf("\n");
-					i += entrysize;
-					if(entrysize % 2){
-						i = i + 1;
-					}
+				for(i = 0 ; i < 512 ; i++){
+					printf("%c",buffer[i]);
 				}
 				goto exception;
 			}
