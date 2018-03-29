@@ -104,7 +104,7 @@ void initCDROM(){
 		for(int r = 0 ; r < lengthofdirident ; r++){
 			isoroot[isorootcnt].name[r] = buffer[i+8+r];//printf("%c",buffer[i+8+r]);
 		}//printf("'\n");
-		printf("%s at %x \n",isoroot[isorootcnt].name,isorootcnt);
+		printf("%s at %x prnt %x \n",isoroot[isorootcnt].name,isorootcnt,isoroot[isorootcnt].parrent);
 		isorootcnt++;
 		if(lengthofdirident % 2 ){
 			i = i + 1;
