@@ -25,6 +25,25 @@ unsigned long getL(long a){
 
 unsigned char* readCDROM(char* path){
 	printf("CDROM: Now reading %s \n",path);
+	unsigned char bffx[50];
+	int t = 1;
+	int again = 1;
+	while(again){
+		int u = 0;
+		while(1){
+			unsigned char deze = bffx[t++];
+			if(deze=='/'){
+				break;
+			}else if(deze==0x00){
+				again = 0;
+				break;
+			}else{
+				bffx[u++] = deze;
+			}
+		}
+		bffx[u] = 0x00;
+		printf("%s \n",bffx);
+	}
 	return "RETURNED";
 }
 
