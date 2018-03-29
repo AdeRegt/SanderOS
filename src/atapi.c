@@ -78,6 +78,11 @@ unsigned char* readCDROM(char* path){
 //				for(int r = 0 ; r < 512 ; r++){
 //					printf("%c",buffer[r]);
 //				}
+				unsigned char q = 0;
+				for(int h = 0 ; h < 10 ; h++){
+					unsigned char entrysize = buffer[q];
+					q += entrysize;
+				}
 				goto exception;
 			}
 		}
