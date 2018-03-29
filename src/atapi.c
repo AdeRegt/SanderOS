@@ -6,6 +6,13 @@
 //
 //
 
+typedef struct ISOROOTTABLES{
+	unsigned long parrent;
+	unsigned char name[10];
+};
+
+ISOROOTTABLES isoroot[100];
+
 unsigned char buffer[ATAPI_SECTOR_SIZE];
 unsigned short dirtableloc;
 
@@ -22,24 +29,8 @@ unsigned long getL(long a){
 	return ((unsigned long)((unsigned long*)buffer[a])[0]);
 }
 
-
 unsigned char* readCDROM(char* path){
 	printf("CDROM: Now reading %s \n",path);
-	
-	// 
-	// LOAD ROOTDIR
-	//
-	
-	readRawCDROM(dirtableloc,1,(unsigned char*)buffer);
-	unsigned long getrootdirectorylocation = buffer[2];
-	//readRawCDROM(getrootdirectorylocation,1,(unsigned char*)buffer);
-	for(int i = 0 ; i < 512 ; i++){printf("%c",buffer[i]);}
-	//
-	// FIRST, CHOP PATH IN PIECES
-	//
-	
-	// index starts at 1, since everything start with /!
-	unsigned int pathsearchindex = 1;
 	
 	return "RETURNED";
 }
@@ -66,6 +57,8 @@ void initCDROM(){
 	dirtableloc = getB(140);
 	printf("CDROM: Sectorsize is %s \n",(sectorsize!=ATAPI_SECTOR_SIZE)?"valid":"invalid");
 	printf("CDROM: Directorytable is at %x \n",dirtableloc);
+	readRawCDROM(dirtableloc,1,(unsigned char*)buffer);
+	
 }
 
 //
