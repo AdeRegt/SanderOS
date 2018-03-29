@@ -38,16 +38,20 @@ unsigned char* readCDROM(char* path){
 	unsigned char fsbuffer[10];
 	while(1){
 		int filler = 0;
+		int end = 0;
 		while(1){
 			unsigned char deze = path[cunt++];
-			if(deze=='/'||deze==0x00){
+			if(deze=='/'){
+				break;
+			}else if(deze==0x00){
+				end = 1;
 				break;
 			}else{
 				fsbuffer[filler++] = deze;
 			}
 		}
 		printf("> %s \n",fsbuffer);
-		if(filler==0){break;}
+		if(end){break;}
 	}
 	return "RETURNED";
 }
