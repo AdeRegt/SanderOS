@@ -38,9 +38,11 @@ unsigned char* readCDROM(char* path){
 	unsigned char fsbuffer[10];
 	unsigned short floor = 1;
 	while(1){
-		nextattempt:
 		int filler = 0;
 		int end = 0;
+		nextattempt:
+		filler = 0;
+		end = 0;
 		while(1){
 			unsigned char deze = path[cunt++];
 			if(deze=='/'){
