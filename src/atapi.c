@@ -56,18 +56,26 @@ unsigned char* readCDROM(char* path){
 		for(int g = 0 ; g < isorootcnt ; g++){
 			if(isoroot[g].parrent==floor){
 				int gevonden = 1;
-					printf(" | %s |",isoroot[g].name);
+//				printf(" | %s |",isoroot[g].name);
 				for(int t = 0 ; t < filler ; t++){
 					if(isoroot[g].name[t]!=fsbuffer[t]){
 						gevonden = 0;
 					}
 				}
-				if(gevonden){printf("__CAPSONES__");}
+				if(gevonden){
+					floor = g+1;
+					if(end){goto sect_DIR;}
+				}
 			}
 		}
 		if(end){break;}
 	}
-	return "RETURNED";
+	sect_FAL:
+	return "RETURN FAIL";
+	sect_FIL:
+	return "RETURN FIL";
+	sect_DIR:
+	return "RETURN DIR";
 }
 
 
