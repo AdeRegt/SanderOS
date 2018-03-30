@@ -52,7 +52,7 @@ unsigned char* readCDROM(char* path){
 			}
 		}
 		fsbuffer[filler] = 0x00;
-		printf("> %s \n",fsbuffer);
+		printf("> '%s' \n",fsbuffer);
 		int gevonden = 1;
 		for(int g = 0 ; g < isorootcnt ; g++){
 			if(isoroot[g].parrent==floor){
@@ -68,7 +68,9 @@ unsigned char* readCDROM(char* path){
 				}
 			}
 		}
-		printf(" GVND=%x ",gevonden);
+		if(end){
+			goto sect_FAL;
+		}
 	}
 	sect_FAL:
 	return "RETURN FAIL";

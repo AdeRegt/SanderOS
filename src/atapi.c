@@ -52,7 +52,7 @@ unsigned char* readCDROM(char* path){
 			}
 		}
 		fsbuffer[filler] = 0x00;
-		printf("> %s \n",fsbuffer);
+		printf("> '%s' \n",fsbuffer);
 		int gevonden = 1;
 		for(int g = 0 ; g < isorootcnt ; g++){
 			if(isoroot[g].parrent==floor){
@@ -65,6 +65,7 @@ unsigned char* readCDROM(char* path){
 				if(gevonden){
 					floor = g+1;
 					if(end){goto sect_DIR;}
+					break;
 				}
 			}
 		}
