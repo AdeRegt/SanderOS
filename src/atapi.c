@@ -65,10 +65,10 @@ unsigned char* readCDROM(char* path){
 				if(gevonden){
 					floor = g+1;
 					if(end){goto sect_DIR;}
-					break;
 				}
 			}
 		}
+		
 		if(gevonden==0){
 			printf("__FAIL__");
 		}

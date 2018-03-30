@@ -69,7 +69,7 @@ unsigned char* readCDROM(char* path){
 				}
 			}
 		}
-		if(gevonden==){
+		if(gevonden==0){
 			printf("__FAIL__");
 		}
 	}
