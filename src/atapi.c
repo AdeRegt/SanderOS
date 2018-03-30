@@ -46,6 +46,7 @@ unsigned char* readCDROM(char* path){
 		while(1){
 			unsigned char deze = path[cunt];
 			if(deze=='/'){
+				cunt = cunt+1;
 				goto ddf;
 			}else if(deze==0x00){
 				end = 1;
