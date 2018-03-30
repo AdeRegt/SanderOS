@@ -53,9 +53,9 @@ unsigned char* readCDROM(char* path){
 		}
 		fsbuffer[filler] = 0x00;
 		printf("> %s \n",fsbuffer);
+		int gevonden = 1;
 		for(int g = 0 ; g < isorootcnt ; g++){
 			if(isoroot[g].parrent==floor){
-				int gevonden = 1;
 //				printf(" | %s |",isoroot[g].name);
 				for(int t = 0 ; t < filler ; t++){
 					if(isoroot[g].name[t]!=fsbuffer[t]){
@@ -65,10 +65,15 @@ unsigned char* readCDROM(char* path){
 				if(gevonden){
 					floor = g+1;
 					if(end){goto sect_DIR;}
+					break;
 				}
 			}
 		}
-		if(end){break;}
+		if(!gevonden){
+			if(!end){goto sect_FAL;}
+		}else if(end&&!gevonden){
+			goto sect_FIL;
+		}
 	}
 	sect_FAL:
 	return "RETURN FAIL";
