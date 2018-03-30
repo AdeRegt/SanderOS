@@ -68,7 +68,9 @@ unsigned char* readCDROM(char* path){
 				}
 			}
 		}
-		printf(" GVND=%x ",gevonden);
+		if(end){
+			goto sect_FAL;
+		}
 	}
 	sect_FAL:
 	return "RETURN FAIL";
