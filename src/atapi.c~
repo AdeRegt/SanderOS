@@ -46,14 +46,15 @@ unsigned char* readCDROM(char* path){
 		while(1){
 			unsigned char deze = path[cunt++];
 			if(deze=='/'){
-				break;
+				goto ddf;
 			}else if(deze==0x00){
 				end = 1;
-				break;
+				goto ddf;
 			}else{
 				fsbuffer[filler++] = deze;
 			}
 		}
+		ddf:
 		fsbuffer[filler] = 0x00;
 		printf("> '%s' \n",fsbuffer);
 		for(int g = 0 ; g < isorootcnt ; g++){

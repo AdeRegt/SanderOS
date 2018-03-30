@@ -44,7 +44,7 @@ unsigned char* readCDROM(char* path){
 		filler = 0;
 		end = 0;
 		while(1){
-			unsigned char deze = path[cunt++];
+			unsigned char deze = path[cunt];
 			if(deze=='/'){
 				goto ddf;
 			}else if(deze==0x00){
@@ -53,6 +53,7 @@ unsigned char* readCDROM(char* path){
 			}else{
 				fsbuffer[filler++] = deze;
 			}
+			cunt = cunt+1;
 		}
 		ddf:
 		fsbuffer[filler] = 0x00;
