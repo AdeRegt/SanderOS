@@ -37,10 +37,14 @@ unsigned char* readCDROM(char* path){
 	unsigned int cunt = 1;
 	unsigned char fsbuffer[10];
 	unsigned short floor = 1;
+	unsigned int stp = 1;
 	while(1){
 		int filler = 0;
 		int end = 0;
 		nextattempt:
+		if(stp==0){
+			break;
+		}
 		filler = 0;
 		end = 0;
 		while(1){
@@ -49,6 +53,7 @@ unsigned char* readCDROM(char* path){
 				cunt = cunt+1;
 				goto ddf;
 			}else if(deze==0x00){
+				stp = 0;
 				end = 1;
 				goto ddf;
 			}else{
