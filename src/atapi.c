@@ -38,6 +38,7 @@ unsigned char* readCDROM(char* path){
 	unsigned char fsbuffer[10];
 	unsigned short floor = 1;
 	while(1){
+		nextattempt:
 		int filler = 0;
 		int end = 0;
 		while(1){
@@ -65,7 +66,7 @@ unsigned char* readCDROM(char* path){
 				if(gevonden){
 					floor = g+1;
 					if(end){goto sect_DIR;}
-					break;
+					goto nextattempt;
 				}
 			}
 		}
