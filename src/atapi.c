@@ -69,10 +69,8 @@ unsigned char* readCDROM(char* path){
 				}
 			}
 		}
-		if(gevonden==0){
-			if(end==0){goto sect_FAL;}
-		}else if(end&&!gevonden){
-			goto sect_FIL;
+		if(gevonden==){
+			printf("__FAIL__");
 		}
 	}
 	sect_FAL:
