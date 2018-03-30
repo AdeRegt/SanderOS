@@ -72,7 +72,7 @@ unsigned char* readCDROM(char* path){
 				}
 			}
 		}
-		if(end){
+		if(end==0){
 			goto sect_FAL;
 		}
 	}
