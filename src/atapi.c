@@ -84,6 +84,7 @@ unsigned char* readCDROM(char* path){
 			break;
 		}
 	}
+	printf("__X__");
 	sect_FAL:
 	return "RETURN FAIL";
 	sect_FIL:

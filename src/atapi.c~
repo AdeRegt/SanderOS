@@ -42,9 +42,6 @@ unsigned char* readCDROM(char* path){
 		int filler = 0;
 		int end = 0;
 		nextattempt:
-		if(stp==0){
-			break;
-		}
 		filler = 0;
 		end = 0;
 		while(1){
@@ -82,6 +79,9 @@ unsigned char* readCDROM(char* path){
 		}
 		if(end==0){
 			goto sect_FAL;
+		}
+		if(stp==0){
+			break;
 		}
 	}
 	sect_FAL:
