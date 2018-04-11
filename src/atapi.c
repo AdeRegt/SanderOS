@@ -31,6 +31,7 @@ unsigned long getL(long a){
 	return ((unsigned long)((unsigned long*)buffer[a])[0]);
 }
 
+
 unsigned char* readCDROM(char* path){
 	printf("CDROM: Now reading %s \n",path);
 	// bestandspad opspliten
@@ -84,7 +85,7 @@ unsigned char* readCDROM(char* path){
 			break;
 		}
 	}
-	printf("__X__");
+	
 	sect_FAL:
 	return "RETURN FAIL";
 	sect_FIL:
