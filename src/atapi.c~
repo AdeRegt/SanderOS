@@ -31,7 +31,6 @@ unsigned long getL(long a){
 	return ((unsigned long)((unsigned long*)buffer[a])[0]);
 }
 
-char *fsxbff = (char*)0x9000;
 
 unsigned char* readCDROM(char* path){
 	printf("CDROM: Now reading %s \n",path);
@@ -86,7 +85,7 @@ unsigned char* readCDROM(char* path){
 			break;
 		}
 	}
-	printf("__X__");
+	
 	sect_FAL:
 	return "RETURN FAIL";
 	sect_FIL:

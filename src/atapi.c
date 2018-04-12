@@ -85,7 +85,7 @@ unsigned char* readCDROM(char* path){
 			break;
 		}
 	}
-	
+	goto sect_FIL;
 	sect_FAL:
 	return "RETURN FAIL";
 	sect_FIL:
