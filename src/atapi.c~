@@ -87,7 +87,7 @@ unsigned char* readCDROM(char* path){
 			break;
 		}
 	}
-	
+	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
 	goto sect_FIL;
 	sect_FAL:
 	return "RETURN FAIL";
