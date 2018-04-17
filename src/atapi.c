@@ -95,11 +95,17 @@ unsigned char* readCDROM(char* path){
 	for(int i = 0 ; i < ATAPI_SECTOR_SIZE; i++){
 		if(buffer[i]==';'){
 			for(int z = 0 ; z < ftf ; z++){
-				printf("-%c%c",buffer[i-(ftf-z)],fsbuffer[z]);
+				if(buffer[i-(ftf-z)]!=fsbuffer[z]){
+					goto skipcontext;
+				}
 			}
+			if(buffer[i-ftf-1]==ftf){
+				printf("YAY");
+			}
+			skipcontext:
+			i++;
 		}
 	}
-	goto sect_FIL;
 	sect_FAL:
 	return "RETURN FAIL";
 	sect_FIL:
