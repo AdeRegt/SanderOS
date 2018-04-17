@@ -89,7 +89,7 @@ unsigned char* readCDROM(char* path){
 	}
 	printf("About to read %x\n",isoroot[ttx].lba);
 	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
-	for(int i = 0 ; i < 512; i++){putc(buffer[i]);}
+	for(int i = 0 ; i < ATAPI_SECTOR_SIZE; i++){putc(buffer[i]);}
 	goto sect_FIL;
 	sect_FAL:
 	return "RETURN FAIL";
