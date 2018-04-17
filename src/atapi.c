@@ -95,7 +95,7 @@ unsigned char* readCDROM(char* path){
 	for(int i = 0 ; i < ATAPI_SECTOR_SIZE; i++){
 		if(buffer[i]==';'){
 			for(int z = 0 ; z < ftf ; z++){
-				printf("-%c%c",buffer[i-z],fsbuffer[z]);
+				printf("-%c%c",buffer[i-(ftf-z)],fsbuffer[z]);
 			}
 		}
 	}

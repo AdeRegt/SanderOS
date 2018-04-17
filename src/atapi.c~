@@ -94,7 +94,9 @@ unsigned char* readCDROM(char* path){
 	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
 	for(int i = 0 ; i < ATAPI_SECTOR_SIZE; i++){
 		if(buffer[i]==';'){
-			for(int z = 0 ; z < ftf ; z++){}
+			for(int z = 0 ; z < ftf ; z++){
+				printf("-%c%c",buffer[i-z],fsbuffer[z]);
+			}
 		}
 	}
 	goto sect_FIL;
