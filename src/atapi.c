@@ -103,6 +103,8 @@ unsigned char* readCDROM(char* path){
 			if(buffer[i-ftf-1]==(ftf+2)){
 				unsigned char txt = buffer[tgy-30];
 				printf("YAY at %x \n",txt);
+				readRawCDROM(txt,1,(unsigned char*)buffer);
+				return (unsigned char*)buffer;
 			}
 			skipcontext:
 			i++;
