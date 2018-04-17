@@ -101,7 +101,7 @@ unsigned char* readCDROM(char* path){
 			}
 			unsigned char tgy = i-ftf-1;
 			if(buffer[i-ftf-1]==(ftf+2)){
-				unsigned char txt = buffer[tgy-32+2];
+				unsigned char txt = buffer[tgy-30];
 				printf("YAY at %x \n",txt);
 			}
 			skipcontext:
