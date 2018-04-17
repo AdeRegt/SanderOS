@@ -39,6 +39,7 @@ unsigned char* readCDROM(char* path){
 	unsigned char fsbuffer[10];
 	unsigned short floor = 1;
 	unsigned int stp = 1;
+	unsigned int ttx = 0;
 	while(1){
 		int filler = 0;
 		int end = 0;
@@ -72,6 +73,7 @@ unsigned char* readCDROM(char* path){
 					}
 				}
 				if(gevonden){
+					ttx = g;
 					floor = g+1;
 					if(end){goto sect_DIR;}
 					goto nextattempt;
@@ -85,6 +87,7 @@ unsigned char* readCDROM(char* path){
 			break;
 		}
 	}
+	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
 	goto sect_FIL;
 	sect_FAL:
 	return "RETURN FAIL";
