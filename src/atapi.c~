@@ -99,7 +99,10 @@ unsigned char* readCDROM(char* path){
 					goto skipcontext;
 				}
 			}
-			if(buffer[i-ftf]==ftf){
+			unsigned char tgy = i-ftf-1;
+			if(buffer[tgy]==(ftf+2)){
+				unsigned char base = tgy - 32;
+				
 				printf("YAY");
 			}
 			skipcontext:

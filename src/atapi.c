@@ -99,8 +99,13 @@ unsigned char* readCDROM(char* path){
 					goto skipcontext;
 				}
 			}
-			if(buffer[i-ftf-1]==(ftf+2)){
+			unsigned char tgy = i-ftf-1;
+			if(buffer[tgy]==(ftf+2)){
+				unsigned char base = tgy - 32;
+				unsigned char lbax = buffer[base + 2];
+				readRawCDROM(lbax,1,(unsigned char*)buffer);
 				printf("YAY");
+				return (unsigned char*)buffer;
 			}
 			skipcontext:
 			i++;
