@@ -99,6 +99,9 @@ unsigned char* readCDROM(char* path){
 					goto skipcontext;
 				}
 			}
+			if(buffer[i-ftf-1]==ftf){
+				printf("YAY");
+			}
 			skipcontext:
 			i++;
 		}
