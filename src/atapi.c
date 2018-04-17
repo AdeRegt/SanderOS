@@ -87,7 +87,7 @@ unsigned char* readCDROM(char* path){
 			break;
 		}
 	}
-	printf("About to read %i\n",isoroot[ttx].lba);
+	printf("About to read %x\n",isoroot[ttx].lba);
 	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
 	for(int i = 0 ; i < 100; i++){putc(buffer[i]);}
 	goto sect_FIL;
@@ -127,7 +127,7 @@ void initCDROM(){
 	while(1){
 		unsigned char lengthofdirident = buffer[i];
 		unsigned char extattrlength = buffer[i+1];
-		isoroot[isorootcnt].lba 	= getL(i+2);
+		isoroot[isorootcnt].lba 	= getS(i+2);
 		isoroot[isorootcnt].parrent 	= getB(i+6);
 		if(lengthofdirident==0){break;}
 		for(int r = 0 ; r < lengthofdirident ; r++){
