@@ -40,12 +40,14 @@ unsigned char* readCDROM(char* path){
 	unsigned short floor = 1;
 	unsigned int stp = 1;
 	unsigned int ttx = 0;
+	unsigned int ftf = 0;
 	while(1){
 		int filler = 0;
 		int end = 0;
 		nextattempt:
 		filler = 0;
 		end = 0;
+		ftf = 0;
 		while(1){
 			unsigned char deze = path[cunt];
 			if(deze=='/'){
@@ -57,6 +59,7 @@ unsigned char* readCDROM(char* path){
 				goto ddf;
 			}else{
 				fsbuffer[filler++] = deze;
+				ftf++;
 			}
 			cunt = cunt+1;
 		}
@@ -91,7 +94,9 @@ unsigned char* readCDROM(char* path){
 	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
 	for(int i = 0 ; i < ATAPI_SECTOR_SIZE; i++){
 		if(buffer[i]==';'){
-			printf("__FILE__");
+			for(int z = 0 ; z < ftf ; z++){
+				printf("-%c%c",buffer[i-z],fsbuffer[z]);
+			}
 		}
 	}
 	goto sect_FIL;
