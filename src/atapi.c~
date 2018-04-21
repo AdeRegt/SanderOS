@@ -107,7 +107,7 @@ unsigned char* readCDROM(char* path){
 //					printf("%c",buffer[i-y]);
 //					printf("| ");
 //				}
-				readRawCDROM(0xC6,1,(unsigned char*)buffer);
+				readRawCDROM(0x48,1,(unsigned char*)buffer);
 				return (unsigned char*)buffer;
 			}
 			skipcontext:
