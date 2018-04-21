@@ -99,7 +99,7 @@ unsigned char* readCDROM(char* path){
 					goto skipcontext;
 				}
 			}
-			unsigned int tgy = (i-ftf-1)-31;
+			unsigned int tgy = (i-ftf-1)-30;
 			printf("==> %x ",getB(tgy));
 			if(buffer[i-ftf-1]==(ftf+2)){
 				
