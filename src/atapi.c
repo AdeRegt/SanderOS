@@ -100,7 +100,7 @@ unsigned char* readCDROM(char* path){
 				}
 			}
 			unsigned int tgy = i-ftf;
-			printf("==> %x ",tgy);
+			printf("==> %x ",getC(tgy));
 			if(buffer[i-ftf-1]==(ftf+2)){
 				
 				readRawCDROM(0x14C6,1,(unsigned char*)buffer);
