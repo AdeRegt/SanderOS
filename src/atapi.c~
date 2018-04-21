@@ -103,7 +103,7 @@ unsigned char* readCDROM(char* path){
 			if(buffer[i-ftf-1]==(ftf+2)){
 				for(int y = 0 ; y < 100 ; y++){
 					printf("%x",buffer[i-y]);
-					printf("|");
+					printf(" ");
 					printf("%c",buffer[i-y]);
 					printf("| ");
 				}
