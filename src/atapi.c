@@ -100,10 +100,10 @@ unsigned char* readCDROM(char* path){
 				}
 			}
 			unsigned int tgy = (i-ftf-1)-30;
-			printf("==> %x ",((short*)&buffer[tgy])[0]);
 			if(buffer[i-ftf-1]==(ftf+2)){
-				
-				readRawCDROM(0x14C6,1,(unsigned char*)buffer);
+				unsigned short butt = ((unsigned short*)&buffer[tgy])[0];
+				printf("Found file and LBA= %x ",butt);
+				readRawCDROM(butt,1,(unsigned char*)buffer);
 				return (unsigned char*)buffer;
 			}
 			skipcontext:
