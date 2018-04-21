@@ -65,7 +65,7 @@ unsigned char* readCDROM(char* path){
 		}
 		ddf:
 		fsbuffer[filler] = 0x00;
-		printf("> '%s' \n",fsbuffer);
+		printf("CDROM: next /  '%s' \n",fsbuffer);
 		for(int g = 0 ; g < isorootcnt ; g++){
 			if(isoroot[g].parrent==floor){
 				int gevonden = 1;
@@ -90,7 +90,7 @@ unsigned char* readCDROM(char* path){
 			break;
 		}
 	}
-	printf("About to read %x\n",isoroot[ttx].lba);
+	printf("CDROM: About to read %x\n",isoroot[ttx].lba);
 	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
 	for(int i = 0 ; i < ATAPI_SECTOR_SIZE; i++){
 		if(buffer[i]==';'){
@@ -102,7 +102,7 @@ unsigned char* readCDROM(char* path){
 			unsigned int tgy = (i-ftf-1)-30;
 			if(buffer[i-ftf-1]==(ftf+2)){
 				unsigned short butt = ((unsigned short*)&buffer[tgy])[0];
-				printf("Found file and LBA= %x ",butt);
+				printf("CDROM: Found file and LBA= %x \n",butt);
 				readRawCDROM(butt,1,(unsigned char*)buffer);
 				return (unsigned char*)buffer;
 			}
@@ -112,8 +112,6 @@ unsigned char* readCDROM(char* path){
 	}
 	sect_FAL:
 	return "RETURN FAIL";
-	sect_FIL:
-	return "RETURN FIL";
 	sect_DIR:
 	return "RETURN DIR";
 }
