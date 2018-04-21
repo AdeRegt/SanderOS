@@ -79,6 +79,7 @@ void putc(const char a){
 	}else if(a=='\b'){
 		videopointer--;
 		videopointer--;
+		curX--;
 	}else{
 		videopointer = ((curY*SCREEN_MAX_X)+(curX))*2;
 		videomemory[videopointer++] = a;
