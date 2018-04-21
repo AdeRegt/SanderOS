@@ -101,9 +101,9 @@ unsigned char* readCDROM(char* path){
 			}
 			unsigned int tgy = i-ftf-1;
 			if(buffer[i-ftf-1]==(ftf+2)){
-				unsigned char txt = buffer[i-ftf-31];
-				printf("YAY at %x %x %x %x %x %x %x %x %x %x \n",buffer[i-ftf-32],buffer[i-ftf-31],buffer[i-ftf-30],buffer[i-ftf-29],buffer[i-ftf-28],buffer[i-ftf-27],buffer[i-ftf-26],buffer[i-ftf-25],buffer[i-ftf-24],buffer[i-ftf-23]);
-				readRawCDROM(txt,1,(unsigned char*)buffer);
+				for(int y = 0 ; y < 100 ; y++){
+					printf("%x ",buffer[i-y]);
+				}
 				return (unsigned char*)buffer;
 			}
 			skipcontext:
