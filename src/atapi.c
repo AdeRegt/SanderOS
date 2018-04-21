@@ -101,7 +101,7 @@ unsigned char* readCDROM(char* path){
 			}
 			unsigned int tgy = i-ftf-1;
 			if(buffer[i-ftf-1]==(ftf+2)){
-				for(int y = 0 ; y < 100 ; y++){
+//				for(int y = 0 ; y < 100 ; y++){
 //					printf("%x",buffer[i-y]);
 //					printf(" ");
 //					printf("%c",buffer[i-y]);
