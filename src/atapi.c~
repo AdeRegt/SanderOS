@@ -99,8 +99,8 @@ unsigned char* readCDROM(char* path){
 					goto skipcontext;
 				}
 			}
-			unsigned int tgy = (i-ftf-1)-29;
-			printf("==> %x ",getS(tgy));
+			unsigned int tgy = (i-ftf-1)-30;
+			printf("==> %x ",((short*)buffer[tgy])[0]);
 			if(buffer[i-ftf-1]==(ftf+2)){
 				
 				readRawCDROM(0x14C6,1,(unsigned char*)buffer);
