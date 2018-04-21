@@ -101,7 +101,7 @@ unsigned char* readCDROM(char* path){
 			}
 			unsigned int tgy = i-ftf-1;
 			if(buffer[i-ftf-1]==(ftf+2)){
-				unsigned int context = tgy-31;
+				unsigned int context = tgy-30;
 				unsigned short idtx = getS(context);
 				printf("CONTEXT=%x",idtx);
 				readRawCDROM(0x14C6,1,(unsigned char*)buffer);
