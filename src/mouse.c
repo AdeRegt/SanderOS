@@ -12,7 +12,7 @@ void setup_mouse(){
 
 void mouselib_int_wait_0(){
 	while(1){
-		if(inportb(0x64)&1){
+		if((inportb(0x64)&1)==1){
 			break;
 		}
 	}
