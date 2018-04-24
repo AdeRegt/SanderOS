@@ -15,7 +15,10 @@ void setup_mouse(){
 	outportb(0x64,0x60);
 	mouse_wait(1);
 	outportb(0x60,buff);
-	
+	mouselib_int_write(0xF6);
+	mouselib_int_read();
+	mouselib_int_write(0xF4);
+	mouselib_int_read();
 }
 
 inline void mouse_wait(char a_type){

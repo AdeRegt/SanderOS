@@ -31,7 +31,7 @@ inline void mouse_wait(char a_type){
     }
     return;
   }else{
-    while(_time_out--) //Signal{
+    while(_time_out--) {
       if((inportb(0x64) & 2)==0){
         return;
       }
