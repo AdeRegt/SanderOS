@@ -1,50 +1,56 @@
 #include <system.h>
-inline void mouse_wait(char a_type);
+#define byte unsigned char
+#define sbyte signed char
 
-char mouselib_int_read();
-void mouselib_int_write(char byte);
-extern irq_mouse();
-void mousehandler();
+//Mouse.inc by SANiK
+//License: Use as you wish, except to cause damage
+byte mouse_cycle=0;     //unsigned char
+sbyte mouse_byte[3];    //signed char
+sbyte mouse_x=0;         //signed char
+sbyte mouse_y=0;         //signed char
 
-void setup_mouse(){
-	mouse_wait(1);
-	outportb(0x64,0xA8);
-	mouse_wait(1);
-	outportb(0x64,0x20);
-	mouse_wait(0);
-	char buff = inportb(0x60)|2;
-	mouse_wait(1);
-	outportb(0x64,0x60);
-	mouse_wait(1);
-	outportb(0x60,buff);
-	mouselib_int_write(0xF6);
-	mouselib_int_read();
-	mouselib_int_write(0xF4);
-	mouselib_int_read();
-	for(int i = 3 ; i < 500 ; i++){
-	setInterrupt(32+i, (unsigned long) &irq_mouse);
-	}
+//Mouse functions
+void mouse_handler() //struct regs *a_r (not used but just there)
+{
+  switch(mouse_cycle)
+  {
+    case 0:
+      mouse_byte[0]=inportb(0x60);
+      mouse_cycle++;
+      break;
+    case 1:
+      mouse_byte[1]=inportb(0x60);
+      mouse_cycle++;
+      break;
+    case 2:
+      mouse_byte[2]=inportb(0x60);
+      mouse_x=mouse_byte[1];
+      mouse_y=mouse_byte[2];
+      mouse_cycle=0;
+      break;
+  }
 }
 
-void mousehandler(){
-	char x = inportb(0x64);
-	//if((x & 1)==1){
-		printf("__X__");
-	//}
-}
-
-inline void mouse_wait(char a_type){
-  short _time_out=100000; 
-  if(a_type==0){
-    while(_time_out--){
-      if((inportb(0x64) & 1)==1){
+inline void mouse_wait(byte a_type) //unsigned char
+{
+  dword _time_out=100000; //unsigned int
+  if(a_type==0)
+  {
+    while(_time_out--) //Data
+    {
+      if((inportb(0x64) & 1)==1)
+      {
         return;
       }
     }
     return;
-  }else{
-    while(_time_out--) {
-      if((inportb(0x64) & 2)==0){
+  }
+  else
+  {
+    while(_time_out--) //Signal
+    {
+      if((inportb(0x64) & 2)==0)
+      {
         return;
       }
     }
@@ -52,16 +58,51 @@ inline void mouse_wait(char a_type){
   }
 }
 
-void mouselib_int_write(char byte){
-	mouse_wait(1);
-	outportb(0x64,0xD4);
-	mouse_wait(1);
-	outportb(0x60,byte);
+inline void mouse_write(byte a_write) //unsigned char
+{
+  //Wait to be able to send a command
+  mouse_wait(1);
+  //Tell the mouse we are sending a command
+  outportb(0x64, 0xD4);
+  //Wait for the final part
+  mouse_wait(1);
+  //Finally write
+  outportb(0x60, a_write);
 }
 
-
-char mouselib_int_read(){
-	mouse_wait(0);
-	return inportb(0x60);
+byte mouse_read()
+{
+  //Get's response from mouse
+  mouse_wait(0);
+  return inportb(0x60);
 }
 
+void setup_mouse()
+{
+  byte _status;  //unsigned char
+
+  //Enable the auxiliary mouse device
+  mouse_wait(1);
+  outportb(0x64, 0xA8);
+ 
+  //Enable the interrupts
+  mouse_wait(1);
+  outportb(0x64, 0x20);
+  mouse_wait(0);
+  _status=(inportb(0x60) | 2);
+  mouse_wait(1);
+  outportb(0x64, 0x60);
+  mouse_wait(1);
+  outportb(0x60, _status);
+ 
+  //Tell the mouse to use default settings
+  mouse_write(0xF6);
+  mouse_read();  //Acknowledge
+ 
+  //Enable the mouse
+  mouse_write(0xF4);
+  mouse_read();  //Acknowledge
+
+  //Setup the mouse handler
+  irq_install_handler(32+12, mouse_handler);
+}
