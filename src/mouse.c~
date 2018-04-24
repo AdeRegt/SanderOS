@@ -1,7 +1,7 @@
 #include <system.h>
 #define byte unsigned char
 #define sbyte signed char
-
+#define dword unsigned int
 //Mouse.inc by SANiK
 //License: Use as you wish, except to cause damage
 byte mouse_cycle=0;     //unsigned char
