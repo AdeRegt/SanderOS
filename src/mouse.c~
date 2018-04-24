@@ -104,5 +104,5 @@ void setup_mouse()
   mouse_read();  //Acknowledge
 
   //Setup the mouse handler
-  irq_install_handler(32+12, mouse_handler);
+  setInterrupt(32+12, mouse_handler);
 }
