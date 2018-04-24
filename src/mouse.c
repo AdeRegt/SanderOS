@@ -21,7 +21,7 @@ void setup_mouse(){
 	mouselib_int_read();
 	mouselib_int_write(0xF4);
 	mouselib_int_read();
-	setInterrupt(32+12, (unsigned long) &irq_mouse);
+	setInterrupt(32+11, (unsigned long) &irq_mouse);
 }
 
 void mousehandler(){
