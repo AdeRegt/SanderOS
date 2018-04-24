@@ -36,9 +36,9 @@ irq_keyboard:
     popa
     iret
     
-global irq_keyboard
+global irq_mouse
 extern mousehandler
-irq_keyboard:
+irq_mouse:
     pusha
     push ds
     push es
