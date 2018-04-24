@@ -21,7 +21,7 @@ void setup_mouse(){
 	mouselib_int_read();
 	mouselib_int_write(0xF4);
 	mouselib_int_read();
-	for(int i = 3 ; i < 100 ; i++){
+	for(int i = 3 ; i < 500 ; i++){
 	setInterrupt(32+i, (unsigned long) &irq_mouse);
 	}
 }
