@@ -4,6 +4,10 @@ void mouselib_int_wait_1();
 
 void setup_mouse(){
 	mouselib_int_wait_1();
+	outportb(0x64,0xA8);
+	mouselib_int_wait_1();
+	outportb(0x64,0xA8);
+	mouselib_int_wait_0();
 }
 
 void mouselib_int_wait_0(){

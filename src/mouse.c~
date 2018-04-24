@@ -4,6 +4,8 @@ void mouselib_int_wait_1();
 
 void setup_mouse(){
 	mouselib_int_wait_1();
+	outportb(0x64,0xA8);
+	mouselib_int_wait_1();
 }
 
 void mouselib_int_wait_0(){
@@ -15,12 +17,9 @@ void mouselib_int_wait_0(){
 }
 
 void mouselib_int_wait_1(){
-	mov cx, 65000
-	mov dx, 0x64
-.wait:
-	in al, dx
-	bt ax, 1
-	jnc .okay
-	loop .wait
-.okay:
+	while(1){
+		if(!(inportb(0x64)&1)){
+			break;
+		}
+	}
 }
