@@ -3,6 +3,8 @@ inline void mouse_wait(char a_type);
 
 char mouselib_int_read();
 void mouselib_int_write(char byte);
+extern irq_mouse();
+void mousehandler();
 
 void setup_mouse(){
 	mouse_wait(1);
@@ -19,7 +21,10 @@ void setup_mouse(){
 	mouselib_int_read();
 	mouselib_int_write(0xF4);
 	mouselib_int_read();
+	setInterrupt(32+12, (unsigned long) &irq_mouse);
 }
+
+void mousehandler(){}
 
 inline void mouse_wait(char a_type){
   short _time_out=100000; 

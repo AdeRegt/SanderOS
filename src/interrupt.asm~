@@ -36,6 +36,26 @@ irq_keyboard:
     popa
     iret
     
+global irq_keyboard
+extern mousehandler
+irq_keyboard:
+    pusha
+    push ds
+    push es
+    push fs
+    push gs
+    push eax
+    mov al,0x20
+    out 0x20,al
+    call mousehandler
+    pop eax
+    pop gs
+    pop fs
+    pop es
+    pop ds
+    popa
+    iret
+    
 global irq_hdd
 irq_hdd:
     pusha
@@ -46,7 +66,7 @@ irq_hdd:
     push eax
     mov al,0x20
     out 0x20,al
-    mov 
+    mov byte [0x1000],byte 'X'
     pop eax
     pop gs
     pop fs
