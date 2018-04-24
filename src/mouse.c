@@ -26,9 +26,9 @@ void setup_mouse(){
 
 void mousehandler(){
 	char x = inportb(0x64);
-	if((x & 1)==1){
+	//if((x & 1)==1){
 		printf("__X__");
-	}
+	//}
 }
 
 inline void mouse_wait(char a_type){
