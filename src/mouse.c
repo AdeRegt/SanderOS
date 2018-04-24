@@ -24,7 +24,12 @@ void setup_mouse(){
 	setInterrupt(32+12, (unsigned long) &irq_mouse);
 }
 
-void mousehandler(){}
+void mousehandler(){
+	char x = inportb(0x64);
+	if((x & 1)==1){
+		printf("__X__");
+	}
+}
 
 inline void mouse_wait(char a_type){
   short _time_out=100000; 
