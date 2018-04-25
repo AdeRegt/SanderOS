@@ -124,7 +124,7 @@ unsigned char* readCDROM(char* path){
 		if(isoroot[g].parrent==floor){
 			int ipointer = 0;
 			char deze;
-			while((deze=isoroot[h].name[ipointer++])!='\0'){
+			while((deze=isoroot[g].name[ipointer++])!='\0'){
 				pathlist[pointer++] = deze;
 			}
 			pathlist[pointer++] = ';';

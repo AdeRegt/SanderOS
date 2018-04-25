@@ -127,6 +127,7 @@ unsigned char* readCDROM(char* path){
 			while((deze=isoroot[h].name[ipointer++])!='\0'){
 				pathlist[pointer++] = deze;
 			}
+			pathlist[pointer++] = ';';
 		}
 	}
 	// data lezen
