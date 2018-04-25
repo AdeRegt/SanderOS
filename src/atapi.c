@@ -142,15 +142,15 @@ unsigned char* readCDROM(char* path){
 				t++;
 			}
 			for(int r = 0 ; r < q ; r++){
-				unsigned char A = buffer[i-q+r];
+				unsigned char A = buffer[(i-q)+r];
 				pathlist[pointer++] = A;
 			}
 			pathlist[pointer++] = ';';
 		}
 	}
-	if(pointer>0){
-		pathlist[pointer-1] = 0x00;
-	}
+//	if(pointer>0){
+//		pathlist[pointer-1] = 0x00;
+//	}
 	return pathlist;
 }
 
