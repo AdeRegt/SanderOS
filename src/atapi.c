@@ -149,9 +149,9 @@ unsigned char* readCDROM(char* path){
 			pathlist[pointer++] = ';';
 		}
 	}
-//	if(pointer>0){
-//		pathlist[pointer-1] = 0x00;
-//	}
+	if(pointer>0){
+		pathlist[pointer-1] = 0x00;
+	}
 	return pathlist;
 }
 
