@@ -15,7 +15,7 @@ unsigned char kbdus[128] ={
     0,  /* Alt */
   ' ',  /* Space bar */
     0,  /* Caps lock */
-    0,  /* 59 - F1 key ... > */
+    'ó',  /* 59 - F1 key ... > */
     0,   0,   0,   0,   0,   0,   0,   0,
     0,  /* < ... F10 */
     0,  /* 69 - Num lock*/
@@ -56,7 +56,12 @@ void keyboard_send_and_get_response_cmd(char val){
 void keyboard_int(){
 	unsigned char deze = inportb(0x60);
 	if(deze & 0x80){
-		printf("%c",kbdus[deze-0x80]);
+		unsigned char karakter = kbdus[deze-0x80];
+		if(karakter=='ó'){
+			printf("F1 press detected!\n");
+		}else{ 
+			printf("%c",karakter);
+		}
 	}
 }
 
