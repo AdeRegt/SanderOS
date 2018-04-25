@@ -135,8 +135,7 @@ unsigned char* readCDROM(char* path){
 			int q = 1;
 			char t = 2;
 			while(1){
-				char deze = buffer[i-q];
-				printf("%c",deze);
+				unsigned char deze = buffer[i-q];
 				if(deze==t){
 					break;
 				}
