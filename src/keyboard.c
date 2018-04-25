@@ -57,8 +57,8 @@ void keyboard_int(){
 	unsigned char deze = inportb(0x60);
 	if(deze & 0x80){
 		unsigned char karakter = kbdus[deze-0x80];
-		if(karakter=='ó'){
-			printf("F1 press detected!\n");
+		if(karakter==0xbe){
+			printf("F12 press detected!\n");
 		}else{ 
 			printf("%c",karakter);
 		}
