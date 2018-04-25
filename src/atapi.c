@@ -14,7 +14,7 @@ typedef struct {
 
  ISOROOTTABLES isoroot[100];
 int isorootcnt = 0;
-unsigned char pathlist[100];
+unsigned char pathlist[500];
 char* invalidpath = "ERROR";
 unsigned char buffer[ATAPI_SECTOR_SIZE];
 unsigned short dirtableloc;
@@ -112,7 +112,7 @@ unsigned char* readCDROM(char* path){
 	return invalidpath;
 	sect_DIR:
 	// eerst pathlist leegmaken
-	for(int i = 0 ; i < 100 ; i++){
+	for(int i = 0 ; i < 500 ; i++){
 		pathlist[i] = 0x00;
 	}
 	// pathdata lezen
