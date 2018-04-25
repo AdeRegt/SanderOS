@@ -135,13 +135,13 @@ unsigned char* readCDROM(char* path){
 			int q = 0;
 			char t = 2;
 			while(1){
-				if(buffer[i-q]==t){
+				char deze = buffer[i-q];
+				if(deze==t){
 					break;
 				}
 				q++;
 				t++;
 			}
-			printf("q=%x | ",q);
 			for(int r = 0 ; r < q ; r++){
 				unsigned char A = buffer[(i-q)+r];
 				pathlist[pointer++] = A;
