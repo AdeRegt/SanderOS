@@ -141,7 +141,7 @@ unsigned char* readCDROM(char* path){
 				q++;
 				t++;
 			}
-			printf("q=%x",q);
+			printf("q=%x | ",q);
 			for(int r = 0 ; r < q ; r++){
 				unsigned char A = buffer[(i-q)+r];
 				pathlist[pointer++] = A;
