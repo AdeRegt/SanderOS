@@ -113,6 +113,8 @@ unsigned char* readCDROM(char* path){
 	sect_FAL:
 	return "RETURN FAIL";
 	sect_DIR:
+	printf("CDROM: About to read %x\n",isoroot[ttx].lba);
+	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
 	return "RETURN DIR";
 }
 
