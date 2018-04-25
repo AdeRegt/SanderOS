@@ -115,7 +115,7 @@ unsigned char* readCDROM(char* path){
 	sect_DIR:
 	printf("CDROM: About to read %x\n",isoroot[ttx].lba);
 	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
-	for(int i = 0 ; i < 100 ; i++){
+	for(int i = 0 ; i < 500 ; i++){
 		printf("%c",buffer[i]);
 	}
 	return "RETURN DIR";
