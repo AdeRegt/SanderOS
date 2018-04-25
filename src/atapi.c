@@ -102,7 +102,7 @@ unsigned char* readCDROM(char* path){
 			}
 			unsigned int tgy = (i-ftf-1)-30;
 			if(buffer[i-ftf-1]==(ftf+2)){
-				unsigned short butt = ((unsigned short*)&buffer[tgy])[0];
+				unsigned short butt = ((unsigned short*)buffer[tgy])[0];
 				printf("CDROM: Found file and LBA= %x \n",butt);
 				readRawCDROM(butt,1,(unsigned char*)buffer);
 				return (unsigned char*)buffer;
