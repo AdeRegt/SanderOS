@@ -124,7 +124,7 @@ unsigned char* readCDROM(char* path){
 		if(isoroot[g].parrent==floor){
 			int ipointer = 0;
 			char deze;
-			while((deze=isoroot[h].name[ipointer++])!='\0'){
+			while((deze=isoroot[g].name[ipointer++])!='\0'){
 				pathlist[pointer++] = deze;
 			}
 			pathlist[pointer++] = ';';
@@ -134,7 +134,9 @@ unsigned char* readCDROM(char* path){
 	printf("CDROM: About to read %x\n",isoroot[ttx].lba);
 	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
 	for(int i = 0 ; i < ATAPI_SECTOR_SIZE ; i++){
-		
+		if(buffer[i]==';'){
+			
+		}
 	}
 	return pathlist;
 }

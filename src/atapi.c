@@ -134,7 +134,12 @@ unsigned char* readCDROM(char* path){
 	printf("CDROM: About to read %x\n",isoroot[ttx].lba);
 	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
 	for(int i = 0 ; i < ATAPI_SECTOR_SIZE ; i++){
-		
+		if(buffer[i]==';'){
+			pathlist[pointer++] = ';';
+		}
+	}
+	if(pointer>0){
+		pathlist[pointer-1] = 0x00;
 	}
 	return pathlist;
 }
