@@ -132,7 +132,7 @@ unsigned char* readCDROM(char* path){
 	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
 	for(int i = 0 ; i < ATAPI_SECTOR_SIZE ; i++){
 		if(buffer[i]==';'){
-			int q = 0;
+			int q = 1;
 			char t = 2;
 			while(1){
 				char deze = buffer[i-q];
