@@ -141,6 +141,9 @@ unsigned char* readCDROM(char* path){
 				q++;
 				t++;
 			}
+			for(int y = 0 ; y < q ; y++){
+				pathlist[pointer++] = buffer[(i-q)+y];
+			}
 			pathlist[pointer++] = ';';
 		}
 	}
