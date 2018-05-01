@@ -76,7 +76,7 @@ void* memset(void* bufptr, int value, int size) {
 	return bufptr;
 }
 
-void* mallocloc = 0x1000;
+void* mallocloc = (void*)0x1000;
 
 void* malloc(unsigned long t){
 	return (void*)(0x5000+t);
