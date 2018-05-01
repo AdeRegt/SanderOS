@@ -158,7 +158,8 @@ unsigned char* readCDROM(char* path){
 	return pathlist;
 }
 
-
+unsigned char* dvnme = "cdrom";
+unsigned char* fsnme = "bootdev";
 //void readRawCDROM(long lba,char count,char* locationx)
 void initCDROM(){
 	readRawCDROM(0,1,(unsigned char*)buffer);
@@ -199,4 +200,6 @@ void initCDROM(){
 		}
 		i = i + 8 + lengthofdirident;
 	}
+	int dev = installBlockDevice(&readRawCDROM,NULL,ATAPI_SECTOR_SIZE,&dvnme);
+	int dov = installFileSystem(&readCDROM,NULL,dev,&fsnme);
 }
