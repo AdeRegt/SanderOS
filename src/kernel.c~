@@ -28,7 +28,6 @@ void kernel_main(){
 	}
 	setupIDT();
 	detectDevices();
-	setup_mouse();
 	unsigned char* msx = readCDROM("/BOOT/GRUB");
 	printf(">>>>>>>>>>>>>>%s",msx);
 	initialiseKeyboard();
