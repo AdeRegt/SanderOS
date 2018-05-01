@@ -365,20 +365,20 @@ void *elf_load_file(void *file) {
 	return symval;
 }
 
-int main(int argcount,char** args){
-	if(argcount!=2){
-		printf("This is invalid, dude!\n");
-	}else{
-		printf("OKE:: %s\n",args[1]);
-		char *file_contents;
-		long input_file_size;
-		FILE *input_file = fopen(args[1], "rb");
-		fseek(input_file, 0, SEEK_END);
-		input_file_size = ftell(input_file);
-		rewind(input_file);
-		file_contents = malloc(input_file_size * (sizeof(char)));
-		fread(file_contents, sizeof(char), input_file_size, input_file);
-		fclose(input_file);
-		elf_load_file(file_contents);
-	}
-}
+//int main(int argcount,char** args){
+//	if(argcount!=2){
+//		printf("This is invalid, dude!\n");
+//	}else{
+//		printf("OKE:: %s\n",args[1]);
+//		char *file_contents;
+//		long input_file_size;
+//		FILE *input_file = fopen(args[1], "rb");
+//		fseek(input_file, 0, SEEK_END);
+//		input_file_size = ftell(input_file);
+//		rewind(input_file);
+//		file_contents = malloc(input_file_size * (sizeof(char)));
+//		fread(file_contents, sizeof(char), input_file_size, input_file);
+//		fclose(input_file);
+//		elf_load_file(file_contents);
+//	}
+//}
