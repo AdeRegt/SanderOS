@@ -51,7 +51,7 @@ typedef struct {
 void detectATAPI();
 void initCDROM();
 void readRawCDROM(unsigned long lba,unsigned char count,unsigned char* locationx);
-unsigned char* readCDROM(char* path,unsigned char *buffer);
+unsigned char* readCDROM(char* path);
 
 // ata
 void detectHDDFilesystems(ata_device dev);
@@ -223,3 +223,4 @@ int elf_get_symval(Elf32_Ehdr *hdr, int table, unsigned int idx);
 int elf_load_stage1(Elf32_Ehdr *hdr);
 int elf_load_stage2(Elf32_Ehdr *hdr);
 int elf_do_reloc(Elf32_Ehdr *hdr, Elf32_Rel *rel, Elf32_Shdr *reltab);
+void insmod(const char* path);

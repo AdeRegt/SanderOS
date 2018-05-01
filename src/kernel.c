@@ -40,7 +40,7 @@ void kernel_main(){
 void insmod(const char* path){
 	printf("--INSMOD--\n");
 	printf("  -> loading file\n");
-	unsigned char* msx = readCDROM(path,(unsigned char*)0x1000);
+	unsigned char* msx = readCDROM(path);
 	printf("  -> parsing file\n");
 	unsigned long location = elf_load_file(msx);
 	printf("  -> calling file\n");
