@@ -28,7 +28,7 @@ void kernel_main(){
 	}
 	setupIDT();
 	detectDevices();
-	unsigned char* msx = readCDROM("/BOOT/GRUB/GRUB.CFG",0x1000);
+	unsigned char* msx = readCDROM("/BOOT/GRUB/GRUB.CFG",(unsigned char*)0x1000);
 	printf(">>>>>>>>>>>>>>%s",msx);
 	initialiseKeyboard();
 	//acpiEnable();
