@@ -27,11 +27,15 @@ void kernel_main(){
 		printf("\n");
 	}
 	setupIDT();
-	initialiseKeyboard();
 	detectDevices();
 	cls();
 	unsigned char* msx = readCDROM("/BOOT/TEST.O",(unsigned char*)0x1000);
-	elf_load_file(msx);
+	if(elf_load_file(msx)==NULL){
+		printf(" FAILED TO LOAD ELF ");
+	}else{
+		printf(" LOADING OF ELF SUCCEED! ");
+	}
+	initialiseKeyboard();
 	//acpiEnable();
 	//acpiPowerOff();
 	for(;;);
