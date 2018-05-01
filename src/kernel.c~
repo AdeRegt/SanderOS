@@ -29,7 +29,7 @@ void kernel_main(){
 	setupIDT();
 	detectDevices();
 	//initialiseKeyboard();
-	//cls();
+	cls();
 	unsigned char* msx = readCDROM("/BOOT/TEST.O",(unsigned char*)0x1000);
 	elf_load_file(msx);
 	//acpiEnable();
