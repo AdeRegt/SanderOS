@@ -30,11 +30,9 @@ void kernel_main(){
 	detectDevices();
 	cls();
 	unsigned char* msx = readCDROM("/BOOT/TEST.O",(unsigned char*)0x1000);
-	if(elf_load_file(msx)==NULL){
-		printf(" FAILED TO LOAD ELF ");
-	}else{
-		printf(" LOADING OF ELF SUCCEED! ");
-	}
+	unsigned long location = elf_load_file(msx);
+	void (*foo)(void) = location;
+foo();
 	initialiseKeyboard();
 	//acpiEnable();
 	//acpiPowerOff();
