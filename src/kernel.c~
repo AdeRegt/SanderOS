@@ -64,3 +64,7 @@ void* memset(void* bufptr, int value, int size) {
 		buf[i] = (unsigned char) value;
 	return bufptr;
 }
+
+void* malloc(unsigned long t){
+	
+}
