@@ -23,7 +23,7 @@ if grub-file --is-x86-multiboot myos.bin; then
 	cp src/grub.cfg isodir/boot/grub/grub.cfg
 	#cc -c programmas/test.c -o programmas/test.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386
 	cc -c programmas/*.c -o programmas/*.o -std=gnu99 -m32 -mtune=i386
-	cp programmas/*.o -a isodir/boot/modules/
+	cp programmas/*.o -a isodir/modules/
 	grub-mkrescue -o myos.iso isodir
 	qemu-system-i386 -cdrom myos.iso
 else
