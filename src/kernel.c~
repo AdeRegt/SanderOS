@@ -43,7 +43,7 @@ void insmod(const char* path){
 	unsigned char* msx = readCDROM(path);
 	printf("  -> parsing file\n");
 	unsigned long location = elf_load_file(msx);
-	printf("  -> calling file\n");
+	printf("  -> calling file at %x \n",location);
 	void (*foo)(void) = location;
 	foo();
 }
