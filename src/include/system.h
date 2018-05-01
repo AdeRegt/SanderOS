@@ -49,6 +49,7 @@ typedef struct {
 
 // atapi
 void detectATAPI();
+void initCDROM();
 void readRawCDROM(unsigned long lba,unsigned char count,unsigned char* locationx);
 unsigned char* readCDROM(char* path,unsigned char *buffer);
 
