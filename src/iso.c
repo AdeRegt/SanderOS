@@ -101,8 +101,9 @@ unsigned char* readCDROM(char* path){
 			if(buffer[i-ftf-1]==(ftf+2)){
 				unsigned short butt = ((unsigned short*)(buffer+tgy))[0];//(unsigned short)((unsigned short*)buffer[tgy])[0];
 				unsigned short sutx = ((unsigned short*)(buffer+t0y))[0];
-				printf("CDROM: Found file and LBA= %x SIZE= %x %x \n",butt,sutx,72);
-				readRawCDROM(butt,1,(unsigned char*)buffer);
+				unsigned short rdln = (sutx/ATAPI_SECTOR_SIZE)+1;
+				printf("CDROM: Found file and LBA= %x SIZE= %x %x \n",butt,sutx,rdln);
+				readRawCDROM(butt,rdln,(unsigned char*)buffer);
 				return (unsigned char*)buffer;
 			}
 			skipcontext:
