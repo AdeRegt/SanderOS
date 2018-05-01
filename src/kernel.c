@@ -38,8 +38,11 @@ void kernel_main(){
 
 void insmod(const char* path){
 	printf("--INSMOD--\n");
+	printf("  -> loading file\n");
 	unsigned char* msx = readCDROM(path,(unsigned char*)0x1000);
+	printf("  -> parsing file\n");
 	unsigned long location = elf_load_file(msx);
+	printf("  -> calling file\n");
 	void (*foo)(void) = location;
 	foo();
 }

@@ -29,14 +29,19 @@ void kernel_main(){
 	setupIDT();
 	detectDevices();
 	cls();
-	unsigned char* msx = readCDROM("/BOOT/TEST.O",(unsigned char*)0x1000);
-	unsigned long location = elf_load_file(msx);
-	void (*foo)(void) = location;
-foo();
+	insmod("/BOOT/TEST.O");
 	initialiseKeyboard();
 	//acpiEnable();
 	//acpiPowerOff();
 	for(;;);
+}
+
+void insmod(const char* path){
+	printf("--INSMOD--\n");
+	unsigned char* msx = readCDROM(path,(unsigned char*)0x1000);
+	unsigned long location = elf_load_file(msx);
+	void (*foo)(void) = location;
+	foo();
 }
 
 int strlen(const char* str) {
