@@ -15,7 +15,7 @@ unsigned char kbdus[128] ={
     0,  /* Alt */
   ' ',  /* Space bar */
     0,  /* Caps lock */
-    'ó',  /* 59 - F1 key ... > */
+    0,  /* 59 - F1 key ... > */
     0,   0,   0,   0,   0,   0,   0,   0,
     0,  /* < ... F10 */
     0,  /* 69 - Num lock*/
