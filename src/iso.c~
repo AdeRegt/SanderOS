@@ -29,7 +29,7 @@ unsigned short getS(short a){
 
 
 
-unsigned char* readCDROM(char* path,unsigned char *buffer){
+unsigned char* readCDROM(char* path){
 	printf("CDROM: Now reading %s \n",path);
 	// bestandspad opspliten
 	unsigned int cunt = 1;
@@ -102,9 +102,10 @@ unsigned char* readCDROM(char* path,unsigned char *buffer){
 				unsigned short butt = ((unsigned short*)(buffer+tgy))[0];//(unsigned short)((unsigned short*)buffer[tgy])[0];
 				unsigned short sutx = ((unsigned short*)(buffer+t0y))[0];
 				unsigned short rdln = (sutx/ATAPI_SECTOR_SIZE)+1;
+				void* loc = malloc(rdln);
 				printf("CDROM: Found file and LBA= %x SIZE= %x SECT= %x \n",butt,sutx,rdln);
-				readRawCDROM(butt,rdln,(unsigned char*)buffer);
-				return (unsigned char*)buffer;
+				readRawCDROM(butt,rdln,(unsigned char*)loc);
+				return (unsigned char*)loc;
 			}
 			skipcontext:
 			i++;
