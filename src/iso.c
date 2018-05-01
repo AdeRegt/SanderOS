@@ -159,7 +159,7 @@ unsigned char* readCDROM(char* path){
 }
 
 unsigned char* dvnme = "cdrom";
-unsigned char* fsnme = "bootdev";
+unsigned char* fsnme = "isofs";
 //void readRawCDROM(long lba,char count,char* locationx)
 void initCDROM(){
 	readRawCDROM(0,1,(unsigned char*)buffer);
