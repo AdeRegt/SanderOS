@@ -48,6 +48,7 @@ void insmod(const char* path){
 	printf("  -> calling file at %x \n",location);
 	void (*foo)(void) = location;
 	foo();
+	printf("\n  -> insmod returned succesfully!\n");
 }
 
 int strlen(const char* str) {

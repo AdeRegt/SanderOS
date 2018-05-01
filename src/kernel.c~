@@ -30,6 +30,8 @@ void kernel_main(){
 	detectDevices();
 	cls();
 	insmod("/BOOT/TEST.O");
+	insmod("/BOOT/TEST.O");
+	insmod("/BOOT/TEST.O");
 	malloc(10);
 	initialiseKeyboard();
 	//acpiEnable();
