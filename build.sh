@@ -1,4 +1,7 @@
 mkdir build
+
+gcc -o programmas/test.o programmas/test.c
+
 nasm -felf32 src/boot.asm -o build/boot.o
 nasm -felf32 src/interrupt.asm -o build/interrupt.o
 cc -c src/kernel.c -o build/kernel.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
@@ -19,6 +22,7 @@ if grub-file --is-x86-multiboot myos.bin; then
 	mkdir -p isodir/boot/grub
 	cp myos.bin isodir/boot/myos.bin
 	cp src/grub.cfg isodir/boot/grub/grub.cfg
+	cp programmas/test.o isodir/test.o
 	grub-mkrescue -o myos.iso isodir
 	qemu-system-i386 -cdrom myos.iso
 else
