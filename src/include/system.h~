@@ -1,4 +1,5 @@
 #define NULL 0
+#define ATAPI_SECTOR_SIZE 2048
 
 void kernel_main();
 
