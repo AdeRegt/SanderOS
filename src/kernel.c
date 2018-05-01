@@ -31,6 +31,7 @@ void kernel_main(){
 	cls();
 	insmod("/BOOT/TEST.O");
 	initialiseKeyboard();
+	malloc(10);
 	//acpiEnable();
 	//acpiPowerOff();
 	for(;;);
