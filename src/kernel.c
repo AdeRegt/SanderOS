@@ -29,11 +29,8 @@ void kernel_main(){
 	setupIDT();
 	detectDevices();
 	cls();
-	insmod("/MODULES/TEST.O");
-	insmod("/MODULES/TOSTI.O");
-	insmod("/MODULES/TEST.O");
-	malloc(10);
 	initialiseKeyboard();
+	printf("FINISHED!");
 	//acpiEnable();
 	//acpiPowerOff();
 	for(;;);
