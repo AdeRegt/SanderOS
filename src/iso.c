@@ -184,7 +184,7 @@ void initCDROM(){
 	i = 0;
 	while(1){
 		unsigned char lengthofdirident = buffer[i];
-		unsigned char extattrlength = buffer[i+1];
+//		unsigned char extattrlength = buffer[i+1];
 		isoroot[isorootcnt].lba 	= getB(i+2);
 		isoroot[isorootcnt].parrent 	= getB(i+6);
 		if(lengthofdirident==0){break;}
