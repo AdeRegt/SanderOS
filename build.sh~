@@ -1,6 +1,5 @@
 mkdir build
 
-gcc -o programmas/test.o programmas/test.c
 
 nasm -felf32 src/boot.asm -o build/boot.o
 nasm -felf32 src/interrupt.asm -o build/interrupt.o
