@@ -14,7 +14,7 @@ typedef struct {
  ISOROOTTABLES isoroot[100];
 int isorootcnt = 0;
 unsigned char pathlist[500];
-unsigned char* invalidpath = "ERROR";
+unsigned char* invalidpath = (unsigned char*)"ERROR";
 unsigned char buffer[ATAPI_SECTOR_SIZE];
 unsigned short dirtableloc;
 
