@@ -27,8 +27,8 @@ void kernel_main(){
 		printf("\n");
 	}
 	setupIDT();
-	detectDevices();
 	initialiseKeyboard();
+	detectDevices();
 	cls();
 	unsigned char* msx = readCDROM("/BOOT/TEST.O",(unsigned char*)0x1000);
 	elf_load_file(msx);
