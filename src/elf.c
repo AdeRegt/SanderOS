@@ -1,5 +1,7 @@
 #include <system.h>
 
+unsigned long mainmethodurl;
+
 void *elf_lookup_symbol(char* a){
 	if(strcmp(a,"printf")==0){
 		return printf;
@@ -73,6 +75,7 @@ bool elf_check_supported(Elf32_Ehdr *hdr) {
 }
  
 void *elf_load_file(void *file) {
+	mainmethodurl = NULL;
 	Elf32_Ehdr *hdr = (Elf32_Ehdr *)file;
 	if(!elf_check_supported(hdr)) {
 		printf("ELF File cannot be loaded.\n");
@@ -83,7 +86,8 @@ void *elf_load_file(void *file) {
 			// TODO : Implement
 			return NULL;
 		case ET_REL:
-			return elf_load_rel(hdr);
+			elf_load_rel(hdr);
+			return mainmethodurl;
 	}
 	return NULL;
 }
@@ -148,6 +152,9 @@ void *elf_load_file(void *file) {
 		Elf32_Shdr *strtab = elf_section(hdr, symtab->sh_link);
 		const char *name = (const char *)hdr + strtab->sh_offset + symbol->st_name;
 		printf("Found internal symbol: %s\n",name);
+		if(strcmp(name,"main")==0){
+			printf("FOUND MAIN!!");
+		}
 		// EINDE VERANDERD
 		// Internally defined symbol
 		Elf32_Shdr *target = elf_section(hdr, symbol->st_shndx);
