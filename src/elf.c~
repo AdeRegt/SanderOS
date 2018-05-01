@@ -1,5 +1,7 @@
 #include <system.h>
 
+#define true 1
+#define false 0
 typedef uint16_t Elf32_Half;	// Unsigned half int
 typedef uint32_t Elf32_Off;	// Unsigned offset
 typedef uint32_t Elf32_Addr;	// Unsigned address

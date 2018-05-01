@@ -2,11 +2,11 @@
 
 #define true 1
 #define false 0
-typedef uint16_t Elf32_Half;	// Unsigned half int
-typedef uint32_t Elf32_Off;	// Unsigned offset
-typedef uint32_t Elf32_Addr;	// Unsigned address
-typedef uint32_t Elf32_Word;	// Unsigned int
-typedef int32_t  Elf32_Sword;	// Signed int
+typedef unsigned short Elf32_Half;	// Unsigned half int
+typedef unsigned long Elf32_Off;	// Unsigned offset
+typedef unsigned long Elf32_Addr;	// Unsigned address
+typedef unsigned long Elf32_Word;	// Unsigned int
+typedef long  Elf32_Sword;	// Signed int
 
 #define ELF_NIDENT		16
 #define ELF_RELOC_ERR 		-1
@@ -239,7 +239,7 @@ void *elf_load_file(void *file) {
 	if(table == SHN_UNDEF || idx == SHN_UNDEF) return 0;
 	Elf32_Shdr *symtab = elf_section(hdr, table);
  
-	uint32_t symtab_entries = symtab->sh_size / symtab->sh_entsize;
+	unsigned long symtab_entries = symtab->sh_size / symtab->sh_entsize;
 	if(idx >= symtab_entries) {
 		printf("Symbol Index out of Range (%d:%u).\n", table, idx);
 		return ELF_RELOC_ERR;
