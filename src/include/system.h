@@ -77,3 +77,4 @@ void setup_mouse();
 int strlen(const char* A);
 int strcmp(char* A,char* B);
 void* memset(void* bufptr, int value, int size);
+void* malloc(unsigned long t);
