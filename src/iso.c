@@ -97,9 +97,11 @@ unsigned char* readCDROM(char* path){
 				}
 			}
 			unsigned int tgy = (i-ftf-1)-30;
+			unsigned int t0y = (i-ftf-1)-22;
 			if(buffer[i-ftf-1]==(ftf+2)){
 				unsigned short butt = ((unsigned short*)(buffer+tgy))[0];//(unsigned short)((unsigned short*)buffer[tgy])[0];
-				printf("CDROM: Found file and LBA= %x \n",butt);
+				unsigned short sutx = ((unsigned short*)(buffer+t0y))[0];
+				printf("CDROM: Found file and LBA= %x SIZE= %x %x \n",butt,sutx,72);
 				readRawCDROM(butt,1,(unsigned char*)buffer);
 				return (unsigned char*)buffer;
 			}
