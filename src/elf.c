@@ -1,20 +1,5 @@
 #include <system.h>
 
-
-void *elf_lookup_symbol(char* a);
-bool elf_check_file(Elf32_Ehdr *hdr);
-bool elf_check_supported(Elf32_Ehdr *hdr);
-inline void *elf_load_rel(Elf32_Ehdr *hdr);
-void *elf_load_file(void *file);
-inline Elf32_Shdr *elf_sheader(Elf32_Ehdr *hdr);
-inline Elf32_Shdr *elf_section(Elf32_Ehdr *hdr, int idx);
-inline char *elf_str_table(Elf32_Ehdr *hdr);
-inline char *elf_lookup_string(Elf32_Ehdr *hdr, int offset);
-int elf_get_symval(Elf32_Ehdr *hdr, int table, unsigned int idx);
-int elf_load_stage1(Elf32_Ehdr *hdr);
-int elf_load_stage2(Elf32_Ehdr *hdr);
-int elf_do_reloc(Elf32_Ehdr *hdr, Elf32_Rel *rel, Elf32_Shdr *reltab);
-
 void *elf_lookup_symbol(char* a){
 	if(strcmp(a,"printf")==0){
 		return printf;
@@ -71,7 +56,7 @@ bool elf_check_supported(Elf32_Ehdr *hdr) {
 	return true;
 }
 
- inline void *elf_load_rel(Elf32_Ehdr *hdr) {
+  void *elf_load_rel(Elf32_Ehdr *hdr) {
 	int result;
 	result = elf_load_stage1(hdr);
 	if(result == ELF_RELOC_ERR) {
@@ -103,20 +88,20 @@ void *elf_load_file(void *file) {
 	return NULL;
 }
 
- inline Elf32_Shdr *elf_sheader(Elf32_Ehdr *hdr) {
+  Elf32_Shdr *elf_sheader(Elf32_Ehdr *hdr) {
 	return (Elf32_Shdr *)((int)hdr + hdr->e_shoff);
 }
  
- inline Elf32_Shdr *elf_section(Elf32_Ehdr *hdr, int idx) {
+  Elf32_Shdr *elf_section(Elf32_Ehdr *hdr, int idx) {
 	return &elf_sheader(hdr)[idx];
 }
 
- inline char *elf_str_table(Elf32_Ehdr *hdr) {
+  char *elf_str_table(Elf32_Ehdr *hdr) {
 	if(hdr->e_shstrndx == SHN_UNDEF) return NULL;
 	return (char *)hdr + elf_section(hdr, hdr->e_shstrndx)->sh_offset;
 }
  
- inline char *elf_lookup_string(Elf32_Ehdr *hdr, int offset) {
+  char *elf_lookup_string(Elf32_Ehdr *hdr, int offset) {
 	char *strtab = elf_str_table(hdr);
 	if(strtab == NULL) return NULL;
 	return strtab + offset;
