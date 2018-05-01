@@ -30,7 +30,11 @@ void kernel_main(){
 	detectDevices();
 	cls();
 	initialiseKeyboard();
-	printf("FINISHED!");
+	printf("FINISHED!\n");
+	printf("Installed devices:\n");
+	for(int i = 0 ; i < 10 ; i++){
+		printf("Device %x named %s \n",i,(char*)blockdevices[i].name);
+	}
 	//acpiEnable();
 	//acpiPowerOff();
 	for(;;);

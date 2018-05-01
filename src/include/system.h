@@ -231,6 +231,7 @@ void insmod(const char* path);
 
 int installBlockDevice(unsigned long read,unsigned long write,unsigned long size,unsigned long name);
 int installFileSystem(unsigned long read,unsigned long write,unsigned int device,unsigned long name);
+void devdump();
 
 typedef struct {
 	unsigned long read;

@@ -23,3 +23,11 @@ int installFileSystem(unsigned long read,unsigned long write,unsigned int device
 	filesystemscount++;
 	return filesystemscount - 1;
 }
+
+void devdump(){
+	
+	printf("Installed devices:\n");
+	for(int i = 0 ; i < 10 ; i++){
+		printf("Device %x named %s \n",i,(char*)blockdevices[i].name);
+	}
+}
