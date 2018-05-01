@@ -229,19 +229,19 @@ void insmod(const char* path);
 // FILESYSTEMCONTROL
 //
 
-int installBlockDevice(unsigned long read,unsigned long write,unsigned long size,unsigned char name[5]);
-int installFileSystem(unsigned long read,unsigned long write,unsigned int device,unsigned char name[5]);
+int installBlockDevice(unsigned long read,unsigned long write,unsigned long size,unsigned long name);
+int installFileSystem(unsigned long read,unsigned long write,unsigned int device,unsigned long name);
 
 typedef struct {
 	unsigned long read;
 	unsigned long write;
 	unsigned long size;
-	unsigned char name[5];
+	unsigned long name;
 }BlockDevice;
 
 typedef struct {
 	unsigned long read;
 	unsigned long write;
 	unsigned int device;
-	unsigned char name[5];
+	unsigned long name;
 } FileSystem;
