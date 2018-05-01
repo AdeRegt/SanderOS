@@ -23,7 +23,7 @@ typedef long  Elf32_Sword;	// Signed int
 #define ELF32_ST_BIND(INFO)	((INFO) >> 4)
 #define ELF32_ST_TYPE(INFO)	((INFO) & 0x0F)
 #define ELF32_R_SYM(INFO)	((INFO) >> 8)
-#define ELF32_R_TYPE(INFO)	((unsigned int8_t)(INFO))
+#define ELF32_R_TYPE(INFO)	((unsigned unsigned char)(INFO))
 #define DO_386_32(S, A)	((S) + (A))
 #define DO_386_PC32(S, A, P)	((S) + (A) - (P))
 #define SHN_ABS			10234
@@ -71,7 +71,7 @@ enum ShT_Attributes {
 	SHF_ALLOC	= 0x02  // Exists in memory
 };
 typedef struct {
-	unsigned int8_t		e_ident[ELF_NIDENT];
+	unsigned unsigned char		e_ident[ELF_NIDENT];
 	Elf32_Half	e_type;
 	Elf32_Half	e_machine;
 	Elf32_Word	e_version;
@@ -124,8 +124,8 @@ typedef struct {
 	Elf32_Word		st_name;
 	Elf32_Addr		st_value;
 	Elf32_Word		st_size;
-	unsigned int8_t			st_info;
-	unsigned int8_t			st_other;
+	unsigned unsigned char			st_info;
+	unsigned unsigned char			st_other;
 	Elf32_Half		st_shndx;
 } Elf32_Sym;
 
