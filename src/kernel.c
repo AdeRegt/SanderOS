@@ -28,8 +28,8 @@ void kernel_main(){
 	}
 	setupIDT();
 	detectDevices();
-	unsigned char* msx = readCDROM("/BOOT/GRUB/GRUB.CFG",(unsigned char*)0x1000);
-	printf("%s",msx);
+	unsigned char* msx = readCDROM("/BOOT/EXAMPLE.O",(unsigned char*)0x1000);
+	elf_load_file(msx);
 	initialiseKeyboard();
 	//acpiEnable();
 	//acpiPowerOff();
