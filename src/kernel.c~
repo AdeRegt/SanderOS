@@ -29,27 +29,13 @@ void kernel_main(){
 	setupIDT();
 	detectDevices();
 	cls();
-	insmod("/MODULES/TEST.O");
-	insmod("/MODULES/TOSTI.O");
-	insmod("/MODULES/TEST.O");
-	malloc(10);
 	initialiseKeyboard();
+	printf("FINISHED!");
 	//acpiEnable();
 	//acpiPowerOff();
 	for(;;);
 }
 
-void insmod(const char* path){
-	printf("--INSMOD--\n");
-	printf("  -> loading file\n");
-	unsigned char* msx = readCDROM(path);
-	printf("  -> parsing file\n");
-	unsigned long location = elf_load_file(msx);
-	printf("  -> calling file at %x \n",location);
-	void (*foo)(void) = location;
-	foo();
-	printf("\n  -> insmod returned succesfully!\n");
-}
 
 int strlen(const char* str) {
 	int len = 0;

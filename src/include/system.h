@@ -224,3 +224,24 @@ int elf_load_stage1(Elf32_Ehdr *hdr);
 int elf_load_stage2(Elf32_Ehdr *hdr);
 int elf_do_reloc(Elf32_Ehdr *hdr, Elf32_Rel *rel, Elf32_Shdr *reltab);
 void insmod(const char* path);
+
+//
+// FILESYSTEMCONTROL
+//
+
+int installBlockDevice(unsigned long read,unsigned long write,unsigned long size,unsigned char name[5]);
+int installFileSystem(unsigned long read,unsigned long write,unsigned int device,unsigned char name[5]);
+
+typedef struct {
+	unsigned long read;
+	unsigned long write;
+	unsigned long size;
+	unsigned char name[5];
+}BlockDevice;
+
+typedef struct {
+	unsigned long read;
+	unsigned long write;
+	unsigned int device;
+	unsigned char name[5];
+} FileSystem;
