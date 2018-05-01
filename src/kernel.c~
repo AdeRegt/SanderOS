@@ -44,5 +44,16 @@ int strlen(const char* str) {
 }
 
 int strcmp(char* A,char* B){
-
+	int C = strlen(A);
+	int D = strlen(B);
+	if(C==D){
+		for(int i = 0 ; i < D ; i++){
+			if(A[i]!=B[i]){
+				return 1;
+			}
+		}
+		return 0;
+	}else{
+		return 1;
+	}
 }
