@@ -28,6 +28,6 @@ void devdump(){
 	
 	printf("Installed devices:\n");
 	for(int i = 0 ; i < 10 ; i++){
-		printf("Device %x named %s \n",i,(char*)blockdevices[i].name);
+		printf("Device %x named %s \n",i,(unsigned char*)blockdevices[i].name);
 	}
 }

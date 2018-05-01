@@ -6,11 +6,13 @@ int blockdevicescount = 0;
 FileSystem filesystems[10];
 int filesystemscount = 0;
 
-int installBlockDevice(unsigned long read,unsigned long write,unsigned long size,unsigned long name){
+int installBlockDevice(unsigned long read,unsigned long write,unsigned long size,unsigned char name[5]){
 	blockdevices[blockdevicescount].read 	= read;
 	blockdevices[blockdevicescount].write 	= write;
 	blockdevices[blockdevicescount].size 	= size;
-	blockdevices[blockdevicescount].name 	= name;
+	for(int i = 0 ; i < 5 ; i++){
+		blockdevices[blockdevicescount].name[i] 	= name[i];
+	}
 	blockdevicescount++;
 	return blockdevicescount - 1;
 }
