@@ -230,7 +230,7 @@ void insmod(const char* path);
 //
 
 int installBlockDevice(unsigned long read,unsigned long write,unsigned long size,unsigned char name[5]);
-int installFileSystem(unsigned long read,unsigned long write,unsigned int device,unsigned long name);
+int installFileSystem(unsigned long read,unsigned long write,unsigned int device,unsigned char name[5]);
 void devdump();
 
 typedef struct {

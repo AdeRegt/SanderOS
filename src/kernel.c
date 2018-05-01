@@ -30,7 +30,7 @@ void kernel_main(){
 	detectDevices();
 	cls();
 	initialiseKeyboard();
-	printf("FINISHED!\n");
+	printf("LOADING FINISHED!\n");
 	devdump();
 	//acpiEnable();
 	//acpiPowerOff();
