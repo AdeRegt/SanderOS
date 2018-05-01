@@ -73,3 +73,6 @@ typedef struct {
 
 // mice
 void setup_mouse();
+
+int strlen(char* A);
+int strcmp(char* A,char* B);

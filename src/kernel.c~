@@ -29,9 +29,20 @@ void kernel_main(){
 	setupIDT();
 	detectDevices();
 	unsigned char* msx = readCDROM("/BOOT/GRUB/GRUB.CFG",(unsigned char*)0x1000);
-	printf(">>>>>>>>>>>>>>%s",msx);
+	printf("%s",msx);
 	initialiseKeyboard();
 	//acpiEnable();
 	//acpiPowerOff();
 	for(;;);
+}
+
+int strlen(const char* str) {
+	int len = 0;
+	while (str[len])
+		len++;
+	return len;
+}
+
+int strcmp(char* A,char* B){
+
 }

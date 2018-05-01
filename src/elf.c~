@@ -129,6 +129,20 @@ typedef struct {
 	Elf32_Half		st_shndx;
 } Elf32_Sym;
 
+void *elf_lookup_symbol(char* a);
+bool elf_check_file(Elf32_Ehdr *hdr);
+bool elf_check_supported(Elf32_Ehdr *hdr);
+inline void *elf_load_rel(Elf32_Ehdr *hdr);
+void *elf_load_file(void *file);
+inline Elf32_Shdr *elf_sheader(Elf32_Ehdr *hdr);
+inline Elf32_Shdr *elf_section(Elf32_Ehdr *hdr, int idx);
+inline char *elf_str_table(Elf32_Ehdr *hdr);
+inline char *elf_lookup_string(Elf32_Ehdr *hdr, int offset);
+int elf_get_symval(Elf32_Ehdr *hdr, int table, unsigned int idx);
+int elf_load_stage1(Elf32_Ehdr *hdr);
+int elf_load_stage2(Elf32_Ehdr *hdr);
+int elf_do_reloc(Elf32_Ehdr *hdr, Elf32_Rel *rel, Elf32_Shdr *reltab);
+
 void *elf_lookup_symbol(char* a){
 	if(strcmp(a,"printf")==0){
 		return printf;

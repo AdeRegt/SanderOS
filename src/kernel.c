@@ -35,3 +35,25 @@ void kernel_main(){
 	//acpiPowerOff();
 	for(;;);
 }
+
+int strlen(const char* str) {
+	int len = 0;
+	while (str[len])
+		len++;
+	return len;
+}
+
+int strcmp(char* A,char* B){
+	int C = strlen(A);
+	int D = strlen(B);
+	if(C==D){
+		for(int i = 0 ; i < D ; i++){
+			if(A[i]!=B[i]){
+				return 1;
+			}
+		}
+		return 0;
+	}else{
+		return 1;
+	}
+}
