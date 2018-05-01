@@ -2,6 +2,7 @@
 
 #define true 1
 #define false 0
+typedef char bool;
 typedef unsigned short Elf32_Half;	// Unsigned half int
 typedef unsigned long Elf32_Off;	// Unsigned offset
 typedef unsigned long Elf32_Addr;	// Unsigned address
