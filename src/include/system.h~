@@ -68,3 +68,6 @@ typedef struct {
 	unsigned long remove;
 	unsigned long device;
 }Filesystem;
+
+// mice
+void setup_mouse();
