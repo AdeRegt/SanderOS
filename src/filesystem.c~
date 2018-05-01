@@ -17,11 +17,13 @@ int installBlockDevice(unsigned long read,unsigned long write,unsigned long size
 	return blockdevicescount - 1;
 }
 
-int installFileSystem(unsigned long read,unsigned long write,unsigned int device,unsigned long name){
+int installFileSystem(unsigned long read,unsigned long write,unsigned int device,unsigned char name[5]){
 	filesystems[filesystemscount].read 	= read;
 	filesystems[filesystemscount].write 	= write;
 	filesystems[filesystemscount].device 	= device;
-	filesystems[filesystemscount].name 	= name;
+	for(int i = 0 ; i < 5 ; i++){
+		filesystems[filesystemscount].name[i] 	= name[i];
+	}
 	filesystemscount++;
 	return filesystemscount - 1;
 }
@@ -31,5 +33,9 @@ void devdump(){
 	printf("Installed devices:\n");
 	for(int i = 0 ; i < 10 ; i++){
 		printf("Device %x named %s \n",i,(unsigned char*)blockdevices[i].name);
+	}
+	printf("\nInstalled filesystems:\n");
+	for(int i = 0 ; i < 10 ; i++){
+		printf("Device %x named %s \n",i,(unsigned char*)filesystems[i].name);
 	}
 }

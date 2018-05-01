@@ -32,10 +32,14 @@ void devdump(){
 	
 	printf("Installed devices:\n");
 	for(int i = 0 ; i < 10 ; i++){
-		printf("Device %x named %s \n",i,(unsigned char*)blockdevices[i].name);
+		if(blockdevices[i].name[0]!=0x00){
+			printf("Device %x named %s \n",i,(unsigned char*)blockdevices[i].name);
+		}
 	}
 	printf("\nInstalled filesystems:\n");
 	for(int i = 0 ; i < 10 ; i++){
+		if(filesystems[i].name[0]!=0x00){
 		printf("Device %x named %s \n",i,(unsigned char*)filesystems[i].name);
+		}
 	}
 }
