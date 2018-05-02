@@ -44,7 +44,6 @@ typedef struct fatfile{
 	unsigned long filesize;
 }__attribute__((packed)) FATFile;
 
-FATFile fatdir[16];
 
 void main(ata_device *dxv){
 	dev.io_base = dxv->io_base;
@@ -66,6 +65,11 @@ void main(ata_device *dxv){
 	printf("FIRST ROOT DIR SECTOR: %x \n",first_root_dir_sector);
 	printf("VOLUMELABEL: %s",fat_boot->volume_label);
 	printf("FATDIR: %x \n",sizeof(FATFile));
+	loadHDDSector(mx,X+first_root_dir_sector,1);
+	FATFile *fatfiles[10] = mx;
+	for(int i = 0 ; i < 10 ; i++){
+		printf("FILE %s \n",fatfiles[i].filename);
+	}
 }
 
 
