@@ -29,7 +29,7 @@ typedef struct fat_BS
  
 }__attribute__((packed)) fat_BS_t;
 
-typedef struct{
+typedef struct fatfile{
 	unsigned char filename[11];
 	unsigned char attr;
 	unsigned char winnt;
