@@ -1,0 +1,5 @@
+#include <system.h>
+
+void main(){
+	printf("Hello small world!");
+}
