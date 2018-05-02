@@ -91,10 +91,10 @@ void detectATAdevice(ata_device dev){
         }else if(atapi_device_init(dev)){
 //              printf(" CDR ");
 		cdromdevice = dev;
-                printf(" CDROM ");
+                printf("ATA_DETECTION: CDROM\n");
                 initCDROM();
         }else if(ata_device_init(dev)){
-                printf(" HDD ");
+                printf("ATA_DETECTION: HDD\n");
                 detectHDDFilesystems(dev);
         }else{
                 //printf(" ??? ");
