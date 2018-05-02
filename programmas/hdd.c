@@ -44,7 +44,7 @@ typedef struct fatfile{
 	unsigned long filesize;
 }__attribute__((packed)) FATFile;
 
-unsigned char* devname = (unsigned char*) "HDD1";
+unsigned char* devname = (unsigned char*) "hardd";
 
 void main(ata_device *dxv){
 	dev.io_base = dxv->io_base;
