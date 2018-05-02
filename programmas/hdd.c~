@@ -1,7 +1,6 @@
 #include <system.h>
 void loadHDDSector(char* location,long LBA,long count);
 ata_device dev;
-FAT16Boot block;
 
 typedef struct{
 	unsigned char jmper[3];
@@ -28,6 +27,7 @@ typedef struct{
 	unsigned char bootcodeA;
 	unsigned char bootcodeB;
 }FAT16Boot;
+FAT16Boot block;
 
 void main(ata_device *dxv){
 	dev.io_base = dxv->io_base;
@@ -39,7 +39,7 @@ void main(ata_device *dxv){
 	printf("Partition1: %x \n",X);
 	loadHDDSector(mx,X,1);
 	FAT16Boot *boot = (FAT16Boot *)mx;
-	printf("volumelabelstring: %s \n",boot.volumelabelstring);
+	printf("volumelabelstring: %s \n",boot->volumelabelstring);
 }
 
 
