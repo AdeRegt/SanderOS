@@ -158,8 +158,8 @@ unsigned char* readCDROM(char* path){
 	return pathlist;
 }
 
-unsigned char* dvnme = "cdrom";
-unsigned char* fsnme = "isofs";
+unsigned char* dvnme = (unsigned char*)"cdrom";
+unsigned char* fsnme = (unsigned char*)"isofs";
 //void readRawCDROM(long lba,char count,char* locationx)
 void initCDROM(){
 	readRawCDROM(0,1,(unsigned char*)buffer);
