@@ -74,7 +74,7 @@ int ata_device_init(ata_device dev){
         return 1;
 }
 
-void detectATAdevice(ata_device dev){
+void detectATAdevice(ata_device dev,char X){
 	// first, softreset
         outportb(dev.control,0x04);
         outportb(dev.control,0x00);
@@ -86,18 +86,21 @@ void detectATAdevice(ata_device dev){
         unsigned char cl = inportb(dev.io_base + 0x04);
         unsigned char ch = inportb(dev.io_base + 0x05);
 
-        if(cl==0xFF&&ch==0xFF){
-                //printf(" NUL ");
-        }else if(atapi_device_init(dev)){
-//              printf(" CDR ");
-		cdromdevice = dev;
-                printf("ATA_DETECTION: CDROM\n");
-                initCDROM();
-        }else if(ata_device_init(dev)){
-                printf("ATA_DETECTION: HDD\n");
-                insmod("/MODULES/HDD.SKM",&dev);
-        }else{
-                //printf(" ??? ");
+	if(X){
+		if(atapi_device_init(dev)){
+			cdromdevice = dev;
+		        printf("ATA_DETECTION: CDROM\n");
+		        initCDROM();
+		}
+	}else{
+		if(cl==0xFF&&ch==0xFF){
+		
+		}else if(ata_device_init(dev)){
+		        printf("ATA_DETECTION: HDD\n");
+		        insmod("/MODULES/HDD.SKM",&dev);
+		}else{
+		        //printf(" ??? ");
+		}
         }
 }
 
@@ -161,8 +164,14 @@ void readRawCDROM(unsigned long lba,unsigned char count,unsigned char* locationx
 }
 
 void detectATAPI(){
-	detectATAdevice(ata_primairy_master);
-        detectATAdevice(ata_primairy_slave);
-        detectATAdevice(ata_secondary_master);
-        detectATAdevice(ata_secondary_slave);
+	// eerst cdrom vinden
+	detectATAdevice(ata_primairy_master,1);
+        detectATAdevice(ata_primairy_slave,1);
+        detectATAdevice(ata_secondary_master,1);
+        detectATAdevice(ata_secondary_slave,1);
+        // dan de rest
+	detectATAdevice(ata_primairy_master,0);
+        detectATAdevice(ata_primairy_slave,0);
+        detectATAdevice(ata_secondary_master,0);
+        detectATAdevice(ata_secondary_slave,0);
 }
