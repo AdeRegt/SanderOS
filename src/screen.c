@@ -81,7 +81,7 @@ void putc(const char a){
 		videopointer--;
 		curX--;
 	}else{
-		if(curY==SCREEN_MAX_Y){
+		if(curY>=SCREEN_MAX_Y){
 			for(int i = (SCREEN_MAX_X*2) ; i < (SCREEN_MAX_X*2)*SCREEN_MAX_Y ; i++){
 				videomemory[i-(SCREEN_MAX_X*2)] = videomemory[i];
 				videomemory[i] = 0x00; 

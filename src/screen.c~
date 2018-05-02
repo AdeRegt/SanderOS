@@ -81,20 +81,20 @@ void putc(const char a){
 		videopointer--;
 		curX--;
 	}else{
-		videopointer = ((curY*SCREEN_MAX_X)+(curX))*2;
-		videomemory[videopointer++] = a;
-		videomemory[videopointer++] = backgroundcolor;
-		curX++;
-		if(curX==SCREEN_MAX_X){
-			curY++;
-			curX = 0;
-		}
 		if(curY==SCREEN_MAX_Y){
 			for(int i = (SCREEN_MAX_X*2) ; i < (SCREEN_MAX_X*2)*SCREEN_MAX_Y ; i++){
 				videomemory[i-(SCREEN_MAX_X*2)] = videomemory[i];
 				videomemory[i] = 0x00; 
 			}
 			curY = 24;
+			curX = 0;
+		}
+		videopointer = ((curY*SCREEN_MAX_X)+(curX))*2;
+		videomemory[videopointer++] = a;
+		videomemory[videopointer++] = backgroundcolor;
+		curX++;
+		if(curX==SCREEN_MAX_X){
+			curY++;
 			curX = 0;
 		}
 	}
