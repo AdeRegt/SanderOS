@@ -39,10 +39,10 @@ void main(ata_device *dxv){
 	printf("Partition1: %x \n",X);
 	loadHDDSector(mx,X,1);
 	fat_BS_t *fat_boot = mx;
-	fat_size = fat_boot->table_size_16;
-	root_dir_sectors = ((fat_boot->root_entry_count * 32) + (fat_boot->bytes_per_sector - 1)) / fat_boot->bytes_per_sector;
-	first_data_sector = fat_boot->reserved_sector_count + (fat_boot->table_count * fat_size) + root_dir_sectors;
-	first_root_dir_sector = first_data_sector - root_dir_sectors;
+	unsigned short fat_size = fat_boot->table_size_16;
+	unsigned short root_dir_sectors = ((fat_boot->root_entry_count * 32) + (fat_boot->bytes_per_sector - 1)) / fat_boot->bytes_per_sector;
+	unsigned short first_data_sector = fat_boot->reserved_sector_count + (fat_boot->table_count * fat_size) + root_dir_sectors;
+	unsigned short first_root_dir_sector = first_data_sector - root_dir_sectors;
 }
 
 

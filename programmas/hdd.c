@@ -43,6 +43,10 @@ void main(ata_device *dxv){
 	unsigned short root_dir_sectors = ((fat_boot->root_entry_count * 32) + (fat_boot->bytes_per_sector - 1)) / fat_boot->bytes_per_sector;
 	unsigned short first_data_sector = fat_boot->reserved_sector_count + (fat_boot->table_count * fat_size) + root_dir_sectors;
 	unsigned short first_root_dir_sector = first_data_sector - root_dir_sectors;
+	printf("FATSIZE: %x \n",fat_size);
+	printf("ROOT DIR SECTORS: %x \n",root_dir_sectors);
+	printf("FIRST DATA SECTOR: %x \n",first_data_sector);
+	printf("FIRST ROOT DIR SECTOR: %x \n",first_root_dir_sector);
 }
 
 
