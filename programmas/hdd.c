@@ -29,6 +29,23 @@ typedef struct fat_BS
  
 }__attribute__((packed)) fat_BS_t;
 
+typedef struct{
+	unsigned char filename[11];
+	unsigned char attr;
+	unsigned char winnt;
+	unsigned char creat;
+	unsigned short tcreat;
+	unsigned short tdate;
+	unsigned short tacces;
+	unsigned short clusterhigh;
+	unsigned short lastmodt;
+	unsigned short lastmodd;
+	unsigned short clusterlow;
+	unsigned long filesize;
+}__attribute__((packed)) FATFile;
+
+FATFile fatdir[16];
+
 void main(ata_device *dxv){
 	dev.io_base = dxv->io_base;
 	dev.slave   = dxv->slave;
@@ -48,6 +65,7 @@ void main(ata_device *dxv){
 	printf("FIRST DATA SECTOR: %x \n",first_data_sector);
 	printf("FIRST ROOT DIR SECTOR: %x \n",first_root_dir_sector);
 	printf("VOLUMELABEL: %s",fat_boot->volume_label);
+	printf("FATDIR: %i \n",sizeof(fatdir));
 }
 
 
