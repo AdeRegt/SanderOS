@@ -38,8 +38,8 @@ void main(ata_device *dxv){
 	unsigned long X = ((unsigned long*)(mx+8+0x01BE))[0];
 	printf("Partition1: %x \n",X);
 	loadHDDSector(mx,X,1);
-	FAT16Boot boot = (FAT16Boot *)mx;
-	printf("volumelabelstring: %s \n",boot.volumelabelstring);
+	FAT16Boot *boot = (FAT16Boot *)mx;
+	printf("volumelabelstring: %s \n",boot->volumelabelstring);
 }
 
 
