@@ -10,6 +10,10 @@ void main(ata_device *dxv){
 	loadHDDSector(mx,0,1);
 	unsigned long X = ((unsigned long*)(mx+8+0x01BE))[0];
 	printf("Partition1: %x \n",X);
+	loadHDDSector(mx,X,1);
+	for(int i = 0 ; i < 512 ; i++){
+		printf("%c ",((char*)mx)[i]);
+	}
 }
 
 
