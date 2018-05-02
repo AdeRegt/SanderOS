@@ -39,7 +39,7 @@ void main(ata_device *dxv){
 	printf("Partition1: %x \n",X);
 	loadHDDSector(mx,X,1);
 	FAT16Boot *boot = (FAT16Boot *)mx;
-	printf("volumelabelstring: %s \n",boot->volumelabelstring);
+	printf("oemident: %s \n",boot->oemident);
 }
 
 
