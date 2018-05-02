@@ -2,32 +2,32 @@
 void loadHDDSector(char* location,long LBA,long count);
 ata_device dev;
 
-typedef struct{
-	unsigned char jmper[3];
-	unsigned char oemident[8];
-	unsigned short bytespersector;
-	unsigned char sectorspercluster;
-	unsigned short reservedsectors;
-	unsigned char numberoffat;
-	unsigned short direntries;
-	unsigned short totalsectors;
-	unsigned char mediadesc;
-	unsigned short numberperfat;
-	unsigned short sectorspertrac;
-	unsigned short heads;
-	unsigned long hidden;
-	unsigned long sectormedia;
-	unsigned char drivenum;
-	unsigned char flags;
-	unsigned char signature;
-	unsigned long volumeid;
-	unsigned char volumelabelstring[11];
-	unsigned char systemidentstring[8];
-	unsigned char bootcode[448];
-	unsigned char bootcodeA;
-	unsigned char bootcodeB;
-}FAT16Boot;
-FAT16Boot block;
+typedef struct fat_BS
+{
+	unsigned char 		bootjmp[3];
+	unsigned char 		oem_name[8];
+	unsigned short 	        bytes_per_sector;
+	unsigned char		sectors_per_cluster;
+	unsigned short		reserved_sector_count;
+	unsigned char		table_count;
+	unsigned short		root_entry_count;
+	unsigned short		total_sectors_16;
+	unsigned char		media_type;
+	unsigned short		table_size_16;
+	unsigned short		sectors_per_track;
+	unsigned short		head_side_count;
+	unsigned int 		hidden_sector_count;
+	unsigned int 		total_sectors_32;
+ 
+	//extended fat12 and fat16 stuff
+	unsigned char		bios_drive_num;
+	unsigned char		reserved1;
+	unsigned char		boot_signature;
+	unsigned int		volume_id;
+	unsigned char		volume_label[11];
+	unsigned char		fat_type_label[8];
+ 
+}__attribute__((packed)) fat_BS_t;
 
 void main(ata_device *dxv){
 	dev.io_base = dxv->io_base;
@@ -38,10 +38,11 @@ void main(ata_device *dxv){
 	unsigned long X = ((unsigned long*)(mx+8+0x01BE))[0];
 	printf("Partition1: %x \n",X);
 	loadHDDSector(mx,X,1);
-	FAT16Boot *boot = (FAT16Boot *)mx;
-	printf("oemident: %s \n",boot->oemident);
-	printf("volumelabelstring: %s \n",boot->volumelabelstring);
-	printf("sizeofstruct: %i \n",sizeof(FAT16Boot));
+	fat_BS_t *fat_boot = mx;
+	fat_size = fat_boot->table_size_16;
+	root_dir_sectors = ((fat_boot->root_entry_count * 32) + (fat_boot->bytes_per_sector - 1)) / fat_boot->bytes_per_sector;
+	first_data_sector = fat_boot->reserved_sector_count + (fat_boot->table_count * fat_size) + root_dir_sectors;
+	first_root_dir_sector = first_data_sector - root_dir_sectors;
 }
 
 
