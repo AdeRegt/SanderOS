@@ -8,7 +8,7 @@ void main(ata_device *dxv){
 	printf("Hello small world at IOBase %x!\n",dev.io_base);
 	void* mx = malloc(512);
 	loadHDDSector(mx,0,1);
-	unsigned long X = ((unsigned long*)mx+8+0x01BE)[0];
+	unsigned long X = ((unsigned long*)(mx+8+0x01BE))[0];
 	printf("Partition1: %x \n",X);
 }
 
