@@ -95,7 +95,7 @@ void detectATAdevice(ata_device dev){
                 initCDROM();
         }else if(ata_device_init(dev)){
                 printf("ATA_DETECTION: HDD\n");
-                insmod("/MODULES/HDD.SKM");
+                insmod("/MODULES/HDD.SKM",dev);
         }else{
                 //printf(" ??? ");
         }
