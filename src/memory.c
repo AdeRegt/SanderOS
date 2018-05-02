@@ -23,6 +23,14 @@ int strcmp(char* A,char* B){
 	}
 }
 
+void* memcpy(void* restrict dstptr, const void* restrict srcptr, int size) {
+	unsigned char* dst = (unsigned char*) dstptr;
+	const unsigned char* src = (const unsigned char*) srcptr;
+	for (int i = 0; i < size; i++)
+		dst[i] = src[i];
+	return dstptr;
+}
+
 void* memset(void* bufptr, int value, int size) {
 	unsigned char* buf = (unsigned char*) bufptr;
 	for (int i = 0; i < size; i++)

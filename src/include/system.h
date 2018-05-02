@@ -78,6 +78,7 @@ int strlen(const char* A);
 int strcmp(char* A,char* B);
 void* memset(void* bufptr, int value, int size);
 void* malloc(unsigned long t);
+void* memcpy(void* restrict dstptr, const void* restrict srcptr, int size);
 
 // ELF
 

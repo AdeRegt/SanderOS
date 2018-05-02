@@ -244,5 +244,5 @@ typedef struct {
 	unsigned long read;
 	unsigned long write;
 	unsigned int device;
-	unsigned long name;
+	unsigned char name[5];
 } FileSystem;
