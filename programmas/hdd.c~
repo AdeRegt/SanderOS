@@ -67,8 +67,16 @@ void main(ata_device *dxv){
 	printf("FATDIR: %x \n",sizeof(FATFile));
 	loadHDDSector(mx,X+first_root_dir_sector,1);
 	FATFile * fatfiles = mx;
-	for(int i = 0 ; i < 10 ; i++){
-		printf("FILE %s \n",fatfiles[i].filename);
+	for(int i = 0 ; i < 16 ; i++){
+		switch(fatfiles[i].attr){
+			case 0x10:
+				printf("DIR: %s \n",fatfiles[i].filename);
+				break;
+			case 0x20:
+				printf("FIL: %s \n",fatfiles[i].filename);
+				break;
+		}
+		printf("FILE %s %x \n",fatfiles[i].filename,fatfiles[i].attr);
 	}
 }
 
