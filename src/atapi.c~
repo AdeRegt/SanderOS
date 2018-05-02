@@ -100,7 +100,7 @@ void detectATAdevice(ata_device dev){
         }else if(ata_device_init(dev)){
         	if(readyop==2){
                 	printf("ATA_DETECTION: HDD\n");
-                	insmod("/MODULES/HDD.SKM",&dev);
+                	insmod("/MODULES/HDD.SKM",dev);
                 }
         }else{
                 //printf(" ??? ");
@@ -167,6 +167,12 @@ void readRawCDROM(unsigned long lba,unsigned char count,unsigned char* locationx
 }
 
 void detectATAPI(){
+	readyop = 1;
+	detectATAdevice(ata_primairy_master);
+        detectATAdevice(ata_primairy_slave);
+        detectATAdevice(ata_secondary_master);
+        detectATAdevice(ata_secondary_slave);
+	readyop = 2;
 	detectATAdevice(ata_primairy_master);
         detectATAdevice(ata_primairy_slave);
         detectATAdevice(ata_secondary_master);

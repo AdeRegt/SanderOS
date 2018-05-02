@@ -99,8 +99,8 @@ void detectATAdevice(ata_device dev){
                 }
         }else if(ata_device_init(dev)){
         	if(readyop==2){
-                	printf("ATA_DETECTION: HDD\n");
-                	insmod("/MODULES/HDD.SKM",&dev);
+                	printf("ATA_DETECTION: HDD %x\n",dev.io_base);
+                	insmod("/MODULES/HDD.SKM",dev);
                 }
         }else{
                 //printf(" ??? ");
