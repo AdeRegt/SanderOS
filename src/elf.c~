@@ -7,6 +7,12 @@ void *elf_lookup_symbol(char* a){
 	if(strcmp(a,"printf")==0){
 		return printf;
 	}
+	if(strcmp(a,"inportb")==0){
+		return inportb;
+	}
+	if(strcmp(a,"outportb")==0){
+		return outportb;
+	}
 	return NULL;
 }
 
@@ -150,16 +156,16 @@ void *elf_load_file(void *file) {
 	} else {
 		// VERANDERD
 		
-		Elf32_Shdr *strtab = elf_section(hdr, symbol->st_shndx);
-		const char *name = (const char *)hdr + strtab->sh_offset + symbol->st_name;
-		printf("Found internal symbol: %s\n",name);
-		if(strcmp(name,"main")==0){
-			printf("FOUND MAIN!!");
-		}
+		
 		
 		// EINDE VERANDERD
 		// Internally defined symbol
 		Elf32_Shdr *target = elf_section(hdr, symbol->st_shndx);
+		
+		//
+		mainmethodurl = (int)hdr + symbol->st_value + target->sh_offset;
+		//
+		
 		return (int)hdr + symbol->st_value + target->sh_offset;
 	}
 }

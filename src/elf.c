@@ -7,6 +7,15 @@ void *elf_lookup_symbol(char* a){
 	if(strcmp(a,"printf")==0){
 		return printf;
 	}
+	if(strcmp(a,"inportb")==0){
+		return inportb;
+	}
+	if(strcmp(a,"outportb")==0){
+		return outportb;
+	}
+	if(strcmp(a,"insw")==0){
+		return insw;
+	}
 	return NULL;
 }
 
