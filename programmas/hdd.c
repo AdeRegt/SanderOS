@@ -12,7 +12,7 @@ void main(ata_device *dxv){
 	printf("Partition1: %x \n",X);
 	loadHDDSector(mx,X,1);
 	for(int i = 0 ; i < 512 ; i++){
-		printf("%c ",((char*)mx)[i]);
+		printf("%c",((char*)mx)[i]);
 	}
 }
 
