@@ -29,8 +29,8 @@ void kernel_main(){
 	setupIDT();
 	detectDevices();
 	initialiseKeyboard();
-	printf("\n\nLOADING FINISHED!\n");
-	devdump();
+	//printf("\n\nLOADING FINISHED!\n");
+	//devdump();
 	for(;;);
 }
 
