@@ -5,10 +5,10 @@ ata_device dev;
 void main(ata_device *dxv){
 	dev.io_base = dxv->io_base;
 	dev.slave   = dxv->slave;
-	printf("Hello small world at IOBase %x!",dev.io_base);
+	printf("Hello small world at IOBase %x!\n",dev.io_base);
 	void* mx = malloc(512);
 	loadHDDSector(mx,0,1);
-	
+	printf("Partition1: %x \n",mx+0x01BE+8);
 }
 
 
