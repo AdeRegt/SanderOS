@@ -3,7 +3,6 @@
 unsigned long mainmethodurl;
 
 void *elf_lookup_symbol(char* a){
-	printf("Found external symbol: %s\n",a);
 	if(strcmp(a,"printf")==0){
 		return printf;
 	}

@@ -13,6 +13,9 @@ void *elf_lookup_symbol(char* a){
 	if(strcmp(a,"outportb")==0){
 		return outportb;
 	}
+	if(strcmp(a,"insw")==0){
+		return insw;
+	}
 	return NULL;
 }
 

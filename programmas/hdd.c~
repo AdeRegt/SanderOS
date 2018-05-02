@@ -7,7 +7,7 @@ void main(ata_device *dxv){
 	printf("Hello small world at IOBase %x!",dev.io_base);
 	loadHDDSector((char*)0x5000,0,1);
 	for(int i = 0 ; i < 512 ; i++){
-		printf("%x ",((char*)0x5000)[i]);
+		printf("%c ",((char*)0x5000)[i]);
 	}
 	printf("Locatie op %x \n",((char*)0x5000)[511]);
 }
