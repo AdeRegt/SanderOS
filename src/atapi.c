@@ -74,7 +74,9 @@ int ata_device_init(ata_device dev){
         return 1;
 }
 
-void detectATAdevice(ata_device dev,char X){
+unsigned char readyop = 1;
+
+void detectATAdevice(ata_device dev){
 	// first, softreset
         outportb(dev.control,0x04);
         outportb(dev.control,0x00);
@@ -86,21 +88,22 @@ void detectATAdevice(ata_device dev,char X){
         unsigned char cl = inportb(dev.io_base + 0x04);
         unsigned char ch = inportb(dev.io_base + 0x05);
 
-	if(X){
-		if(atapi_device_init(dev)){
+        if(cl==0xFF&&ch==0xFF){
+                //printf(" NUL ");
+        }else if(atapi_device_init(dev)){
+//              printf(" CDR ");
+		if(readyop==1){
 			cdromdevice = dev;
 		        printf("ATA_DETECTION: CDROM\n");
 		        initCDROM();
-		}
-	}else{
-		if(cl==0xFF&&ch==0xFF){
-		
-		}else if(ata_device_init(dev)){
-		        printf("ATA_DETECTION: HDD\n");
-		        insmod("/MODULES/HDD.SKM",&dev);
-		}else{
-		        //printf(" ??? ");
-		}
+                }
+        }else if(ata_device_init(dev)){
+        	if(readyop==2){
+                	printf("ATA_DETECTION: HDD\n");
+                	insmod("/MODULES/HDD.SKM",&dev);
+                }
+        }else{
+                //printf(" ??? ");
         }
 }
 
@@ -164,14 +167,14 @@ void readRawCDROM(unsigned long lba,unsigned char count,unsigned char* locationx
 }
 
 void detectATAPI(){
-	// eerst cdrom vinden
-	detectATAdevice(ata_primairy_master,1);
-        detectATAdevice(ata_primairy_slave,1);
-        detectATAdevice(ata_secondary_master,1);
-        detectATAdevice(ata_secondary_slave,1);
-        // dan de rest
-	detectATAdevice(ata_primairy_master,0);
-        detectATAdevice(ata_primairy_slave,0);
-        detectATAdevice(ata_secondary_master,0);
-        detectATAdevice(ata_secondary_slave,0);
+	readyop = 1;
+	detectATAdevice(ata_primairy_master);
+        detectATAdevice(ata_primairy_slave);
+        detectATAdevice(ata_secondary_master);
+        detectATAdevice(ata_secondary_slave);
+	readyop = 2;
+	detectATAdevice(ata_primairy_master);
+        detectATAdevice(ata_primairy_slave);
+        detectATAdevice(ata_secondary_master);
+        detectATAdevice(ata_secondary_slave);
 }
