@@ -18,6 +18,9 @@ void *elf_lookup_symbol(char* a){
 	if(strcmp(a,"malloc")==0){
 		return malloc;
 	}
+	if(strcmp(a,"installBlockDevice")==0){
+		return installBlockDevice;
+	}
 	return NULL;
 }
 

@@ -44,6 +44,7 @@ typedef struct fatfile{
 	unsigned long filesize;
 }__attribute__((packed)) FATFile;
 
+unsigned char* devname = (unsigned char*) "HDD1";
 
 void main(ata_device *dxv){
 	dev.io_base = dxv->io_base;
@@ -77,6 +78,7 @@ void main(ata_device *dxv){
 				break;
 		}
 	}
+	installBlockDevice(loadHDDSector,NULL,512,devname);
 }
 
 

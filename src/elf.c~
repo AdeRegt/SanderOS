@@ -16,7 +16,7 @@ void *elf_lookup_symbol(char* a){
 		return insw;
 	}
 	if(strcmp(a,"malloc")==0){
-		return insw;
+		return malloc;
 	}
 	return NULL;
 }
