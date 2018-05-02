@@ -1,6 +1,7 @@
 #include <system.h>
 void loadHDDSector(char* location,long LBA,long count);
 ata_device dev;
+
 void main(ata_device *dxv){
 	dev.io_base = dxv->io_base;
 	printf("Hello small world at IOBase %x!",dev->io_base);
