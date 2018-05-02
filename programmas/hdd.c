@@ -41,6 +41,7 @@ void main(ata_device *dxv){
 	FAT16Boot *boot = (FAT16Boot *)mx;
 	printf("oemident: %s \n",boot->oemident);
 	printf("volumelabelstring: %s \n",boot->volumelabelstring);
+	printf("sizeofstruct: %i \n",sizeof(FAT16Boot));
 }
 
 

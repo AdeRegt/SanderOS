@@ -40,6 +40,7 @@ void main(ata_device *dxv){
 	loadHDDSector(mx,X,1);
 	FAT16Boot *boot = (FAT16Boot *)mx;
 	printf("oemident: %s \n",boot->oemident);
+	printf("volumelabelstring: %s \n",boot->volumelabelstring);
 }
 
 
