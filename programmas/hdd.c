@@ -65,7 +65,7 @@ void main(ata_device *dxv){
 	printf("FIRST DATA SECTOR: %x \n",first_data_sector);
 	printf("FIRST ROOT DIR SECTOR: %x \n",first_root_dir_sector);
 	printf("VOLUMELABEL: %s",fat_boot->volume_label);
-	printf("FATDIR: %i \n",sizeof(fatdir));
+	printf("FATDIR: %x \n",sizeof(fatdir));
 }
 
 
