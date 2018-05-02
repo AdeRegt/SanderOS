@@ -5,7 +5,10 @@ ata_device dev;
 void main(ata_device *dxv){
 	dev.io_base = dxv->io_base;
 	printf("Hello small world at IOBase %x!",dev.io_base);
-	loadHDDSector((char*)0x5000,1,1);
+	loadHDDSector((char*)0x5000,0,1);
+	for(int i = 0 ; i < 512 ; i++){
+		printf("%x ",((char*)0x5000)[i]);
+	}
 	printf("Locatie op %x \n",((char*)0x5000)[511]);
 }
 
