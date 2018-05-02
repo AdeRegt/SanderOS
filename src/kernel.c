@@ -28,12 +28,9 @@ void kernel_main(){
 	}
 	setupIDT();
 	detectDevices();
-	//cls();
 	initialiseKeyboard();
-	printf("LOADING FINISHED!\n");
+	printf("\n\nLOADING FINISHED!\n");
 	devdump();
-	//acpiEnable();
-	//acpiPowerOff();
 	for(;;);
 }
 
