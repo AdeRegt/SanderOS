@@ -1,7 +1,7 @@
 #include <system.h>
 
 
-void insmod(const char* path){
+void insmod(const char* path,void* arguments){
 	printf("--INSMOD--\n");
 	printf("  -> loading file\n");
 	unsigned char* msx = readCDROM(path);
@@ -11,8 +11,8 @@ void insmod(const char* path){
 		printf("\n  -> insmod returned error!\n");
 	}else{
 		printf("  -> calling file at %x \n",location);
-		void (*foo)(void) = location;
-		foo();
+		void (*foo)(void*) = location;
+		foo(arguments);
 		printf("\n  -> insmod returned succesfully!\n");
 	}
 }
