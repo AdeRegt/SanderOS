@@ -90,7 +90,10 @@ void putc(const char a){
 			curX = 0;
 		}
 		if(curY==SCREEN_MAX_Y){
-			memcpy(videomemory,videomemory+((SCREEN_MAX_X*2)*24),((SCREEN_MAX_X*2)*24));
+			for(int i = (SCREEN_MAX_X*2) ; i < (SCREEN_MAX_X*2)*SCREEN_MAX_Y ; i++){
+				videomemory[i-(SCREEN_MAX_X*2)] = videomemory[i];
+				videomemory[i] = 0x00; 
+			}
 			curY = 24;
 			curX = 0;
 		}
