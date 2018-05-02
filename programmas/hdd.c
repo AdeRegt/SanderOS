@@ -1,6 +1,33 @@
 #include <system.h>
 void loadHDDSector(char* location,long LBA,long count);
 ata_device dev;
+FAT16Boot block;
+
+typedef struct{
+	unsigned char jmper[3];
+	unsigned char oemident[8];
+	unsigned short bytespersector;
+	unsigned char sectorspercluster;
+	unsigned short reservedsectors;
+	unsigned char numberoffat;
+	unsigned short direntries;
+	unsigned short totalsectors;
+	unsigned char mediadesc;
+	unsigned short numberperfat;
+	unsigned short sectorspertrac;
+	unsigned short heads;
+	unsigned long hidden;
+	unsigned long sectormedia;
+	unsigned char drivenum;
+	unsigned char flags
+	unsigned char signature;
+	unsigned long volumeid;
+	unsigned char volumelabelstring[11];
+	unsigned char systemidentstring[8];
+	unsigned char bootcode[448];
+	unsigned char bootcodeA;
+	unsigned char bootcodeB;
+}FAT16Boot;
 
 void main(ata_device *dxv){
 	dev.io_base = dxv->io_base;
@@ -11,9 +38,8 @@ void main(ata_device *dxv){
 	unsigned long X = ((unsigned long*)(mx+8+0x01BE))[0];
 	printf("Partition1: %x \n",X);
 	loadHDDSector(mx,X,1);
-	for(int i = 0 ; i < 512 ; i++){
-		printf("%c",((char*)mx)[i]);
-	}
+	FAT16Boot boot = (FAT16Boot *)mx;
+	printf("volumelabelstring: %s \n",boot.volumelabelstring);
 }
 
 
