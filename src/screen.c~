@@ -89,6 +89,11 @@ void putc(const char a){
 			curY++;
 			curX = 0;
 		}
+		if(curY==SCREEN_MAX_Y){
+			memcpy(videomemory,videomemory+((SCREEN_MAX_X*2)*24),((SCREEN_MAX_X*2)*24));
+			curY = 24;
+			curX = 0;
+		}
 	}
 }
 
