@@ -121,6 +121,13 @@ void keyboard_int(){
 //		}
 	}
 	((unsigned char*)0xb8000)[0]=((deze & 0b00000001)>0?'1':'0');
+	((unsigned char*)0xb8002)[0]=((deze & 0b00000010)>0?'1':'0');
+	((unsigned char*)0xb8004)[0]=((deze & 0b00000100)>0?'1':'0');
+	((unsigned char*)0xb8006)[0]=((deze & 0b00001000)>0?'1':'0');
+	((unsigned char*)0xb8008)[0]=((deze & 0b00010000)>0?'1':'0');
+	((unsigned char*)0xb800a)[0]=((deze & 0b00100000)>0?'1':'0');
+	((unsigned char*)0xb800c)[0]=((deze & 0b01000000)>0?'1':'0');
+	((unsigned char*)0xb800e)[0]=((deze & 0b10000000)>0?'1':'0');
 }
 
 extern void irq_keyboard();
