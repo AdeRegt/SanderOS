@@ -39,6 +39,45 @@ unsigned char kbdus[128] ={
     0,  /* All other keys are undefined */
 };
 
+unsigned char kbshf[128] ={
+    0,  27, '!', '@', '#', '€', '%', '^', '&', '*',     /* 9 */
+  '(', ')', '_', '+', '\b',     /* Backspace */
+  '\t',                 /* Tab */
+  'Q', 'W', 'E', 'R',   /* 19 */
+  'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '\n', /* Enter key */
+    0,                  /* 29   - Control */
+  'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':',     /* 39 */
+ '"', '`',   0xbf,                /* Left shift */
+ '\\', 'Z', 'X', 'C', 'V', 'B', 'N',                    /* 49 */
+  'M', ',', '.', '/',   0xbf,                              /* Right shift */
+  '*',
+    0,  /* Alt */
+  ' ',  /* Space bar */
+    0,  /* Caps lock */
+    0,  /* 59 - F1 key ... > */
+    0,   0,   0,   0,   0,   0,   0,   0,
+    0,  /* < ... F10 */
+    0,  /* 69 - Num lock*/
+    0,  /* Scroll Lock */
+    0,  /* Home key */
+    2,  /* Up Arrow */
+    0,  /* Page Up */
+  '-',
+    0,  /* Left Arrow */
+    0,
+    0,  /* Right Arrow */
+  '+',
+    0,  /* 79 - End key*/
+    1,  /* Down Arrow */
+    0,  /* Page Down */
+    0,  /* Insert Key */
+    0,  /* Delete Key */
+    0,   0,   0,
+    0,  /* F11 Key */
+    0xbe,       /* F12 Key */
+    0,  /* All other keys are undefined */
+};
+
 void keyboard_send_cmd(char val){
         outportb(0x60,val);
 }
@@ -53,6 +92,7 @@ void keyboard_send_and_get_response_cmd(char val){
         keyboard_wait_for_ACK();
 }
 
+char shiftisin = 0x00;
 void keyboard_int(){
 	unsigned char deze = inportb(0x60);
 	if(deze & 0x80){
@@ -60,11 +100,20 @@ void keyboard_int(){
 //			printf("__SHIFT__");
 //		}else{
 			unsigned char realchar = deze-0x80;
-			unsigned char karakter = kbdus[realchar];
+			unsigned char karakter = 0x00;
+			if(shiftisin==0x01){
+				karakter = kbshf[realchar];
+			}else{
+				karakter = kbdus[realchar];
+			}
 			if(karakter==0xbe){
 				printf("F12 press detected!\n");
 			}else if(karakter==0xbf){
-				printf("__SHIFT__");
+				if(shiftisin==0x01){
+					shiftisin = 0x00;
+				}else{
+					shiftisin = 0x01;
+				}
 			}else{ 
 				printf("%c",karakter);
 			}
