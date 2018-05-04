@@ -70,5 +70,4 @@ extern void irq_keyboard();
 void initialiseKeyboard(){
 	setInterrupt(32+1, (unsigned long) &irq_keyboard);
 	keyboard_send_cmd(0xF4);
-	keyboard_wait_for_ACK();
 }
