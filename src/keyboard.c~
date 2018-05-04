@@ -128,6 +128,14 @@ void keyboard_int(){
 	((unsigned char*)0xb800a)[0]=((deze & 0b00100000)>0?'1':'0');
 	((unsigned char*)0xb800c)[0]=((deze & 0b01000000)>0?'1':'0');
 	((unsigned char*)0xb800e)[0]=((deze & 0b10000000)>0?'1':'0');
+	((unsigned char*)0xb8010)[0]=((thes & 0b00000001)>0?'1':'0');
+	((unsigned char*)0xb8012)[0]=((thes & 0b00000010)>0?'1':'0');
+	((unsigned char*)0xb8014)[0]=((thes & 0b00000100)>0?'1':'0');
+	((unsigned char*)0xb8016)[0]=((thes & 0b00001000)>0?'1':'0');
+	((unsigned char*)0xb8018)[0]=((thes & 0b00010000)>0?'1':'0');
+	((unsigned char*)0xb801a)[0]=((thes & 0b00100000)>0?'1':'0');
+	((unsigned char*)0xb801c)[0]=((thes & 0b01000000)>0?'1':'0');
+	((unsigned char*)0xb801e)[0]=((thes & 0b10000000)>0?'1':'0');
 }
 
 extern void irq_keyboard();
