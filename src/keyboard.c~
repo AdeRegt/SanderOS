@@ -59,7 +59,9 @@ void keyboard_int(){
 //		if(deze & 0x20){
 //			printf("__SHIFT__");
 //		}else{
-			unsigned char karakter = kbdus[deze-0x80];
+			unsigned char realchar = deze-0x80;
+			if(realchar==0xaa){printf("__SHIFT__");}
+			unsigned char karakter = kbdus[realchar];
 			if(karakter==0xbe){
 				printf("F12 press detected!\n");
 			}else{ 
