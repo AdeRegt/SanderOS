@@ -109,6 +109,7 @@ void keyboard_int(){
 			if(karakter==0xbe){
 				printf("F12 press detected!\n");
 			}else if(karakter==0xbf){
+				printf("SHIFT");
 				if(shiftisin==0x01){
 					shiftisin = 0x00;
 				}else{
