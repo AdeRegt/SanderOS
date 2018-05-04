@@ -120,6 +120,7 @@ void keyboard_int(){
 			}
 //		}
 	}
+	((unsigned char*)0xb8000)[0]=((deze & 0b00000001)>0?'1':'0');
 }
 
 extern void irq_keyboard();
