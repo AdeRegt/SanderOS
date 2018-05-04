@@ -8,9 +8,9 @@ unsigned char kbdus[128] ={
   't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\n', /* Enter key */
     0,                  /* 29   - Control */
   'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';',     /* 39 */
- '\'', '`',   0,                /* Left shift */
+ '\'', '`',   0xbf,                /* Left shift */
  '\\', 'z', 'x', 'c', 'v', 'b', 'n',                    /* 49 */
-  'm', ',', '.', '/',   0,                              /* Right shift */
+  'm', ',', '.', '/',   0xbf,                              /* Right shift */
   '*',
     0,  /* Alt */
   ' ',  /* Space bar */
@@ -60,10 +60,11 @@ void keyboard_int(){
 //			printf("__SHIFT__");
 //		}else{
 			unsigned char realchar = deze-0x80;
-			if(realchar==42){printf("__SHIFT__");}
 			unsigned char karakter = kbdus[realchar];
 			if(karakter==0xbe){
 				printf("F12 press detected!\n");
+			}else if(karakter==0xbf){
+				printf("__SHIFT__");
 			}else{ 
 				printf("%c",karakter);
 			}

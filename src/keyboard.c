@@ -69,8 +69,6 @@ void keyboard_int(){
 				printf("%c",karakter);
 			}
 //		}
-	}else if(deze & 0x20){
-		printf("__SHIFT__");
 	}
 }
 
