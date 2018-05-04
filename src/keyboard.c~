@@ -109,16 +109,13 @@ void keyboard_int(){
 			if(karakter==0xbe){
 				printf("F12 press detected!\n");
 			}else if(karakter==0xbf){
-				printf("SHIFT");
-				if(shiftisin==0x01){
-					shiftisin = 0x00;
-				}else{
-					shiftisin = 0x01;
-				}
+				shiftisin = 0x00;
 			}else{ 
 				printf("%c",karakter);
 			}
 //		}
+	}else if(kbdus[deze]==0xbe){
+		shiftisin = 0x01;
 	}
 	unsigned char thes = 0x00;
 	((unsigned char*)0xb8000)[0]=((deze & 0b00000001)>0?'1':'0');

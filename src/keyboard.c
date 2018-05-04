@@ -114,7 +114,7 @@ void keyboard_int(){
 				printf("%c",karakter);
 			}
 //		}
-	}else if(kbdus[deze]==0xbe){
+	}else if(deze == 42 || deze == 54){
 		shiftisin = 0x01;
 	}
 	unsigned char thes = 0x00;
