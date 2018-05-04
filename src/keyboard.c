@@ -120,7 +120,7 @@ void keyboard_int(){
 			}
 //		}
 	}
-	unsigned char thes = 0x80 & 0x80;
+	unsigned char thes = 0x00;
 	((unsigned char*)0xb8000)[0]=((deze & 0b00000001)>0?'1':'0');
 	((unsigned char*)0xb8002)[0]=((deze & 0b00000010)>0?'1':'0');
 	((unsigned char*)0xb8004)[0]=((deze & 0b00000100)>0?'1':'0');
