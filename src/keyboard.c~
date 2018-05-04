@@ -56,11 +56,15 @@ void keyboard_send_and_get_response_cmd(char val){
 void keyboard_int(){
 	unsigned char deze = inportb(0x60);
 	if(deze & 0x80){
-		unsigned char karakter = kbdus[deze-0x80];
-		if(karakter==0xbe){
-			printf("F12 press detected!\n");
-		}else{ 
-			printf("%c",karakter);
+		if(deze & 0x20){
+			printf("__SHIFT__");
+		}else{
+			unsigned char karakter = kbdus[deze-0x80];
+			if(karakter==0xbe){
+				printf("F12 press detected!\n");
+			}else{ 
+				printf("%c",karakter);
+			}
 		}
 	}
 }
