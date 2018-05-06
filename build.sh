@@ -77,3 +77,11 @@ echo ""
 git add --all .
 git commit -a -m "auto"
 git push origin master
+
+
+
+echo "========================="
+echo "FINISHED"
+echo "-------------------------"
+echo ""
+echo ""
