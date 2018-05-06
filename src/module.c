@@ -1,7 +1,7 @@
 #include <system.h>
 
 
-void insmod(const char* path,void* arguments){
+void insmod(unsigned char* path,void* arguments){
 	printf("--INSMOD--\n");
 	printf("  -> loading file\n");
 	unsigned char* msx = readCDROM(path);
