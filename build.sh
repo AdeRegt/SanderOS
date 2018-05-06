@@ -7,7 +7,7 @@ echo "BUILDING KERNELMODULES"
 echo "-------------------------"
 echo ""
 echo ""
-cc -c programmas/hdd.c -o programmas/hdd.skm -std=gnu99 -m32 -mtune=i386 -Isrc/include
+cc -c programmas/hdd.c -o programmas/hdd.skm -std=gnu99 -ffreestanding -m32 -mtune=i386 -Isrc/include
 
 
 echo "========================="
