@@ -219,5 +219,5 @@ void update_cursor(unsigned int x, unsigned int y){
 	outportb(0x3D4, 0x0F);
 	outportb(0x3D5, (unsigned short) (pos & 0xFF));
 	outportb(0x3D4, 0x0E);
-	outportb(0x3D5, (unsigned short ((pos >> 8) & 0xFF)));
+	outportb(0x3D5, (unsigned short) ((pos >> 8) & 0xFF));
 }
