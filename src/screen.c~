@@ -98,6 +98,7 @@ void putc(const char a){
 			curX = 0;
 		}
 	}
+	update_cursor(curX,curY);
 }
 
 char nib2col(char a){
