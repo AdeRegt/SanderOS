@@ -200,6 +200,6 @@ void initCDROM(){
 		}
 		i = i + 8 + lengthofdirident;
 	}
-	int dev = installBlockDevice(&readRawCDROM,NULL,ATAPI_SECTOR_SIZE,dvnme);
+	int dev = installBlockDevice((unsigned long)&readRawCDROM,NULL,ATAPI_SECTOR_SIZE,dvnme);
 	installFileSystem((unsigned long)&readCDROM,NULL,dev,fsnme);
 }
