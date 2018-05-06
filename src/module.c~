@@ -14,7 +14,7 @@ void insmod(const char* path,void* arguments){
 			printf("\n  -> insmod returned error!\n");
 		}else{
 			printf("  -> calling file at %x \n",location);
-			void (*foo)(void*) = (unsigned long)location;
+			void (*foo)(void*) = (void*)location;
 			foo(arguments);
 			printf("\n  -> insmod returned succesfully!\n");
 		}
