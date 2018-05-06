@@ -58,7 +58,22 @@ if grub-file --is-x86-multiboot myos.bin; then
 else
   echo the file is not multiboot
 fi
+
+
+echo "========================="
+echo "CLEANUP"
+echo "-------------------------"
+echo ""
+echo ""
 rm -r build
+
+
+
+echo "========================="
+echo "PUSH TO GIT"
+echo "-------------------------"
+echo ""
+echo ""
 git add --all .
 git commit -a -m "auto"
 git push origin master

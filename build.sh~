@@ -34,14 +34,26 @@ cc -c src/memory.c -o build/memory.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -W
 cc -c src/filesystem.c -o build/filesystem.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 ld -n -T src/linker.ld -o myos.bin -O2 -nostdlib build/boot.o build/kernel.o build/ata.o build/keyboard.o build/pci.o build/atapi.o build/idt.o build/interrupt.o build/screen.o build/ports.o build/iso.o build/elf.o build/module.o build/memory.o build/filesystem.o -m elf_i386
 if grub-file --is-x86-multiboot myos.bin; then
-  	echo multiboot confirmed
+  	
+
+	echo "========================="
+	echo "CREATING ISO"
+	echo "-------------------------"
+	echo ""
+	echo ""
 	mkdir -p isodir/boot/grub
 	cp myos.bin isodir/boot/myos.bin
 	cp src/grub.cfg isodir/boot/grub/grub.cfg
-	#cc -c programmas/test.c -o programmas/test.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386
-	#cc -c programmas/*.c -o programmas/ -std=gnu99 -m32 -mtune=i386
 	cp programmas/hdd.skm -a isodir/modules/hdd.skm
 	grub-mkrescue -o myos.iso isodir
+	
+	
+
+	echo "========================="
+	echo "STARTING EMULATOR"
+	echo "-------------------------"
+	echo ""
+	echo ""
 	qemu-system-i386 -cdrom myos.iso
 else
   echo the file is not multiboot
