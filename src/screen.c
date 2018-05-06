@@ -98,6 +98,7 @@ void putc(const char a){
 			curX = 0;
 		}
 	}
+	update_cursor(curX,curY);
 }
 
 char nib2col(char a){
@@ -198,4 +199,25 @@ void printf(const char* format,...){
 			putc(deze);
 		}
 	}
+}
+
+void enable_cursor(unsigned char cursor_start, unsigned char cursor_end){
+	outportb(0x3D4, 0x0A);
+	outportb(0x3D5, (inportb(0x3D5) & 0xC0) | cursor_start);
+	outportb(0x3D4, 0x0B);
+	outportb(0x3D5, (inportb(0x3E0) & 0xE0) | cursor_end);
+}
+
+void disable_cursor(){
+	outportb(0x3D4, 0x0A);
+	outportb(0x3D5, 0x20);
+}
+
+void update_cursor(unsigned int x, unsigned int y){
+	unsigned short pos = y * SCREEN_MAX_X + x;
+ 
+	outportb(0x3D4, 0x0F);
+	outportb(0x3D5, (unsigned short) (pos & 0xFF));
+	outportb(0x3D4, 0x0E);
+	outportb(0x3D5, (unsigned short ((pos >> 8) & 0xFF));
 }

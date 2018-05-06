@@ -247,3 +247,7 @@ typedef struct {
 	unsigned int device;
 	unsigned char name[5];
 } FileSystem;
+
+void enable_cursor(unsigned char cursor_start, unsigned char cursor_end);
+void disable_cursor();
+void update_cursor(unsigned int x, unsigned int y);

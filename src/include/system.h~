@@ -211,7 +211,7 @@ typedef struct {
 	Elf32_Half		st_shndx;
 } Elf32_Sym;
 
-void *elf_lookup_symbol(char* a);
+void *elf_lookup_symbol(const char* a);
 bool elf_check_file(Elf32_Ehdr *hdr);
 bool elf_check_supported(Elf32_Ehdr *hdr);
  void *elf_load_rel(Elf32_Ehdr *hdr);
@@ -247,3 +247,7 @@ typedef struct {
 	unsigned int device;
 	unsigned char name[5];
 } FileSystem;
+
+void enable_cursor(unsigned char cursor_start, unsigned char cursor_end);
+void disable_cursor();
+
