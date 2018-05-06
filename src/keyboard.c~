@@ -96,44 +96,23 @@ char shiftisin = 0x00;
 void keyboard_int(){
 	unsigned char deze = inportb(0x60);
 	if(deze & 0x80){
-//		if(deze & 0x20){
-//			printf("__SHIFT__");
-//		}else{
-			unsigned char realchar = deze-0x80;
-			unsigned char karakter = 0x00;
-			if(shiftisin==0x01){
-				karakter = kbshf[realchar];
-			}else{
-				karakter = kbdus[realchar];
-			}
-			if(karakter==0xbe){
-				printf("F12 press detected!\n");
-			}else if(karakter==0xbf){
-				shiftisin = 0x00;
-			}else{ 
-				printf("%c",karakter);
-			}
-//		}
+		unsigned char realchar = deze-0x80;
+		unsigned char karakter = 0x00;
+		if(shiftisin==0x01){
+			karakter = kbshf[realchar];
+		}else{
+			karakter = kbdus[realchar];
+		}
+		if(karakter==0xbe){
+			printf("F12 press detected!\n");
+		}else if(karakter==0xbf){
+			shiftisin = 0x00;
+		}else{ 
+			printf("%c",karakter);
+		}
 	}else if(deze == 42 || deze == 54){
 		shiftisin = 0x01;
 	}
-	unsigned char thes = 0x00;
-	((unsigned char*)0xb8000)[0]=((deze & 0b00000001)>0?'1':'0');
-	((unsigned char*)0xb8002)[0]=((deze & 0b00000010)>0?'1':'0');
-	((unsigned char*)0xb8004)[0]=((deze & 0b00000100)>0?'1':'0');
-	((unsigned char*)0xb8006)[0]=((deze & 0b00001000)>0?'1':'0');
-	((unsigned char*)0xb8008)[0]=((deze & 0b00010000)>0?'1':'0');
-	((unsigned char*)0xb800a)[0]=((deze & 0b00100000)>0?'1':'0');
-	((unsigned char*)0xb800c)[0]=((deze & 0b01000000)>0?'1':'0');
-	((unsigned char*)0xb800e)[0]=((deze & 0b10000000)>0?'1':'0');
-	((unsigned char*)0xb8010)[0]=((thes & 0b00000001)>0?'1':'0');
-	((unsigned char*)0xb8012)[0]=((thes & 0b00000010)>0?'1':'0');
-	((unsigned char*)0xb8014)[0]=((thes & 0b00000100)>0?'1':'0');
-	((unsigned char*)0xb8016)[0]=((thes & 0b00001000)>0?'1':'0');
-	((unsigned char*)0xb8018)[0]=((thes & 0b00010000)>0?'1':'0');
-	((unsigned char*)0xb801a)[0]=((thes & 0b00100000)>0?'1':'0');
-	((unsigned char*)0xb801c)[0]=((thes & 0b01000000)>0?'1':'0');
-	((unsigned char*)0xb801e)[0]=((thes & 0b10000000)>0?'1':'0');
 }
 
 extern void irq_keyboard();
