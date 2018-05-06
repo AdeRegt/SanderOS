@@ -29,7 +29,7 @@ unsigned short getS(short a){
 
 
 
-unsigned char* readCDROM(char* path){
+unsigned char* readCDROM(unsigned char* path){
 	printf("CDROM: Now reading %s \n",path);
 	// bestandspad opspliten
 	unsigned int cunt = 1;
