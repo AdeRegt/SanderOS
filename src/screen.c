@@ -139,6 +139,16 @@ void printf(const char* format,...){
 				char* y = itoa(c,x,16);
 				puts("0x");
 				puts(y);
+			}else if(deze=='d'){
+				char deze = (char) va_arg(parameters,char);
+				putc((deze & 0b10000000)>0?'1':'0');
+				putc((deze & 0b01000000)>0?'1':'0');
+				putc((deze & 0b00100000)>0?'1':'0');
+				putc((deze & 0b00010000)>0?'1':'0');
+				putc((deze & 0b00001000)>0?'1':'0');
+				putc((deze & 0b00000100)>0?'1':'0');
+				putc((deze & 0b00000010)>0?'1':'0');
+				putc((deze & 0b00000001)>0?'1':'0');
 			}
 		}else{
 			if(deze=='\['){

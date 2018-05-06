@@ -81,7 +81,7 @@ void putc(const char a){
 		videopointer--;
 		curX--;
 	}else{
-		if(curY==SCREEN_MAX_Y){
+		if(curY>=SCREEN_MAX_Y){
 			for(int i = (SCREEN_MAX_X*2) ; i < (SCREEN_MAX_X*2)*SCREEN_MAX_Y ; i++){
 				videomemory[i-(SCREEN_MAX_X*2)] = videomemory[i];
 				videomemory[i] = 0x00; 
@@ -139,6 +139,9 @@ void printf(const char* format,...){
 				char* y = itoa(c,x,16);
 				puts("0x");
 				puts(y);
+			}else if(deze=='d'){
+				char deze = (char) va_arg(parameters,char);
+				
 			}
 		}else{
 			if(deze=='\['){
