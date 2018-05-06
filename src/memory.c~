@@ -8,7 +8,7 @@ int strlen(const char* str) {
 	return len;
 }
 
-int strcmp(char* A,char* B){
+int strcmp(unsigned char* A,unsigned char* B){
 	int C = strlen(A);
 	int D = strlen(B);
 	if(C==D){
