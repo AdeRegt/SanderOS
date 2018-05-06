@@ -75,7 +75,7 @@ typedef struct {
 void setup_mouse();
 
 int strlen(const char* A);
-int strcmp(char* A,char* B);
+int strcmp(unsigned char* A,unsigned char* B);
 void* memset(void* bufptr, int value, int size);
 void* malloc(unsigned long t);
 void* memcpy(void* restrict dstptr, const void* restrict srcptr, int size);

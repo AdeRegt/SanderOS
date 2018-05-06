@@ -224,7 +224,7 @@ int elf_get_symval(Elf32_Ehdr *hdr, int table, unsigned int idx);
 int elf_load_stage1(Elf32_Ehdr *hdr);
 int elf_load_stage2(Elf32_Ehdr *hdr);
 int elf_do_reloc(Elf32_Ehdr *hdr, Elf32_Rel *rel, Elf32_Shdr *reltab);
-void insmod(const char* path,void arguments);
+void insmod(const char* path,void* arguments);
 
 //
 // FILESYSTEMCONTROL
