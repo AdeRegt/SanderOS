@@ -35,6 +35,12 @@ void setInterrupt(int i, unsigned long base) {
     idt[i].flags = 0x8E;
 }
 
+void halt(){
+	asm volatile("cli");
+	printf(">>>>KERNELPANIC<<<<<");
+	asm volatile("hlt");
+}
+
 
 /**
  * Let the CPU know where the idt is
@@ -56,7 +62,12 @@ void setupIDT() {
     for (i = 0; i < IDT_SIZE; i++) {
         setInterrupt(i, (unsigned long) &irq_defaulte);
     }
+    for(i = 0 ; i < 32 ; i++){
+    	setInterrupt(i,halt);
+    }
     idtp.limit = (sizeof (struct idt_entry) * IDT_SIZE) - 1;
     idtp.base = (unsigned int) &idt;
     asm volatile("lidt idtp\nsti");
+    i = 0;
+    i = i / 10;
 }
