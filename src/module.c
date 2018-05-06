@@ -5,7 +5,7 @@ void insmod(const char* path,void* arguments){
 	printf("--INSMOD--\n");
 	printf("  -> loading file\n");
 	unsigned char* msx = readCDROM(path);
-	if(strcmp(msx,"ERROR")==0){
+	if(strcmp(msx,(unsigned char*)"ERROR")==0){
 		printf(" -> Unable to locate kernelmodule\n");
 	}else{
 		printf("  -> parsing file\n");

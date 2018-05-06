@@ -9,7 +9,7 @@ void insmod(const char* path,void* arguments){
 		printf(" -> Unable to locate kernelmodule\n");
 	}else{
 		printf("  -> parsing file\n");
-		unsigned long location = elf_load_file(msx);
+		void* location = elf_load_file(msx);
 		if(location==NULL){
 			printf("\n  -> insmod returned error!\n");
 		}else{
