@@ -2,7 +2,7 @@
 
 unsigned long mainmethodurl;
 
-void *elf_lookup_symbol(char* a){
+void *elf_lookup_symbol(const char* a){
 	if(strcmp(a,"printf")==0){
 		return printf;
 	}

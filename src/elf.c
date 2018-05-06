@@ -102,7 +102,7 @@ void *elf_load_file(void *file) {
 			return NULL;
 		case ET_REL:
 			elf_load_rel(hdr);
-			return mainmethodurl;
+			return (void*)mainmethodurl;
 	}
 	return NULL;
 }
