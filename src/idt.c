@@ -37,6 +37,7 @@ void setInterrupt(int i, unsigned long base) {
 
 void halt(){
 	asm volatile("cli");
+	cls();
 	printf(">>>>KERNELPANIC<<<<<");
 	asm volatile("hlt");
 }
