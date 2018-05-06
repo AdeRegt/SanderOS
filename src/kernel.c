@@ -29,7 +29,7 @@ void kernel_main(){
 	setupIDT();
 	detectDevices();
 	initialiseKeyboard();
-	//printf("\n\nLOADING FINISHED!\n");
+	cls();
 	devdump();
 	for(;;);
 }

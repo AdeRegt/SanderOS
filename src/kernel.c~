@@ -30,7 +30,7 @@ void kernel_main(){
 	detectDevices();
 	initialiseKeyboard();
 	//printf("\n\nLOADING FINISHED!\n");
-	//devdump();
+	devdump();
 	for(;;);
 }
 
