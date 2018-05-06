@@ -78,7 +78,7 @@ void main(ata_device *dxv){
 				break;
 		}
 	}
-	installBlockDevice(loadHDDSector,NULL,512,devname);
+	installBlockDevice((unsigned long)&loadHDDSector,NULL,512,devname);
 }
 
 
