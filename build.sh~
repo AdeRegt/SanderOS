@@ -1,6 +1,6 @@
 mkdir build
 
-cc -c programmas/hdd.c -o programmas/hdd.skm -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
+cc -c programmas/hdd.c -o programmas/hdd.skm -std=gnu99 -m32 -mtune=i386 -Isrc/include
 
 nasm -felf32 src/boot.asm -o build/boot.o
 nasm -felf32 src/interrupt.asm -o build/interrupt.o
