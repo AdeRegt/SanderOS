@@ -30,6 +30,9 @@ void *elf_lookup_symbol(const char* a){
 	if(strcmp((unsigned char*)a,(unsigned char*)"getc")==0){
 		return getc;
 	}
+	if(strcmp((unsigned char*)a,(unsigned char*)"exec")==0){
+		return exec;
+	}
 	return NULL;
 }
 
