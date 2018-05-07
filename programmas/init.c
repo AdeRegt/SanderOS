@@ -10,8 +10,8 @@ void main(){
 	printf("\[49m\[37mActuele map: %s (TAB: niveau omhoog) \[40m\[37m\n",filepath);
 	data = (unsigned char*)fopen(filepath);
 	if(data[1]=='E'&&data[2]=='L'&&data[3]=='F'){
-		printf("THIS IS AN EXECUTABLE!!!");
-		getc();
+		cls();
+		exec(filepath,"svm");
 	}
 	int innerpointer = 0;
 	int ont = 0;

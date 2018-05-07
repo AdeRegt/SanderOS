@@ -27,6 +27,9 @@ void *elf_lookup_symbol(const char* a){
 	if(strcmp((unsigned char*)a,(unsigned char*)"cls")==0){
 		return cls;
 	}
+	if(strcmp((unsigned char*)a,(unsigned char*)"getc")==0){
+		return getc;
+	}
 	return NULL;
 }
 
