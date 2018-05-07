@@ -93,7 +93,7 @@ void keyboard_send_and_get_response_cmd(char val){
 }
 
 char shiftisin = 0x00;
-static unsigned char pressedkey = '?';
+static unsigned char pressedkey = 0x00;
 void keyboard_int(){
 	unsigned char deze = inportb(0x60);
 	if(deze & 0x80){
@@ -120,6 +120,7 @@ void keyboard_int(){
 }
 
 unsigned char getc(){
+	while(pressedkey==0x00){}
 	return pressedkey;
 }
 
