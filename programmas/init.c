@@ -70,7 +70,7 @@ void main(){
 	}else if(type=='\t'){
 		int cnt = 1;
 		for(int i = 0 ; i < 50 ; i++){
-			unsigned char e = filepath[50-i];
+			unsigned char e = filepath[49-i];
 			if(e=='/'){
 				filepath[50-i] = 0x00;
 				break;
