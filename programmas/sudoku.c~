@@ -1,6 +1,6 @@
 #include <system.h>
 
-void main(){
+void main(unsigned char* X){
 	printf("OKAY");
 	for(;;);
 }

@@ -31,7 +31,7 @@ void* loadExecutable(unsigned char* path){
 	}
 }
 
-int exec(unsigned char* path,void* arguments){
+int exec(unsigned char* path){
 	printf("--EXEC--\n");
 	printf("  -> loading file\n");
 	unsigned char* msx = readCDROM(path);
@@ -46,8 +46,9 @@ int exec(unsigned char* path,void* arguments){
 			return 2;
 		}else{
 			printf("  -> calling file at %x \n",location);
-			int (*foo)(void*) = (void*)location;
-			return foo(arguments);
+			void (*foo)(void*) = (void*)location;
+			foo();
+			return 0;
 		}
 	}
 }
