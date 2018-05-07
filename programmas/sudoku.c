@@ -2,5 +2,5 @@
 
 void main(){
 	printf("OKAY");
-	for(;;);
+	while(1){};
 }
