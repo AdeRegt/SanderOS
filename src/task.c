@@ -12,7 +12,7 @@ Task tasks[12];
 void initTasking() {
     // Get EFLAGS and CR3
     register long counter asm("esp");
-    createTask(0,counter);
+    createTask(0,(void*)counter);
     tpoint = 0;
 }
 
