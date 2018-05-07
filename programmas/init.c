@@ -3,7 +3,7 @@
 void main(){
 	again:
 	cls();
-	printf("\[45mSelecteer het gewenste programma met de pijltjestoetsen  - SanderOS         ");
+	printf("\[45mSelecteer het gewenste programma met ENTER en beweeg met pijltjes - SanderOS ");
 	unsigned char* data = fopen("/isofs/");
 	int innerpointer = 0;
 	while(1){
