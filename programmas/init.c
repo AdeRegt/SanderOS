@@ -11,7 +11,7 @@ void main(){
 	data = (unsigned char*)fopen(filepath);
 	if(data[1]=='E'&&data[2]=='L'&&data[3]=='F'){
 		cls();
-		exec(filepath,"svm");
+		exec((unsigned char*)&filepath[5],"svm");
 	}
 	int innerpointer = 0;
 	int ont = 0;
