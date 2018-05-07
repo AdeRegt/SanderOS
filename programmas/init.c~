@@ -60,6 +60,7 @@ void main(){
 							filepath[i+(pntC++)] = deze;
 						}
 					}
+					filepath[i+(pntC++)] = 0x00;
 					break;
 				}
 			}
