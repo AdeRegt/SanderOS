@@ -38,7 +38,7 @@ unsigned char* fopen(unsigned char* path){
 		for(int g = 0 ; g < 5 ; g++){
 			unsigned char A = path[1+g];
 			unsigned char B = filesystems[i].name[g];
-			printf("%c - %c \n",A,B);
+			//printf("%c - %c \n",A,B);
 			if(A!=B){
 				targz = 0;
 			}
@@ -49,7 +49,9 @@ unsigned char* fopen(unsigned char* path){
 	}
 	return FAILSTRING;
 	cltx:
-	return OKESTRING;
+	unsigned long location = blockdevices[filesystems[i].device].read;
+	unsigned char* (*foo)(void*) = (void*)location;
+	return foo((unsigned char*)&path[6]);
 }
 
 void devdump(){
