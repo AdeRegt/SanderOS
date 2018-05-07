@@ -25,5 +25,6 @@ void main(){
 	}
 	printf("\[44mSelecteer het gewenste programma met ENTER en beweeg met pijltjestoetsen        ");
 	printf("%c",getc());
+	printf("END");
 	for(;;);
 }
