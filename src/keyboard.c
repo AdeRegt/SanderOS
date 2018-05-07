@@ -126,7 +126,7 @@ unsigned char getc(){
 		if(deze!=0x00){
 			break;
 		}
-		((unsigned char*)0xb8000)[0] = deze;
+		((unsigned char*)0x10000)[0] = deze;
 	}
 	return ((unsigned char*)0x10000)[0];
 }

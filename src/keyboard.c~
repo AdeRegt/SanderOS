@@ -126,7 +126,7 @@ unsigned char getc(){
 		if(deze!=0x00){
 			break;
 		}
-		for(int i = 0 ; i < 1000000 ; i++){}
+		((unsigned char*)0xb8000)[0] = deze;
 	}
 	return ((unsigned char*)0x10000)[0];
 }
