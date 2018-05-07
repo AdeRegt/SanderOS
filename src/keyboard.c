@@ -110,9 +110,9 @@ void keyboard_int(){
 		}else if(karakter==0xbf){
 			shiftisin = 0x00;
 		}else{ 
-			printf("%c",karakter);
+			//printf("%c",karakter);
 			((unsigned char*)0x10000)[0] = karakter;
-			printf("%c",((unsigned char*)0x10000)[0]);
+			//printf("%c",((unsigned char*)0x10000)[0]);
 		}
 	}else if(deze == 42 || deze == 54){
 		shiftisin = 0x01;
@@ -125,6 +125,7 @@ unsigned char getc(){
 		if(deze!=0x00){
 			break;
 		}
+		printf("%c",deze);
 	}
 	return ((unsigned char*)0x10000)[0];
 }
