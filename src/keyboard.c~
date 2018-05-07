@@ -120,13 +120,9 @@ void keyboard_int(){
 }
 
 unsigned char getc(){
-	int lapse = 0;
-	while(1){
-		unsigned char deze = ((unsigned char*)0x10000)[0];
-		if(deze!=0x00){
-			break;
-		}
-	}
+	again:
+	((unsigned char*)0xb8000)[0] = ((unsigned char*)0x10000)[0];
+	goto again;
 	return ((unsigned char*)0x10000)[0];
 }
 
