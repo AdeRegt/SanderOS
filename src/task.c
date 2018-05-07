@@ -5,7 +5,7 @@ static Task mainTask;
 static Task otherTask;
  
 static void otherMain() {
-    printk("Hello multitasking world!"); // Not implemented here...
+    printf("Hello multitasking world!"); // Not implemented here...
     yield();
 }
  

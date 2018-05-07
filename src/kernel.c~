@@ -30,6 +30,7 @@ void kernel_main(){
 	detectDevices();
 	initialiseKeyboard();
 	cls();
+	initTasking();
 	devdump();
 	for(;;);
 }
