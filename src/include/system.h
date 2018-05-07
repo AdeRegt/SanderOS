@@ -265,9 +265,16 @@ typedef struct Task {
     struct Task *next;
     unsigned char video[160*25];
     unsigned char valid;
+    int curX;
+    int curY;
 } Task;
  
 extern void initTasking();
 void createTask(unsigned char taskpointer, void (*main)());
 extern void yield(unsigned char to); // Switch task frontend
 extern void switchTask(unsigned long a,unsigned long b); // The function which actually switches
+
+int getCurX();
+int getCurY();
+void setCurX(int a);
+void setCurY(int a);

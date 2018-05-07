@@ -40,11 +40,15 @@ void yield(unsigned char to) {
 		for(int i = 0 ; i < (160*25) ; i++){
 			tasks[tpoint].video[i] = ((char*)0xb8000)[i];
 		}
+		tasks[tpoint].curX = getCurX();
+		tasks[tpoint].curY = getCurY();
 		unsigned int tpnt = tpoint;
 		tpoint = to;
 		for(int i = 0 ; i < (160*25) ; i++){
 			((char*)0xb8000)[i] = tasks[tpoint].video[i];
 		}
+		setCurX(tasks[toint].curX);
+		setCurY(tasks[toint].curY);
 		switchTask((unsigned long)&tasks[tpnt],(unsigned long)&tasks[tpoint]);
 	}
 	asm volatile("sti");

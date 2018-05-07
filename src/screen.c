@@ -11,6 +11,11 @@ char backgroundcolor = 0x07;
 int curX = 0;
 int curY = 0;
 
+int getCurX(){return curX;}
+int getCurY(){return curY;}
+void setCurX(int a){curX = a;}
+void setCurY(int a){curY = a;}
+
 void cls(){
 	curX = 0;
 	curY = 0;
