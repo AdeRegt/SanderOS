@@ -251,3 +251,19 @@ typedef struct {
 void enable_cursor(unsigned char cursor_start, unsigned char cursor_end);
 void disable_cursor();
 void update_cursor(unsigned int x, unsigned int y);
+
+extern void initTasking();
+ 
+typedef struct {
+    uint32_t eax, ebx, ecx, edx, esi, edi, esp, ebp, eip, eflags, cr3;
+} Registers;
+ 
+typedef struct Task {
+    Registers regs;
+    struct Task *next;
+} Task;
+ 
+extern void initTasking();
+extern void createTask(Task*, void(*)(), unsigned long, unsigned long*); 
+extern void yield(); // Switch task frontend
+extern void switchTask(Registers *old, Registers *new); // The function which actually switches

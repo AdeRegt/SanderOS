@@ -255,7 +255,7 @@ void update_cursor(unsigned int x, unsigned int y);
 extern void initTasking();
  
 typedef struct {
-    uint32_t eax, ebx, ecx, edx, esi, edi, esp, ebp, eip, eflags, cr3;
+    unsigned long eax, ebx, ecx, edx, esi, edi, esp, ebp, eip, eflags, cr3;
 } Registers;
  
 typedef struct Task {
