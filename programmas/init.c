@@ -1,6 +1,6 @@
 #include <system.h>
 
-unsigned char* filepath = "/isofs/\0\0\0                                                        ";
+unsigned char* filepath = "/isofs/PROGRAMS\0\0\0                                                        ";
 unsigned char* data     = "                                                                        ";
 void main(){
 	int selection = 1;
