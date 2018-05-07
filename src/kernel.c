@@ -42,7 +42,6 @@ void kernel_main(){
 	createTask( 9,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
 	createTask(10,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
 	createTask(11,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-	printf("\n\n\n%s\n\n\n",readCDROM("/"));
 	for(;;);
 }
 
