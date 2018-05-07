@@ -43,5 +43,9 @@ void* mallocloc = (void*)0x1000;
 void* malloc(unsigned long t){
 	void* lx = mallocloc;
 	mallocloc += t;
+	if(malloc>=0x10000){
+		printf("PANIC");
+		for(;;);
+	}
 	return (void*)lx;
 }
