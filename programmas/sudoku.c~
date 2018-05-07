@@ -12,7 +12,7 @@ char rI[9];
 void main(){
 	int selx = 0;
 	int sely = 5;
-	while(1){
+	again:
 		cls();
 		printf("\[47m\[30mSudoku                         SanderOS\[40m\[37m\n");
 		printf(" +---+---+---++---+---+---++---+---+---+\n");
@@ -40,5 +40,6 @@ void main(){
 		}else if(watnu=='-'){
 			sely++;
 		}
-	};
+		goto again;
+	
 }
