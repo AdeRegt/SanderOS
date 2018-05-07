@@ -36,7 +36,9 @@ unsigned char* fopen(unsigned char* path){
 	for(i = 0 ; i < filesystemscount ; i++){
 		int targz = 1;
 		for(int g = 0 ; g < 5 ; g++){
-			if(path[1+g]!=filesystems[i].name[g]){
+			unsigned char A = path[1+g];
+			unsigned char B = filesystems[i].name[g];
+			if(A!=B){
 				targz = 0;
 			}
 		}

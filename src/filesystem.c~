@@ -34,14 +34,14 @@ unsigned char* OKESTRING  = "YAAAAY";
 unsigned char* fopen(unsigned char* path){
 	int i = 0;
 	for(i = 0 ; i < filesystemscount ; i++){
+		int targz = 1;
 		for(int g = 0 ; g < 5 ; g++){
 			if(path[1+g]!=filesystems[i].name[g]){
-				goto endtx;
+				targz = 0;
 			}
+		}
+		if(targz==1){
 			goto cltx;
-			endtx:
-			i++;
-			i--;
 		}
 	}
 	return FAILSTRING;
