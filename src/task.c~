@@ -27,15 +27,15 @@ void createTask(unsigned char taskpointer, void (*main)()) {
 	register long counter asm("esp");
     asm volatile("movl %%cr3, %%eax; movl %%eax, %0;":"=m"(tasks[taskpointer].regs.cr3)::"%eax");
     asm volatile("pushfl; movl (%%esp), %%eax; movl %%eax, %0; popfl;":"=m"(tasks[taskpointer].regs.eflags)::"%eax");
-    tasks[taskpointer]->regs.eax = 0;
-    tasks[taskpointer]->regs.ebx = 0;
-    tasks[taskpointer]->regs.ecx = 0;
-    tasks[taskpointer]->regs.edx = 0;
-    tasks[taskpointer]->regs.esi = 0;
-    tasks[taskpointer]->regs.edi = 0;
-    tasks[taskpointer]->regs.eip = (unsigned long) main;
-    tasks[taskpointer]->regs.esp = (unsigned long) main;//mainTask.regs.esp;//allocPage() + 0x1000; // Not implemented here
-    tasks[taskpointer]->next = 0;
+    tasks[taskpointer].regs.eax = 0;
+    tasks[taskpointer].regs.ebx = 0;
+    tasks[taskpointer].regs.ecx = 0;
+    tasks[taskpointer].regs.edx = 0;
+    tasks[taskpointer].regs.esi = 0;
+    tasks[taskpointer].regs.edi = 0;
+    tasks[taskpointer].regs.eip = (unsigned long) main;
+    tasks[taskpointer].regs.esp = (unsigned long) main;//mainTask.regs.esp;//allocPage() + 0x1000; // Not implemented here
+    tasks[taskpointer].next = 0;
 }
 
 void yield() {

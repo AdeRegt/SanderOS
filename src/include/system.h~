@@ -264,6 +264,6 @@ typedef struct Task {
 } Task;
  
 extern void initTasking();
-extern void createTask(Task*, void(*)(), unsigned long, unsigned long*); 
+void createTask(unsigned char taskpointer, void (*main)());
 extern void yield(); // Switch task frontend
 extern void switchTask(unsigned long a,unsigned long b); // The function which actually switches

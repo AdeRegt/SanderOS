@@ -38,9 +38,9 @@ void createTask(unsigned char taskpointer, void (*main)()) {
     tasks[taskpointer].next = 0;
 }
 
-void yield() {
-	switchTask((unsigned long)&tasks[tpoint],(unsigned long)&tasks[1]);
-	tpoint = 1;
+void yield(unsigned char to) {
+	switchTask((unsigned long)&tasks[tpoint],(unsigned long)&tasks[to]);
+	tpoint = to;
 //    Task *last = runningTask;
 //    runningTask = (Task *)runningTask->next;
 //    switchTask((unsigned long)&last->regs, (unsigned long)&runningTask->regs);

@@ -105,7 +105,7 @@ void keyboard_int(){
 		}
 		if(karakter>=0xb0&&karakter<0xbe){
 			unsigned long valve = karakter - 0xb0;
-			printf("\nF%x press detected! Time to yield!!\n",valve);
+			printf("\nF%x press detected! Time to yield!!\n",valve+1);
 			//yield();
 		}else if(karakter==0xbf){
 			shiftisin = 0x00;
