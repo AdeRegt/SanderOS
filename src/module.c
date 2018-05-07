@@ -37,6 +37,7 @@ int exec(unsigned char* path,void* arguments){
 	unsigned char* msx = readCDROM(path);
 	if(strcmp(msx,(unsigned char*)"ERROR")==0){
 		printf(" -> Unable to locate executable\n");
+		return -1;
 	}else{
 		printf("  -> parsing file\n");
 		void* location = elf_load_file(msx);
