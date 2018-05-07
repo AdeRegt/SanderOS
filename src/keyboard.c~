@@ -104,7 +104,7 @@ void keyboard_int(){
 			karakter = kbdus[realchar];
 		}
 		if(karakter>=0xb0&&karakter<0xbe){
-			unsigned char valve = karakter - 0xb0;
+			unsigned long valve = karakter - 0xb0;
 			printf("\nF%i press detected! Time to yield!!\n",valve);
 			//yield();
 		}else if(karakter==0xbf){
