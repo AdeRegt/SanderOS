@@ -30,7 +30,7 @@ unsigned short getS(short a){
 
 
 unsigned char* readCDROM(unsigned char* path){
-	printf("CDROM: Now reading %s \n",path);
+	//printf("CDROM: Now reading %s \n",path);
 	// bestandspad opspliten
 	unsigned int cunt = 1;
 	unsigned char fsbuffer[10];
@@ -62,7 +62,7 @@ unsigned char* readCDROM(unsigned char* path){
 		}
 		ddf:
 		fsbuffer[filler] = 0x00;
-		printf("CDROM: next /  '%s' \n",fsbuffer);
+		//printf("CDROM: next /  '%s' \n",fsbuffer);
 		for(int g = 0 ; g < isorootcnt ; g++){
 			if(isoroot[g].parrent==floor){
 				int gevonden = 1;
@@ -87,7 +87,7 @@ unsigned char* readCDROM(unsigned char* path){
 			break;
 		}
 	}
-	printf("CDROM: About to read %x\n",isoroot[ttx].lba);
+	//printf("CDROM: About to read %x\n",isoroot[ttx].lba);
 	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
 	for(int i = 0 ; i < ATAPI_SECTOR_SIZE; i++){
 		if(buffer[i]==';'){
@@ -103,7 +103,7 @@ unsigned char* readCDROM(unsigned char* path){
 				unsigned short sutx = ((unsigned short*)(buffer+t0y))[0];
 				unsigned short rdln = (sutx/ATAPI_SECTOR_SIZE)+1;
 				void* loc = malloc(rdln*ATAPI_SECTOR_SIZE);
-				printf("CDROM: Found file and LBA= %x SIZE= %x SECT= %x \n",butt,sutx,rdln);
+				//printf("CDROM: Found file and LBA= %x SIZE= %x SECT= %x \n",butt,sutx,rdln);
 				readRawCDROM(butt,rdln,(unsigned char*)loc);
 				return (unsigned char*)loc;
 			}
@@ -131,7 +131,7 @@ unsigned char* readCDROM(unsigned char* path){
 		}
 	}
 	// data lezen
-	printf("CDROM: About to read %x\n",isoroot[ttx].lba);
+	//printf("CDROM: About to read %x\n",isoroot[ttx].lba);
 	readRawCDROM(isoroot[ttx].lba,1,(unsigned char*)buffer);
 	for(int i = 0 ; i < ATAPI_SECTOR_SIZE ; i++){
 		if(buffer[i]==';'){
