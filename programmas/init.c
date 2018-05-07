@@ -1,7 +1,9 @@
 #include <system.h>
 
 void main(){
-	printf("SELECT YOUR FILE");
+	again:
+	cls();
+	printf("\[45mSELECT YOUR FILE");
 	unsigned char* data = fopen("/isofs/");
 	int innerpointer = 0;
 	while(1){
