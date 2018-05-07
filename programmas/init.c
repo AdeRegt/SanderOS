@@ -31,8 +31,8 @@ void main(){
 		selection--;
 	}else if(type==1){
 		selection++;
-	}else if(type=='\n'){
-		if(selection==0){
+	}else if(type=='\n'||type=='\t'){
+		if(selection==0||type=='\t'){
 			int cnt = 1;
 			for(int i = 0 ; i < 50 ; i++){
 				unsigned char e = filepath[50-i];

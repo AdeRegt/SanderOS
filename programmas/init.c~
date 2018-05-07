@@ -55,11 +55,9 @@ void main(){
 						unsigned char deze = data[pntA++];
 						if(deze==';'){
 							pntB++;
-						}
-						if(pntB==selection){
+						}else if(pntB==selection){
 							filepath[i+(pntC++)] = deze;
-						}
-						if(pntB==(selection+1)||deze==0x00){
+						}else if(pntB==(selection+1)||deze==0x00){
 							break;
 						}
 					}
