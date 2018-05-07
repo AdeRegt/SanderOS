@@ -1,13 +1,14 @@
 #include <system.h>
 
-unsigned char* filepath = "/isofs/" . 0x00 . "                                                        ";
+unsigned char* filepath = "/isofs/\0\0\0                                                        ";
+unsigned char data[100];
 void main(){
 	int selection = 1;
 	again:
 	cls();
 	printf("\[44m\[37mBeginscherm van het SanderOS bestuuringssysteem                    SanderOS v1.0");
-	printf("\[40m\[37m");
-	unsigned char* data = fopen("/isofs/");
+	printf("\[40m\[37m%s\n",filepath);
+	data = fopen(filepath);
 	int innerpointer = 0;
 	int ont = 0;
 	while(1){
@@ -31,7 +32,39 @@ void main(){
 	}else if(type==1){
 		selection++;
 	}else if(type=='\n'){
-		
+		if(selection==0){
+			int cnt = 1;
+			for(int i = 0 ; i < 50 ; i++){
+				unsigned char e = filepath[50-i];
+				if(e=='/'){
+					if(cnt==0){
+						break;
+					}
+					cnt--;
+					filepath[50-i] = 0x00;
+				}
+			}
+		}else{
+			for(int i = 0 ; i < 50 ; i++){
+				unsigned char e = filepath[i];
+				if(e==0x00){
+					int pntA = 0;
+					int pntB = 0;
+					int pntC = 0;
+					while(1){
+						unsigned char deze = data[pntA++];
+						if(deze==';'){
+							pntB++;
+						}
+						if(pntB==selection){
+							filepath[i+(pntC++)] = deze;
+						}
+					}
+					filepath[i+(pntC++)] = 0x00;
+					break;
+				}
+			}
+		}
 	}
 	goto again;
 	for(;;);
