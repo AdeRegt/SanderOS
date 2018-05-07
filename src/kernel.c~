@@ -35,7 +35,10 @@ void kernel_main(){
 	yield();
 	printf("Returned to mainTask!\n");
 	//devdump();
-	while(1){((unsigned char*) 0xb8000)[0] = 'F';}
+	unsigned char* xxx = (unsigned char*) 0xb8000;
+	while(1){
+		xxx[0] = 'F';
+	}
 	for(;;);
 }
 
