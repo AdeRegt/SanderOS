@@ -111,7 +111,7 @@ void keyboard_int(){
 			shiftisin = 0x00;
 		}else{ 
 			//printf("%c",karakter);
-			((unsigned char*)0x10000)[0] = karakter;
+			((unsigned volatile char*)0x10000)[0] = karakter;
 			//printf("%c",((unsigned char*)0x10000)[0]);
 		}
 	}else if(deze == 42 || deze == 54){
@@ -121,7 +121,7 @@ void keyboard_int(){
 
 unsigned char getc(){
 	again:
-	((unsigned char*)0xb8000)[0] = ((unsigned char*)0x10000)[0];
+	((unsigned volatile char*)0xb8000)[0] = ((unsigned volatile char*)0x10000)[0];
 	goto again;
 	return ((unsigned char*)0x10000)[0];
 }
