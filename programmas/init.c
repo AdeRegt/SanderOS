@@ -7,7 +7,7 @@ void main(){
 	printf("\[40m");
 	unsigned char* data = fopen("/isofs/");
 	int innerpointer = 0;
-	int selection = 0;
+	int selection = 1;
 	int ont = 0;
 	if(ont==selection){printf("\[41m");}else{printf("\[40m");}
 	while(1){
