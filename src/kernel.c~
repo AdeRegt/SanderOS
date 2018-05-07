@@ -34,7 +34,7 @@ void kernel_main(){
 	printf("Switching to otherTask... \n");
 	yield();
 	printf("Returned to mainTask!\n");
-	devdump();
+	//devdump();
 	while(1){((unsigned char*) 0xb8000)[0] = 'F';}
 	for(;;);
 }
