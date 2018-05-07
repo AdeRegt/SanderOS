@@ -31,9 +31,6 @@ void kernel_main(){
 	initialiseKeyboard();
 	cls();
 	initTasking();
-	while(1){
-		printf("X");
-	}
 	for(;;);
 }
 
