@@ -50,6 +50,7 @@ if grub-file --is-x86-multiboot myos.bin; then
 	cp myos.bin isodir/boot/myos.bin
 	cp src/grub.cfg isodir/boot/grub/grub.cfg
 	cp programmas/hdd.skm -a isodir/modules/hdd.skm
+	cp programmas/init.sef -a isodir/programs/init.sef
 	grub-mkrescue -o myos.iso isodir
 	
 	

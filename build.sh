@@ -9,6 +9,7 @@ echo ""
 echo ""
 cc -c programmas/hdd.c -o programmas/hdd.skm -std=gnu99 -ffreestanding -m32 -mtune=i386 -Isrc/include
 cc -c programmas/init.c -o programmas/init.sef -std=gnu99 -ffreestanding -m32 -mtune=i386 -Isrc/include
+cc -c programmas/sudoku.c -o programmas/sudoku.sef -std=gnu99 -ffreestanding -m32 -mtune=i386 -Isrc/include
 
 
 echo "========================="
@@ -51,6 +52,7 @@ if grub-file --is-x86-multiboot myos.bin; then
 	cp src/grub.cfg isodir/boot/grub/grub.cfg
 	cp programmas/hdd.skm -a isodir/modules/hdd.skm
 	cp programmas/init.sef -a isodir/programs/init.sef
+	cp programmas/sudoku.sef -a isodir/programs/sudoku.sef
 	grub-mkrescue -o myos.iso isodir
 	
 	
