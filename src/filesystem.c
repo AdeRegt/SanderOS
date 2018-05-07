@@ -28,8 +28,7 @@ int installFileSystem(unsigned long read,unsigned long write,unsigned int device
 	return filesystemscount - 1;
 }
 
-unsigned char* FAILSTRING = "FAILED";
-unsigned char* OKESTRING  = "YAAAAY";
+unsigned char* FAILSTRING = (unsigned char*)"FAILED";
 
 unsigned char* fopen(unsigned char* path){
 	int i = 0;
