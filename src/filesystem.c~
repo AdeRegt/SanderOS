@@ -49,8 +49,7 @@ unsigned char* fopen(unsigned char* path){
 	}
 	return FAILSTRING;
 	cltx:
-	unsigned long location = blockdevices[filesystems[i].device].read;
-	unsigned char* (*foo)(void*) = (void*)location;
+	unsigned char* (*foo)(void*) = (void*)blockdevices[filesystems[i].device].read;
 	return foo((unsigned char*)&path[6]);
 }
 
