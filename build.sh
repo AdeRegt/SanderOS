@@ -8,6 +8,7 @@ echo "-------------------------"
 echo ""
 echo ""
 cc -c programmas/hdd.c -o programmas/hdd.skm -std=gnu99 -ffreestanding -m32 -mtune=i386 -Isrc/include
+cc -c programmas/init.c -o programmas/init.sef -std=gnu99 -ffreestanding -m32 -mtune=i386 -Isrc/include
 
 
 echo "========================="
@@ -44,9 +45,12 @@ if grub-file --is-x86-multiboot myos.bin; then
 	echo ""
 	echo ""
 	mkdir -p isodir/boot/grub
+	mkdir -p isodir/modules
+	mkdir -p isodir/programs
 	cp myos.bin isodir/boot/myos.bin
 	cp src/grub.cfg isodir/boot/grub/grub.cfg
 	cp programmas/hdd.skm -a isodir/modules/hdd.skm
+	cp programmas/init.sef -a isodir/programs/init.sef
 	grub-mkrescue -o myos.iso isodir
 	
 	
