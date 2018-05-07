@@ -36,6 +36,7 @@ void createTask(unsigned char taskpointer, void (*main)()) {
     tasks[taskpointer].regs.eip = (unsigned long) main;
     tasks[taskpointer].regs.esp = (unsigned long) main;//mainTask.regs.esp;//allocPage() + 0x1000; // Not implemented here
     tasks[taskpointer].next = 0;
+    tasks[taskpointer].valid = 1;
 }
 
 void yield(unsigned char to) {
