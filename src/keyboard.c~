@@ -103,7 +103,7 @@ void keyboard_int(){
 		}else{
 			karakter = kbdus[realchar];
 		}
-		if(karakter=>0xb0&&karakter<0xbe){
+		if(karakter>=0xb0&&karakter<0xbe){
 			printf("\nF12 press detected! Time to yield!!\n");
 			yield();
 		}else if(karakter==0xbf){

@@ -105,7 +105,7 @@ void keyboard_int(){
 		}
 		if(karakter>=0xb0&&karakter<0xbe){
 			printf("\nF12 press detected! Time to yield!!\n");
-			yield();
+			//yield();
 		}else if(karakter==0xbf){
 			shiftisin = 0x00;
 		}else{ 
