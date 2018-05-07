@@ -31,6 +31,9 @@ void kernel_main(){
 	initialiseKeyboard();
 	cls();
 	initTasking();
+	printf("Switching to otherTask... \n");
+	yield();
+	printf("Returned to mainTask!\n");
 	devdump();
 	for(;;);
 }
