@@ -7,7 +7,7 @@ void main(){
 	again:
 	cls();
 	printf("\[44m\[37mBeginscherm van het SanderOS bestuuringssysteem                    SanderOS v1.0");
-	printf("\[40m\[37m%s\n",filepath);
+	printf("\[4fm\[37m%s \[40m\[37m\n",filepath);
 	data = (unsigned char*)fopen(filepath);
 	int innerpointer = 0;
 	int ont = 0;
