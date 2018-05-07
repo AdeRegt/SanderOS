@@ -6,5 +6,6 @@ void main(){
 	int cursorY = 0;
 	while(1){
 		cls();
+		getc();
 	}
 }
