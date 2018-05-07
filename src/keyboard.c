@@ -123,7 +123,7 @@ void keyboard_int(){
 
 unsigned char getc(){
 	while(((unsigned volatile char*)bufferconstant)[0]==0x00){}
-	unsigned char deze = ((unsigned volatile char*)bufferconstant)[0];
+	unsigned volatile char deze = ((unsigned volatile char*)bufferconstant)[0];
 	((unsigned volatile char*)bufferconstant)[0] = 0x00;
 	return deze;
 }

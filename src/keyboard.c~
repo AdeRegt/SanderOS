@@ -134,6 +134,8 @@ void initialiseKeyboard(){
 	setInterrupt(32+1, (unsigned long) &irq_keyboard);
 	keyboard_send_cmd(0xFF);
 	while(inportb(0x60)!=0xAA);
+	keyboard_send_cmd(0xF6);
+	while(inportb(0x60)!=0xFA);
 	keyboard_send_cmd(0xF4);
 	
 }
