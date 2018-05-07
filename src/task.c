@@ -5,9 +5,8 @@
 
 extern void switchTask(unsigned long a,unsigned long b);
 
-static Task *runningTask;
-static Task mainTask;
-static Task otherTask;
+static int tpoint = 0;
+Task tasks[12];
 
 static void otherMain() {
     
@@ -18,32 +17,31 @@ static void otherMain() {
 
 void initTasking() {
     // Get EFLAGS and CR3
-    asm volatile("movl %%cr3, %%eax; movl %%eax, %0;":"=m"(mainTask.regs.cr3)::"%eax");
-    asm volatile("pushfl; movl (%%esp), %%eax; movl %%eax, %0; popfl;":"=m"(mainTask.regs.eflags)::"%eax");
     register long counter asm("esp");
-   mainTask.regs.esp = counter;
-    createTask(&otherTask, otherMain, mainTask.regs.eflags, (unsigned long*)mainTask.regs.cr3);
-    mainTask.next = (struct Task *)&otherTask;
-    otherTask.next = (struct Task *)&mainTask;
-    runningTask = &mainTask;
+    createTask(0,counter);
+    createTask(1,otherMain);
+    tpoint = 0;
 }
 
-void createTask(Task *task, void (*main)(), unsigned long flags, unsigned long *pagedir) {
-    task->regs.eax = 0;
-    task->regs.ebx = 0;
-    task->regs.ecx = 0;
-    task->regs.edx = 0;
-    task->regs.esi = 0;
-    task->regs.edi = 0;
-    task->regs.eflags = flags;
-    task->regs.eip = (unsigned long) main;
-    task->regs.cr3 = (unsigned long) pagedir;
-    task->regs.esp = (unsigned long) mainTask.regs.esp;//allocPage() + 0x1000; // Not implemented here
-    task->next = 0;
+void createTask(unsigned char taskpointer, void (*main)()) {
+	register long counter asm("esp");
+    asm volatile("movl %%cr3, %%eax; movl %%eax, %0;":"=m"(tasks[taskpointer].regs.cr3)::"%eax");
+    asm volatile("pushfl; movl (%%esp), %%eax; movl %%eax, %0; popfl;":"=m"(tasks[taskpointer].regs.eflags)::"%eax");
+    tasks[taskpointer]->regs.eax = 0;
+    tasks[taskpointer]->regs.ebx = 0;
+    tasks[taskpointer]->regs.ecx = 0;
+    tasks[taskpointer]->regs.edx = 0;
+    tasks[taskpointer]->regs.esi = 0;
+    tasks[taskpointer]->regs.edi = 0;
+    tasks[taskpointer]->regs.eip = (unsigned long) main;
+    tasks[taskpointer]->regs.esp = (unsigned long) main;//mainTask.regs.esp;//allocPage() + 0x1000; // Not implemented here
+    tasks[taskpointer]->next = 0;
 }
 
 void yield() {
-    Task *last = runningTask;
-    runningTask = (Task *)runningTask->next;
-    switchTask((unsigned long)&last->regs, (unsigned long)&runningTask->regs);
+	switchTask((unsigned long)&tasks[tpoint],(unsigned long)&tasks[1]);
+	tpoint = 1;
+//    Task *last = runningTask;
+//    runningTask = (Task *)runningTask->next;
+//    switchTask((unsigned long)&last->regs, (unsigned long)&runningTask->regs);
 }
