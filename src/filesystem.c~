@@ -49,8 +49,9 @@ unsigned char* fopen(unsigned char* path){
 	}
 	return FAILSTRING;
 	cltx:
-	printf("FSFOK: %x ",i);
-	return OKESTRING;
+	unsigned long location = blockdevices[filesystems[i].device].read;
+	unsigned char* (*foo)(void*) = (void*)location;
+	return foo((unsigned char*)&path[6]);
 }
 
 void devdump(){
