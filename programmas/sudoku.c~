@@ -35,5 +35,10 @@ void main(){
 		printf("%c|%x|%x|%x||%x|%x|%x||%x|%x|%x|\n",(sely==9?'>':' '),rI[0],rI[1],rI[2],rI[3],rI[4],rI[5],rI[6],rI[7],rI[8]);
 		printf(" +---+---+---++---+---+---++---+---+---+\n");
 		unsigned volatile char watnu = getc();
+		if(watnu=='+'){
+			sely--;
+		}else if(watnu=='-'){
+			sely++;
+		}
 	};
 }
