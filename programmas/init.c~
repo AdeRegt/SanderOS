@@ -40,6 +40,7 @@ void main(){
 				int pntA = 0;
 				int pntB = 0;
 				int pntC = 0;
+				filepath[i+(pntC++)] = '/';
 				while(1){
 					unsigned char deze = data[pntA++];
 					if(deze==';'){
