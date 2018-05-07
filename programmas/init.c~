@@ -36,7 +36,7 @@ void main(){
 		if(selection==0||type=='\t'){
 			int cnt = 1;
 			for(int i = 0 ; i < 50 ; i++){
-				unsigned char e = filepath[50-i];
+				unsigned char e = filepath[57-i];
 				if(e=='/'){
 					if(cnt==0){
 						break;
