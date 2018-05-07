@@ -9,6 +9,10 @@ void main(){
 	printf("\[44m\[37mBeginscherm van het SanderOS bestuuringssysteem                    SanderOS v1.0");
 	printf("\[49m\[37mActuele map: %s (TAB: niveau omhoog) \[40m\[37m\n",filepath);
 	data = (unsigned char*)fopen(filepath);
+	if(data[2]=='E'&&data[3]=='L'&&data[4]=='F'){
+		printf("THIS IS AN EXECUTABLE!!!");
+		getc();
+	}
 	int innerpointer = 0;
 	int ont = 0;
 	if(ont==selection){printf("\[47m\[30m");}else{printf("\[40m\[37m");}
