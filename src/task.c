@@ -40,7 +40,7 @@ void createTask(unsigned char taskpointer, void (*main)()) {
 
 void yield(unsigned char to) {
 	asm volatile("cli");
-	if(tasks[to].regs==NULL){
+	if(tasks[to].regs){
 		printf("\nOnmogelijk: Deze task is leeg.\n\n");
 	}else{
 		for(int i = 0 ; i < (160*25) ; i++){
