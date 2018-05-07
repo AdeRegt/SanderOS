@@ -112,7 +112,7 @@ void keyboard_int(){
 			shiftisin = 0x00;
 		}else{ 
 			printf("%c",karakter);
-			(unsigned char*)&pressedkey = karakter;
+			((unsigned char*)&pressedkey)[0] = karakter;
 		}
 	}else if(deze == 42 || deze == 54){
 		shiftisin = 0x01;
