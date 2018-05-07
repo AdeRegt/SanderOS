@@ -1,5 +1,6 @@
 #include <system.h>
 
+unsigned char* filepath = "/isofs/" . 0x00 . "                                                        ";
 void main(){
 	int selection = 1;
 	again:
@@ -29,6 +30,8 @@ void main(){
 		selection--;
 	}else if(type==1){
 		selection++;
+	}else if(type=='\n'){
+		
 	}
 	goto again;
 	for(;;);
