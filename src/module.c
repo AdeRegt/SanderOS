@@ -46,7 +46,7 @@ int exec(unsigned char* path){
 			return 2;
 		}else{
 			printf("  -> calling file at %x \n",location);
-			void (*foo)(void*) = (void*)location;
+			void (*foo)() = (void*)location;
 			foo();
 			return 0;
 		}
