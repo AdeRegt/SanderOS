@@ -52,7 +52,7 @@ unsigned char* fopen(unsigned char* path){
 	if(ddx==1){
 		return FAILSTRING;
 	}else{
-		void* (*foo)(void*) = (void*)blockdevices[filesystems[i].device].read;
+		void* (*foo)(void*) = (void*)filesystems[i].read;
 		return foo(path);
 	}
 }
