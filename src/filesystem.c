@@ -29,6 +29,7 @@ int installFileSystem(unsigned long read,unsigned long write,unsigned int device
 }
 
 unsigned char* FAILSTRING = "FAILED";
+unsigned char* OKESTRING  = "YAAAAY";
 
 unsigned char* fopen(unsigned char* path){
 	int i = 0;
@@ -45,7 +46,7 @@ unsigned char* fopen(unsigned char* path){
 	}
 	return FAILSTRING;
 	cltx:
-	printf("X");
+	return OKESTRING;
 }
 
 void devdump(){

@@ -32,7 +32,7 @@ unsigned char* FAILSTRING = "FAILED";
 
 unsigned char* fopen(unsigned char* path){
 	int i = 0;
-	for(i = 0 ; i < filesystemcount ; i++){
+	for(i = 0 ; i < filesystemscount ; i++){
 		for(int g = 0 ; g < 5 ; g++){
 			if(path[1+g]!=filesystems[i].name[g]){
 				goto endtx;
