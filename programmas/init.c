@@ -26,7 +26,7 @@ void main(){
 			printf("%c",deze);
 		}
 	}
-	while(ont<24){
+	while(ont<23){
 		ont++;
 		printf("\n");
 	}

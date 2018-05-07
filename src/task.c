@@ -17,6 +17,7 @@ void initTasking() {
 }
 
 void createTask(unsigned char taskpointer, void (*main)()) {
+	if(task==NULL){return;}
     asm volatile("movl %%cr3, %%eax; movl %%eax, %0;":"=m"(tasks[taskpointer].regs.cr3)::"%eax");
     asm volatile("pushfl; movl (%%esp), %%eax; movl %%eax, %0; popfl;":"=m"(tasks[taskpointer].regs.eflags)::"%eax");
     tasks[taskpointer].regs.eax = 0;
