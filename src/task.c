@@ -8,12 +8,6 @@ extern void switchTask(unsigned long a,unsigned long b);
 static int tpoint = 0;
 Task tasks[12];
 
-static void otherMain() {
-    
-	while(1){
-		printf("Y");
-	}
-}
 
 void initTasking() {
     // Get EFLAGS and CR3
