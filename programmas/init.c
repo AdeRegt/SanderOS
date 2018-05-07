@@ -32,42 +32,43 @@ void main(){
 		selection--;
 	}else if(type==1){
 		selection++;
-	}else if(type=='\n'||type=='\t'){
-		if(type=='\t'){
-			int cnt = 1;
-			for(int i = 0 ; i < 50 ; i++){
-				unsigned char e = filepath[57-i];
-				if(e=='/'){
-					if(cnt==0){
+	}else if(type=='\n'){
+		
+		for(int i = 0 ; i < 50 ; i++){
+			unsigned char e = filepath[i];
+			if(e==0x00){
+				int pntA = 0;
+				int pntB = 0;
+				int pntC = 0;
+				while(1){
+					unsigned char deze = data[pntA++];
+					if(deze==';'){
+						pntB++;
+					}else if(pntB==selection){
+						filepath[i+(pntC++)] = deze;
+					}else if(pntB==(selection+1)||deze==0x00){
 						break;
 					}
-					cnt--;
-					filepath[50-i] = 0x00;
 				}
-			}
-		}else{
-			for(int i = 0 ; i < 50 ; i++){
-				unsigned char e = filepath[i];
-				if(e==0x00){
-					int pntA = 0;
-					int pntB = 0;
-					int pntC = 0;
-					while(1){
-						unsigned char deze = data[pntA++];
-						if(deze==';'){
-							pntB++;
-						}else if(pntB==selection){
-							filepath[i+(pntC++)] = deze;
-						}else if(pntB==(selection+1)||deze==0x00){
-							break;
-						}
-					}
-					filepath[i+(pntC++)] = 0x00;
-					break;
-				}
+				filepath[i+(pntC++)] = 0x00;
+				break;
 			}
 		}
+		
 		selection = 0;
+	}else if(type=='\t'){
+		int cnt = 1;
+		for(int i = 0 ; i < 50 ; i++){
+			unsigned char e = filepath[57-i];
+			if(e=='/'){
+				if(cnt==0){
+					break;
+				}
+				cnt--;
+				filepath[50-i] = 0x00;
+			}
+		}
+		selection = 1;
 	}
 	goto again;
 	for(;;);
