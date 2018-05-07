@@ -120,12 +120,13 @@ void keyboard_int(){
 }
 
 unsigned char getc(){
+	int lapse = 0;
 	while(1){
 		char deze = ((unsigned char*)0x10000)[0];
 		if(deze!=0x00){
 			break;
 		}
-		printf("%c",deze);
+		lapse++;
 	}
 	return ((unsigned char*)0x10000)[0];
 }
