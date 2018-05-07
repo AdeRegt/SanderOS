@@ -93,6 +93,7 @@ void keyboard_send_and_get_response_cmd(char val){
 }
 
 char shiftisin = 0x00;
+static unsigned char pressedkey = '?';
 void keyboard_int(){
 	unsigned char deze = inportb(0x60);
 	if(deze & 0x80){
@@ -111,10 +112,15 @@ void keyboard_int(){
 			shiftisin = 0x00;
 		}else{ 
 			printf("%c",karakter);
+			pressedkey = karakter;
 		}
 	}else if(deze == 42 || deze == 54){
 		shiftisin = 0x01;
 	}
+}
+
+unsigned char getc(){
+	return pressedkey;
 }
 
 extern void irq_keyboard();

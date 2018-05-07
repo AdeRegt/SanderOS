@@ -23,6 +23,6 @@ void main(){
 			printf("%c",deze);
 		}
 	}
-	printf("\[44mSelecteer het gewenste programma met ENTER en beweeg met pijltjestoetse         ");
+	printf("\[44mSelecteer het gewenste programma met ENTER en beweeg met pijltjestoetsen        ");
 	for(;;);
 }
