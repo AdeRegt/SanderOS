@@ -10,8 +10,10 @@ static Task mainTask;
 static Task otherTask;
 
 static void otherMain() {
-    printf("Hello multitasking world!"); // Not implemented here...
-    yield();
+    
+	while(1){
+		printf("Y");
+	}
 }
 
 void initTasking() {

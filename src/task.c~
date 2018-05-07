@@ -10,7 +10,7 @@ static Task mainTask;
 static Task otherTask;
 
 static void otherMain() {
-    kernel_print("Hello multitasking world!"); // Not implemented here...
+    printf("Hello multitasking world!"); // Not implemented here...
     yield();
 }
 
