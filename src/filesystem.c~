@@ -49,6 +49,7 @@ unsigned char* fopen(unsigned char* path){
 	}
 	return FAILSTRING;
 	cltx:
+	printf("Filesystem found: %s \n",filesystems[i].name);
 	unsigned char* (*foo)(void*) = (void*)blockdevices[filesystems[i].device].read;
 	return foo((unsigned char*)&path[6]);
 }

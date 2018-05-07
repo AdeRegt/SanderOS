@@ -33,6 +33,7 @@ unsigned char* OKESTRING  = "YAAAAY";
 
 unsigned char* fopen(unsigned char* path){
 	int i = 0;
+	unsigned char ddx = 1;
 	for(i = 0 ; i < filesystemscount ; i++){
 		int targz = 1;
 		for(int g = 0 ; g < 5 ; g++){
@@ -44,14 +45,16 @@ unsigned char* fopen(unsigned char* path){
 			}
 		}
 		if(targz==1){
-			goto cltx;
+			ddx = 0;
+			break;
 		}
 	}
-	return FAILSTRING;
-	cltx:
-	printf("Filesystem found: %s \n",filesystems[i].name);
-	unsigned char* (*foo)(void*) = (void*)blockdevices[filesystems[i].device].read;
-	return foo((unsigned char*)&path[6]);
+	if(ddx==1){
+		return FAILSTRING;
+	}else{
+		void* (*foo)(void*) = (void*)blockdevices[filesystems[i].device].read;
+		return foo((unsigned char*)&path[6]);
+	}
 }
 
 void devdump(){
