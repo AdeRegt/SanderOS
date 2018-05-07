@@ -3,7 +3,7 @@
 void main(){
 	again:
 	cls();
-	printf("\[45mSELECT YOUR FILE");
+	printf("\[45mSelecteer het gewenste programma - SanderOS         ");
 	unsigned char* data = fopen("/isofs/");
 	int innerpointer = 0;
 	while(1){

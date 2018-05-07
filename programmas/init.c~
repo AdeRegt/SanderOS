@@ -3,7 +3,7 @@
 void main(){
 	again:
 	cls();
-	printf("SELECT YOUR FILE");
+	printf("\[45mSELECT YOUR FILE");
 	unsigned char* data = fopen("/isofs/");
 	int innerpointer = 0;
 	while(1){
