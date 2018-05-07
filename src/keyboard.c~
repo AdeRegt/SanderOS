@@ -104,9 +104,9 @@ void keyboard_int(){
 			karakter = kbdus[realchar];
 		}
 		if(karakter>=0xb0&&karakter<0xbe){
-			unsigned long valve = karakter - 0xb0;
+			unsigned char valve = karakter - 0xb0;
 			printf("\nF%x press detected! Time to yield!!\n",valve+1);
-			yield();
+			yield(valve);
 		}else if(karakter==0xbf){
 			shiftisin = 0x00;
 		}else{ 
@@ -121,5 +121,8 @@ extern void irq_keyboard();
 
 void initialiseKeyboard(){
 	setInterrupt(32+1, (unsigned long) &irq_keyboard);
+	keyboard_send_cmd(0xFF);
+	while(inportb(0x60)!=0xAA);
 	keyboard_send_cmd(0xF4);
+	
 }
