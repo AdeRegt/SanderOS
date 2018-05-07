@@ -104,7 +104,8 @@ void keyboard_int(){
 			karakter = kbdus[realchar];
 		}
 		if(karakter==0xbe){
-			printf("F12 press detected!\n");
+			printf("\nF12 press detected! Time to yield!!\n");
+			yield();
 		}else if(karakter==0xbf){
 			shiftisin = 0x00;
 		}else{ 
