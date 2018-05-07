@@ -112,7 +112,7 @@ void keyboard_int(){
 			shiftisin = 0x00;
 		}else{ 
 			printf("%c",karakter);
-			((unsigned char*)&pressedkey)[0] = karakter;
+			((unsigned char*)0x10000)[0] = karakter;
 		}
 	}else if(deze == 42 || deze == 54){
 		shiftisin = 0x01;
@@ -120,8 +120,8 @@ void keyboard_int(){
 }
 
 unsigned char getc(){
-	while(pressedkey==0x00){}
-	return pressedkey;
+	while(((unsigned char*)0x10000)[0]==0x00){}
+	return ((unsigned char*)0x10000)[0];
 }
 
 extern void irq_keyboard();
