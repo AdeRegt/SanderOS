@@ -59,6 +59,9 @@ void main(){
 						if(pntB==selection){
 							filepath[i+(pntC++)] = deze;
 						}
+						if(pntB==(selection+1)||deze==0x00){
+							break;
+						}
 					}
 					filepath[i+(pntC++)] = 0x00;
 					break;
