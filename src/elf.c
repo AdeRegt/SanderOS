@@ -21,6 +21,9 @@ void *elf_lookup_symbol(const char* a){
 	if(strcmp((unsigned char*)a,(unsigned char*)"installBlockDevice")==0){
 		return installBlockDevice;
 	}
+	if(strcmp((unsigned char*)a,(unsigned char*)"fopen")==0){
+		return fopen;
+	}
 	return NULL;
 }
 

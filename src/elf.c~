@@ -3,22 +3,22 @@
 unsigned long mainmethodurl;
 
 void *elf_lookup_symbol(const char* a){
-	if(strcmp(a,"printf")==0){
+	if(strcmp((unsigned char*)a,(unsigned char*)"printf")==0){
 		return printf;
 	}
-	if(strcmp(a,"inportb")==0){
+	if(strcmp((unsigned char*)a,(unsigned char*)"inportb")==0){
 		return inportb;
 	}
-	if(strcmp(a,"outportb")==0){
+	if(strcmp((unsigned char*)a,(unsigned char*)"outportb")==0){
 		return outportb;
 	}
-	if(strcmp(a,"insw")==0){
+	if(strcmp((unsigned char*)a,(unsigned char*)"insw")==0){
 		return insw;
 	}
-	if(strcmp(a,"malloc")==0){
+	if(strcmp((unsigned char*)a,(unsigned char*)"malloc")==0){
 		return malloc;
 	}
-	if(strcmp(a,"installBlockDevice")==0){
+	if(strcmp((unsigned char*)a,(unsigned char*)"installBlockDevice")==0){
 		return installBlockDevice;
 	}
 	return NULL;
