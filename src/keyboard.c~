@@ -113,7 +113,7 @@ void keyboard_int(){
 		}else{ 
 			//printf("%c",karakter);
 			((unsigned volatile char*)0x10000)[0] = karakter;
-			(volatile unsigned char)bufferconstant = karakter;
+			(unsigned volatile char)bufferconstant = (unsigned volatile char)karakter;
 			//printf("%c",((unsigned char*)0x10000)[0]);
 		}
 	}else if(deze == 42 || deze == 54){
