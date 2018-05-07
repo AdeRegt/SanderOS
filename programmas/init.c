@@ -4,8 +4,8 @@ void main(){
 	int selection = 1;
 	again:
 	cls();
-	printf("\[44mBeginscherm van het SanderOS bestuuringssysteem                    SanderOS v1.0");
-	printf("\[40m");
+	printf("\[44m\[37mBeginscherm van het SanderOS bestuuringssysteem                    SanderOS v1.0");
+	printf("\[40m\[37m");
 	unsigned char* data = fopen("/isofs/");
 	int innerpointer = 0;
 	int ont = 0;
@@ -23,7 +23,7 @@ void main(){
 			printf("%c",deze);
 		}
 	}
-	printf("\[44mSelecteer het gewenste programma met ENTER en beweeg met pijltjestoetsen        ");
+	printf("\[44m\[37mSelecteer het gewenste programma met ENTER en beweeg met pijltjestoetsen        \[40m\[37m");
 	unsigned char type = getc();
 	if(type==2){
 		selection--;

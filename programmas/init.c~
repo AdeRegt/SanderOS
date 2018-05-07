@@ -27,6 +27,8 @@ void main(){
 	unsigned char type = getc();
 	if(type==2){
 		selection--;
+	}else if(type==1){
+		selection++;
 	}
 	goto again;
 	for(;;);
