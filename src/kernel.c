@@ -43,6 +43,7 @@ void kernel_main(){
 	createTask(10,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
 	createTask(11,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
 	//yield(1);
+	devdump();
 	printf("\n\n\n\n %s ",fopen("/CDROM/"));
 	for(;;);
 }
