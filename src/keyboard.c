@@ -122,8 +122,8 @@ void keyboard_int(){
 }
 
 unsigned char getc(){
-	while(((unsigned volatile char*)bufferconstant[0])==0x00){}
-	return ((unsigned volatile char*)bufferconstant[0]);
+	while(((unsigned volatile char*)bufferconstant)[0]==0x00){}
+	return ((unsigned volatile char*)bufferconstant)[0];
 }
 
 extern void irq_keyboard();
