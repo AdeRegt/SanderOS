@@ -31,7 +31,7 @@ void createTask(Task *task, void (*main)(), unsigned long flags, unsigned long *
     task->regs.eflags = flags;
     task->regs.eip = (unsigned long) main;
     task->regs.cr3 = (unsigned long) pagedir;
-    task->regs.esp = (unsigned long) allocPage() + 0x1000; // Not implemented here
+    task->regs.esp = (unsigned long) mainTask.regs.esp;//allocPage() + 0x1000; // Not implemented here
     task->next = 0;
 }
  
