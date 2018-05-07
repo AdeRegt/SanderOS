@@ -126,7 +126,7 @@ unsigned char getc(){
 		if(deze!=0x00){
 			break;
 		}
-		printf("%c",deze);
+		((void*)0x1000)[1]=deze;
 	}
 	return ((unsigned char*)0x10000)[0];
 }
