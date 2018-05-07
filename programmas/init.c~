@@ -11,6 +11,7 @@ void main(){
 	data = (unsigned char*)fopen(filepath);
 	int innerpointer = 0;
 	int ont = 0;
+			if(ont==selection){printf("\[47m\[30m");}else{printf("\[40m\[37m");}
 	while(1){
 		unsigned char deze = data[innerpointer++];
 		if(deze==';'){
