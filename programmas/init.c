@@ -28,7 +28,7 @@ void main(){
 	}
 	while(ont<24){
 		ont++;
-		println("\n");
+		printf("\n");
 	}
 	printf("\[44m\[37mSelecteer het gewenste programma met ENTER en beweeg met pijltjestoetsen        \[40m\[37m");
 	unsigned char type = getc();
