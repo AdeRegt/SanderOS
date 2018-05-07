@@ -43,6 +43,7 @@ int exec(unsigned char* path,void* arguments){
 		void* location = elf_load_file(msx);
 		if(location==NULL){
 			printf("\n  -> exec returned error!\n");
+			return -2;
 		}else{
 			printf("  -> calling file at %x \n",location);
 			int (*foo)(void*) = (void*)location;
