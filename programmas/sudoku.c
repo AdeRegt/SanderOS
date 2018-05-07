@@ -32,6 +32,6 @@ void main(){
 		printf("+---+---+---++---+---+---++---+---+---+\n");
 		printf("|%x|%x|%x||%x|%x|%x||%x|%x|%x|\n",rI[0],rI[1],rI[2],rI[3],rI[4],rI[5],rI[6],rI[7],rI[8]);
 		printf("+---+---+---++---+---+---++---+---+---+\n");
-		getc();
+		unsigned volatile char watnu = getc();
 	};
 }
