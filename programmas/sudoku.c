@@ -1,9 +1,9 @@
 #include <system.h>
 
 void main(){
-	printf("YAY\n");
 	while(1){
 		cls();
+		printf("\[47m\[30mSudoku - SanderOS                 \[40m\[37m\n");
 		printf("+---+---+---++---+---+---++---+---+---+\n");
 		printf("|   |   |   ||   |   |   ||   |   |   |\n");
 		printf("+---+---+---++---+---+---++---+---+---+\n");
