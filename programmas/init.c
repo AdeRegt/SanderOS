@@ -14,7 +14,7 @@ void main(){
 		if(deze==';'){
 			printf("\n");
 			ont++;
-			if(ont==selection){printf("\[46m");}else{printf("\[40m");}
+			if(ont==selection){printf("\[47m");}else{printf("\[40m");}
 		}else if(deze==0x00){
 			printf("\n");
 			ont++;

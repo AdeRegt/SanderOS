@@ -3,7 +3,7 @@
 void main(){
 	again:
 	cls();
-	printf("\[45mBeginscherm van het SanderOS bestuuringssysteem                    SanderOS v1.0");
+	printf("\[44mBeginscherm van het SanderOS bestuuringssysteem                    SanderOS v1.0");
 	printf("\[40m");
 	unsigned char* data = fopen("/isofs/");
 	int innerpointer = 0;
@@ -14,7 +14,7 @@ void main(){
 		if(deze==';'){
 			printf("\n");
 			ont++;
-			if(ont==selection){printf("\[44m");}else{printf("\[40m");}
+			if(ont==selection){printf("\[46m");}else{printf("\[40m");}
 		}else if(deze==0x00){
 			printf("\n");
 			ont++;
@@ -23,6 +23,6 @@ void main(){
 			printf("%c",deze);
 		}
 	}
-	printf("\[45mSelecteer het gewenste programma met ENTER en beweeg met pijltjestoetse         ");
+	printf("\[44mSelecteer het gewenste programma met ENTER en beweeg met pijltjestoetse         ");
 	for(;;);
 }
