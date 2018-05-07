@@ -15,9 +15,9 @@ unsigned char kbdus[128] ={
     0,  /* Alt */
   ' ',  /* Space bar */
     0,  /* Caps lock */
-    0,  /* 59 - F1 key ... > */
-    0,   0,   0,   0,   0,   0,   0,   0,
-    0,  /* < ... F10 */
+    0xb0,  /* 59 - F1 key ... > */
+    0xb1,   0xb2,   0xb3,   0xb4,   0xb5,   0xb6,   0xb7,   0xb8,
+    0xb9,  /* < ... F10 */
     0,  /* 69 - Num lock*/
     0,  /* Scroll Lock */
     0,  /* Home key */
@@ -34,8 +34,8 @@ unsigned char kbdus[128] ={
     0,  /* Insert Key */
     0,  /* Delete Key */
     0,   0,   0,
-    0,  /* F11 Key */
-    0xbe,       /* F12 Key */
+    0xba,  /* F11 Key */
+    0xbb,       /* F12 Key */
     0,  /* All other keys are undefined */
 };
 
@@ -103,7 +103,7 @@ void keyboard_int(){
 		}else{
 			karakter = kbdus[realchar];
 		}
-		if(karakter==0xbe){
+		if(karakter=>0xb0&&karakter<0xbe){
 			printf("\nF12 press detected! Time to yield!!\n");
 			yield();
 		}else if(karakter==0xbf){
