@@ -1,14 +1,14 @@
 #include <system.h>
 
-char rA[9];
-char rB[9];
-char rC[9];
-char rD[9];
-char rE[9];
-char rF[9];
-char rG[9];
-char rH[9];
-char rI[9];
+unsigned char rA[9];
+unsigned char rB[9];
+unsigned char rC[9];
+unsigned char rD[9];
+unsigned char rE[9];
+unsigned char rF[9];
+unsigned char rG[9];
+unsigned char rH[9];
+unsigned char rI[9];
 void main(){
 	int selx = 0;
 	int sely = 5;
