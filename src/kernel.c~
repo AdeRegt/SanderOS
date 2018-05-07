@@ -31,17 +31,18 @@ void kernel_main(){
 	initialiseKeyboard();
 	cls();
 	initTasking();
-	createTask(1,loadExecutable("/PROGRAMS/INIT.SEF"));
-	createTask(2,loadExecutable("/PROGRAMS/INIT.SEF"));
-	createTask(3,loadExecutable("/PROGRAMS/INIT.SEF"));
-	createTask(4,loadExecutable("/PROGRAMS/INIT.SEF"));
-	createTask(5,loadExecutable("/PROGRAMS/INIT.SEF"));
-	createTask(6,loadExecutable("/PROGRAMS/INIT.SEF"));
-	createTask(7,loadExecutable("/PROGRAMS/INIT.SEF"));
-	createTask(8,loadExecutable("/PROGRAMS/INIT.SEF"));
-	createTask(9,loadExecutable("/PROGRAMS/INIT.SEF"));
-	createTask(10,loadExecutable("/PROGRAMS/INIT.SEF"));
-	createTask(11,loadExecutable("/PROGRAMS/INIT.SEF"));
+	createTask( 1,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	createTask( 2,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	createTask( 3,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	createTask( 4,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	createTask( 5,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	createTask( 6,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	createTask( 7,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	createTask( 8,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	createTask( 9,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	createTask(10,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	createTask(11,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	printf("\n\n\n%s\n\n\n",readCDROM("/"));
 	for(;;);
 }
 
