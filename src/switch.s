@@ -46,4 +46,4 @@ switchTask:
     mov 32(%eax), %eax #EIP
     xchg (%esp), %eax #We do not have any more registers to use as tmp storage
     mov (%eax), %eax #EAX
-    ret #This ends all!
+ret #This ends all!
