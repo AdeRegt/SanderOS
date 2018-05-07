@@ -278,3 +278,5 @@ int getCurX();
 int getCurY();
 void setCurX(int a);
 void setCurY(int a);
+
+unsigned char* fopen(unsigned char* path);

@@ -28,14 +28,32 @@ int installFileSystem(unsigned long read,unsigned long write,unsigned int device
 	return filesystemscount - 1;
 }
 
+unsigned char* FAILSTRING = "FAILED";
+
+unsigned char* fopen(unsigned char* path){
+	int i = 0;
+	for(i = 0 ; i < filesystemcount ; i++){
+		for(int g = 0 ; g < 5 ; g++){
+			if(path[1+g]!=filesystems[i].name[g]){
+			
+			}
+		}
+	}
+	return FAILSTRING;
+}
+
 void devdump(){
 	
 	printf("Installed devices:\n");
 	for(int i = 0 ; i < 10 ; i++){
-		printf("Device %x named %s \n",i,(unsigned char*)blockdevices[i].name);
+		if(blockdevices[i].name[0]!=0x00){
+			printf("Device %x named %s \n",i,(unsigned char*)blockdevices[i].name);
+		}
 	}
 	printf("\nInstalled filesystems:\n");
 	for(int i = 0 ; i < 10 ; i++){
+		if(filesystems[i].name[0]!=0x00){
 		printf("Device %x named %s \n",i,(unsigned char*)filesystems[i].name);
+		}
 	}
 }
