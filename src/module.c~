@@ -21,6 +21,16 @@ void insmod(unsigned char* path,void* arguments){
 	}
 }
 
+void* loadExecutable(unsigned char* path){
+	unsigned char* msx = readCDROM(path);
+	if(strcmp(msx,(unsigned char*)"ERROR")==0){
+		printf("\nUNABLE TO LOAD %s !!\n",path);
+		return NULL;
+	}else{
+		return elf_load_file(msx);
+	}
+}
+
 int exec(unsigned char* path,void* arguments){
 	printf("--EXEC--\n");
 	printf("  -> loading file\n");
