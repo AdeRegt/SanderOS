@@ -3,16 +3,22 @@
 void main(){
 	again:
 	cls();
-	printf("\[45mBeginscherm van het SanderOS bestuuringssysteem                   SanderOS v1.0");
+	printf("\[45mBeginscherm van het SanderOS bestuuringssysteem                    SanderOS v1.0");
 	printf("\[40m");
 	unsigned char* data = fopen("/isofs/");
 	int innerpointer = 0;
+	int selection = 0;
+	int ont = 0;
+	if(ont==selection){printf("\[41m");}else{printf("\[40m");}
 	while(1){
 		unsigned char deze = data[innerpointer++];
 		if(deze==';'){
 			printf("\n");
+			ont++;
+			if(ont==selection){printf("\[41m");}else{printf("\[40m");}
 		}else if(deze==0x00){
 			printf("\n");
+			ont++;
 			break;
 		}else{
 			printf("%c",deze);
