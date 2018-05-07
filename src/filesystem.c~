@@ -35,11 +35,15 @@ unsigned char* fopen(unsigned char* path){
 	for(i = 0 ; i < filesystemcount ; i++){
 		for(int g = 0 ; g < 5 ; g++){
 			if(path[1+g]!=filesystems[i].name[g]){
-			
+				goto endtx;
 			}
+			goto cltx;
+			endtx:
 		}
 	}
 	return FAILSTRING;
+	cltx:
+	printf("X");
 }
 
 void devdump(){

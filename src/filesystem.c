@@ -39,6 +39,8 @@ unsigned char* fopen(unsigned char* path){
 			}
 			goto cltx;
 			endtx:
+			i++;
+			i--;
 		}
 	}
 	return FAILSTRING;
