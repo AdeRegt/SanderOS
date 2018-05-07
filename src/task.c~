@@ -20,6 +20,7 @@ void initTasking() {
     register long counter asm("esp");
     createTask(0,counter);
     createTask(1,otherMain);
+    tpoint = 0;
 }
 
 void createTask(unsigned char taskpointer, void (*main)()) {
@@ -38,7 +39,9 @@ void createTask(unsigned char taskpointer, void (*main)()) {
 }
 
 void yield() {
-    Task *last = runningTask;
-    runningTask = (Task *)runningTask->next;
-    switchTask((unsigned long)&last->regs, (unsigned long)&runningTask->regs);
+	switchTask((unsigned long)&tasks[tpoint],(unsigned long)&tasks[1]);
+	tpoint = 1;
+//    Task *last = runningTask;
+//    runningTask = (Task *)runningTask->next;
+//    switchTask((unsigned long)&last->regs, (unsigned long)&runningTask->regs);
 }
