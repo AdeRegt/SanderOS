@@ -40,15 +40,19 @@ void createTask(unsigned char taskpointer, void (*main)()) {
 
 void yield(unsigned char to) {
 	asm volatile("cli");
-	for(int i = 0 ; i < (160*25) ; i++){
-		tasks[tpoint].video[i] = ((char*)0xb8000)[i];
+	if(tasks[to].regs==NULL){
+		printf("\nOnmogelijk: Deze task is leeg.\n\n");
+	}else{
+		for(int i = 0 ; i < (160*25) ; i++){
+			tasks[tpoint].video[i] = ((char*)0xb8000)[i];
+		}
+		unsigned int tpnt = tpoint;
+		tpoint = to;
+		for(int i = 0 ; i < (160*25) ; i++){
+			((char*)0xb8000)[i] = tasks[tpoint].video[i];
+		}
+		switchTask((unsigned long)&tasks[tpnt],(unsigned long)&tasks[tpoint]);
 	}
-	unsigned int tpnt = tpoint;
-	tpoint = to;
-	for(int i = 0 ; i < (160*25) ; i++){
-		((char*)0xb8000)[i] = tasks[tpoint].video[i];
-	}
-	switchTask((unsigned long)&tasks[tpnt],(unsigned long)&tasks[tpoint]);
 	asm volatile("sti");
 //    Task *last = runningTask;
 //    runningTask = (Task *)runningTask->next;
