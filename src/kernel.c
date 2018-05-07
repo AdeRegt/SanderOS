@@ -44,7 +44,7 @@ void kernel_main(){
 	createTask(11,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
 	//yield(1);
 	devdump();
-	printf("\n\n\n\n>>>>> %s ",fopen("/isofs/"));
+	printf("\nThe main device contains: %s ",fopen("/isofs/"));
 	for(;;);
 }
 
