@@ -66,6 +66,7 @@ void main(){
 				}
 			}
 		}
+		selection = 0;
 	}
 	goto again;
 	for(;;);
