@@ -9,13 +9,12 @@ void main(){
 	int innerpointer = 0;
 	int selection = 1;
 	int ont = 0;
-	if(ont==selection){printf("\[41m");}else{printf("\[40m");}
 	while(1){
 		unsigned char deze = data[innerpointer++];
 		if(deze==';'){
 			printf("\n");
 			ont++;
-			if(ont==selection){printf("\[41m");}else{printf("\[40m");}
+			if(ont==selection){printf("\[42m");}else{printf("\[40m");}
 		}else if(deze==0x00){
 			printf("\n");
 			ont++;
