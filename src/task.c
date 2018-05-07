@@ -36,11 +36,12 @@ void createTask(unsigned char taskpointer, void (*main)()) {
     tasks[taskpointer].regs.eip = (unsigned long) main;
     tasks[taskpointer].regs.esp = (unsigned long) main;//mainTask.regs.esp;//allocPage() + 0x1000; // Not implemented here
     tasks[taskpointer].next = 0;
+    tasks[taskpointer].valid = 1;
 }
 
 void yield(unsigned char to) {
 	asm volatile("cli");
-	if(tasks[to].regs){
+	if(tasks[to].valid==0){
 		printf("\nOnmogelijk: Deze task is leeg.\n\n");
 	}else{
 		for(int i = 0 ; i < (160*25) ; i++){

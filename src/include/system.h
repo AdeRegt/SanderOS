@@ -262,6 +262,7 @@ typedef struct Task {
     Registers regs;
     struct Task *next;
     unsigned char video[160*25];
+    unsigned char valid;
 } Task;
  
 extern void initTasking();
