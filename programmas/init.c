@@ -50,6 +50,7 @@ void main(){
 						break;
 					}
 				}
+				filepath[i+(pntC++)] = '/';
 				filepath[i+(pntC++)] = 0x00;
 				break;
 			}
