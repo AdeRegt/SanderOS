@@ -1,6 +1,6 @@
 #include <system.h>
 
-unsigned long mainmethodurl;
+unsigned long mainmethodurl = NULL;
 
 void *elf_lookup_symbol(const char* a){
 	if(strcmp((unsigned char*)a,(unsigned char*)"printf")==0){
