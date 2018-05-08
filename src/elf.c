@@ -188,7 +188,7 @@ void *elf_load_file(void *file) {
 		//
 		//if(mainmethodurl==NULL){
 			mainmethodurl = (int)hdr + symbol->st_value + target->sh_offset;
-			printf("-->%x \n",mainmethodurl);
+			printf("-->%x \n",(int)hdr + symbol->st_value + target->sh_offset);
 		//}
 		//
 		
