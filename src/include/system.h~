@@ -225,7 +225,7 @@ int elf_load_stage1(Elf32_Ehdr *hdr);
 int elf_load_stage2(Elf32_Ehdr *hdr);
 int elf_do_reloc(Elf32_Ehdr *hdr, Elf32_Rel *rel, Elf32_Shdr *reltab);
 void insmod(unsigned char* path,void* arguments);
-int exec(unsigned char* path,void* arguments);
+int exec(unsigned char* path);
 void* loadExecutable(unsigned char* path);
 
 //
