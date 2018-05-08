@@ -11,7 +11,7 @@ void main(){
 	data = (unsigned char*)fopen(filepath);
 	if(data[1]=='E'&&data[2]=='L'&&data[3]=='F'){
 		cls();
-		insmod((unsigned char*)&filepath[5]);
+		insmod((unsigned char*)&filepath[5],filepath);
 		getc();
 		//printf("\n\nAPPLICATION TERMINATED\n\n");
 		//getc();
