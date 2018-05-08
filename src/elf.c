@@ -192,7 +192,9 @@ void *elf_load_file(void *file) {
 		//
 		Elf32_Shdr *strtab = elf_section(hdr, symtab->sh_link);
 		const char *name = (const char *)hdr + strtab->sh_offset + symbol->st_name;
-		printf("%s",name);
+		if(strlen(name)>1){
+			printf("%s",name);
+		}
 		return (int)hdr + symbol->st_value + target->sh_offset;
 	}
 }
