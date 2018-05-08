@@ -280,4 +280,4 @@ void setCurX(int a);
 void setCurY(int a);
 
 unsigned char* fopen(unsigned char* path);
-unsigned char __attribute__((optimize("O0")))  getc();
+unsigned char getc();
