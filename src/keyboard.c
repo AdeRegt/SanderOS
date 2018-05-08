@@ -112,8 +112,7 @@ void keyboard_int(){
 			shiftisin = 0x00;
 		}else{ 
 			//printf("%c",karakter);
-			((unsigned volatile char*)0x10000)[0] = karakter;
-			((unsigned volatile char*)bufferconstant)[0] = karakter;
+			((unsigned volatile char*)bufferconstant)[0] = (unsigned char)karakter;
 			//printf("%c",((unsigned char*)0x10000)[0]);
 		}
 	}else if(deze == 42 || deze == 54){
