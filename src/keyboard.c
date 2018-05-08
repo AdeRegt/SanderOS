@@ -121,7 +121,7 @@ void keyboard_int(){
 	}
 }
 
-unsigned volatile char getc(){
+unsigned char __attribute__((optimize("O0")))  getc(){
 	while(((unsigned volatile char*)bufferconstant)[0]==0x00){}
 	unsigned volatile char deze = (unsigned volatile char)((unsigned volatile char*)bufferconstant)[0];
 	((unsigned volatile char*)bufferconstant)[0] = (unsigned volatile char)0x00;
