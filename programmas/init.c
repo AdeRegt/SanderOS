@@ -13,6 +13,7 @@ void main(){
 		cls();
 		insmod((unsigned char*)&filepath[5],filepath);
 		getc();
+		goto again;
 		//printf("\n\nAPPLICATION TERMINATED\n\n");
 		//getc();
 	}
