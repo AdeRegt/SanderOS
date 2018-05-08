@@ -93,7 +93,7 @@ void keyboard_send_and_get_response_cmd(char val){
 }
 
 char shiftisin = 0x00;
-unsigned char bufferconstant = 0x00;
+unsigned volatile char bufferconstant = 0x00;
 void keyboard_int(){
 	unsigned char deze = inportb(0x60);
 	if(deze & 0x80){
@@ -112,7 +112,8 @@ void keyboard_int(){
 			shiftisin = 0x00;
 		}else{ 
 			//printf("%c",karakter);
-			((unsigned volatile char*)&bufferconstant)[0] = (unsigned volatile char)karakter;
+			//((unsigned volatile char*)bufferconstant)[0] = (unsigned volatile char)karakter;
+			bufferconstant = karakter;
 			//printf("%c",((unsigned char*)0x10000)[0]);
 		}
 	}else if(deze == 42 || deze == 54){
