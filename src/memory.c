@@ -43,9 +43,9 @@ void* mallocloc = (void*)0x1000;
 void* malloc(unsigned long t){
 	void* lx = mallocloc;
 	mallocloc += t;
-	if(mallocloc>=0x10000){
-		printf("PANIC: not enough memory left!");
-		for(;;);
-	}
+	//if(mallocloc>=0x10000){
+	//	printf("PANIC: not enough memory left!");
+	//	for(;;);
+	//}
 	return (void*)lx;
 }
