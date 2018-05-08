@@ -12,8 +12,8 @@ void main(){
 	if(data[1]=='E'&&data[2]=='L'&&data[3]=='F'){
 		cls();
 		exec((unsigned char*)&filepath[5]);
-		printf("\n\nAPPLICATION TERMINATED\n\n");
-		getc();
+		//printf("\n\nAPPLICATION TERMINATED\n\n");
+		//getc();
 	}
 	int innerpointer = 0;
 	int ont = 0;
