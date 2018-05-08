@@ -280,4 +280,4 @@ void setCurX(int a);
 void setCurY(int a);
 
 unsigned char* fopen(unsigned char* path);
-unsigned volatile char getc();
+volatile unsigned char getc();
