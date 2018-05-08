@@ -12,7 +12,6 @@ void main(){
 	if(data[1]=='E'&&data[2]=='L'&&data[3]=='F'){
 		cls();
 		insmod((unsigned char*)&filepath[5],filepath);
-		getc();
 		goto again;
 		//printf("\n\nAPPLICATION TERMINATED\n\n");
 		//getc();

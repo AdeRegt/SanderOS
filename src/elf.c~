@@ -33,6 +33,9 @@ void *elf_lookup_symbol(const char* a){
 	if(strcmp((unsigned char*)a,(unsigned char*)"exec")==0){
 		return exec;
 	}
+	if(strcmp((unsigned char*)a,(unsigned char*)"insmod")==0){
+		return insmod;
+	}
 	return NULL;
 }
 

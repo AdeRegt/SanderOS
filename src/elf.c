@@ -186,7 +186,9 @@ void *elf_load_file(void *file) {
 		Elf32_Shdr *target = elf_section(hdr, symbol->st_shndx);
 		
 		//
-		mainmethodurl = (int)hdr + symbol->st_value + target->sh_offset;
+		if(mainmethodurl==NULL){
+			mainmethodurl = (int)hdr + symbol->st_value + target->sh_offset;
+		}
 		//
 		
 		return (int)hdr + symbol->st_value + target->sh_offset;
