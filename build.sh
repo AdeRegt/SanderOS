@@ -9,7 +9,7 @@ echo ""
 echo ""
 cc -c programmas/hdd.c -o programmas/hdd.skm -std=gnu99 -ffreestanding -m32 -mtune=i386 -Isrc/include
 cc -c programmas/init.c -o programmas/init.sef -std=gnu99 -ffreestanding -m32 -mtune=i386 -Isrc/include
-cc -c programmas/sudoku.c -o programmas/sudoku.sef -std=gnu99 -ffreestanding -m32 -mtune=i386 -Isrc/include
+cc -c programmas/sudoku.c -o programmas/sudoku.sef -O0 -std=gnu99 -ffreestanding -m32 -mtune=i386 -Isrc/include
 
 
 echo "========================="
