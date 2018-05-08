@@ -8,6 +8,7 @@ echo "-------------------------"
 echo ""
 echo ""
 cc -c programmas/sudoku.c -o programmas/sudoku.sef -O0 -std=gnu99 -ffreestanding -m32 -mtune=i386 -Isrc/include
+../fasm/fasm ../fasm/source/SanderOS/fasm.asm
 
 
 echo "========================="

@@ -61,6 +61,7 @@ if grub-file --is-x86-multiboot myos.bin; then
 	cp programmas/hdd.skm -a isodir/modules/hdd.skm
 	cp programmas/init.sef -a isodir/programs/init.sef
 	cp programmas/sudoku.sef -a isodir/programs/sudoku.sef
+	cp ../fasm/source/SanderOS/fasm.o isodir/programs/fasm.sef
 	grub-mkrescue -o myos.iso isodir
 	
 	
