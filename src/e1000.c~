@@ -1,5 +1,7 @@
 #include <system.h>
 
+bool eerprom_exists;
+
 bool detectEEProm(){
     unsigned long val = 0;
     writeCommand(REG_EEPROM, 0x1); 

@@ -1,18 +1,2 @@
 #include <system.h>
 
-bool eerprom_exists;
-
-bool detectEEProm(){
-    unsigned long val = 0;
-    writeCommand(REG_EEPROM, 0x1); 
- 
-    for(int i = 0; i < 1000 && ! eerprom_exists; i++)
-    {
-            val = readCommand( REG_EEPROM);
-            if(val & 0x10)
-                    eerprom_exists = true;
-            else
-                    eerprom_exists = false;
-    }
-    return eerprom_exists;
-}
