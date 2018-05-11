@@ -3,7 +3,7 @@
 void mouselib_int_wait_1(){
 	while(1){
 		unsigned char dx = inportb(0x64);
-		if((dx & 1)==1){
+		if((dx & 1)==0){
 			break;
 		}
 	}
