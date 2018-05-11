@@ -29,6 +29,10 @@ unsigned char mouselib_int_read(){
 	mouselib_int_wait_0();
 	return inportb(0x60);
 }
+
+void mouse_int(){
+	
+}
 	
 void mouse_init(){
 	printf(">>STARTING<<");
