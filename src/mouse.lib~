@@ -69,18 +69,18 @@ mouselib_install_driver:
 	
 	; Setup the mouse handler
 	cli
-	push es
-	mov ax, 0x0000
-	mov es, ax
-	
-	mov ax, [es:0x01D0]
-	mov [mouselib_int_originalhandler], ax
-	mov ax, [es:0x01D2]
-	mov [mouselib_int_originalseg], ax
-	
-	mov word [es:0x01D0], mouselib_int_handler
-	mov word [es:0x01D2], 0x2000
-	pop es
+;	push es
+;	mov ax, 0x0000
+;	mov es, ax
+;	
+;	mov ax, [es:0x01D0]
+;	mov [mouselib_int_originalhandler], ax
+;	mov ax, [es:0x01D2]
+;	mov [mouselib_int_originalseg], ax
+;	
+;	mov word [es:0x01D0], mouselib_int_handler
+;	mov word [es:0x01D2], 0x2000
+;	pop es
 	sti
 	
 	popa
