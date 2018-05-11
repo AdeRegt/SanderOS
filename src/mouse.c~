@@ -9,18 +9,6 @@ void mouselib_int_wait_1(){
 	}
 }
 
-
-mouselib_int_wait_0:
-	mov cx, 65000
-	mov dx, 0x64
-.wait:
-	in al, dx
-	bt ax, 0
-	jc .okay
-	loop .wait
-.okay:
-	ret
-
 void mouselib_int_wait_0(){
 	while(1){
 		unsigned char dx = inportb(0x64);
