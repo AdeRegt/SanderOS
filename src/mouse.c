@@ -17,6 +17,18 @@ void mouselib_int_wait_0(){
 		}
 	}
 }
+
+void mouselib_int_write(unsigned char ah){
+	mouselib_int_wait_1();
+	outportb(0x64,0xD4);
+	mouselib_int_wait_1();
+	outportb(0x60,ah);
+}
+
+unsigned char mouselib_int_read(){
+	mouselib_int_wait_0();
+	return inportb(0x60);
+}
 	
 void mouse_init(){
 	printf(">>STARTING<<");
@@ -31,6 +43,10 @@ void mouse_init(){
 	outportb(0x64,0x60);
 	mouselib_int_wait_1();
 	outportb(0x60,x);
+	mouselib_int_write(0xF6);
+	mouselib_int_read();
+	mouselib_int_write(0xF4);
+	mouselib_int_read();
 	asm volatile("sti");
 	printf(">>READY<<");
 }
