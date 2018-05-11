@@ -1,4 +1,5 @@
 [bits 32]
+[section .text]
 ; MikeOS Mouse Library
 ; Created by Joshua Beck
 ; Version 1.1.1

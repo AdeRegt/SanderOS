@@ -1017,7 +1017,7 @@ mouselib_sendevent:
 	ret
 	
 	
-
+[section .data]
 ; All the data needed by the mouse driver and API
 mouselib_int_data				db 0
 mouselib_int_delta_x				db 0
