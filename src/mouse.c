@@ -30,6 +30,7 @@ void mouse_handler() //struct regs *a_r (not used but just there)
       mouse_cycle=0;
       break;
   }
+  printf("YAY?");
 }
 
 inline void mouse_wait(unsigned char a_type) //unsigned char
