@@ -42,7 +42,8 @@ void kernel_main(){
 //	createTask( 9,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
 //	createTask(10,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
 //	createTask(11,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-	yield(1);
+//	yield(1);
+	mouse_init();
 	for(;;);
 }
 

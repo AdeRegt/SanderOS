@@ -281,3 +281,5 @@ void setCurY(int a);
 
 unsigned char* fopen(unsigned char* path);
 unsigned char getc();
+
+void mouse_init();
