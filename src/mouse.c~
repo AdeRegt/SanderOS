@@ -77,6 +77,9 @@ byte mouse_read()
   return inportb(0x60);
 }
 
+
+extern void irq_mouse();
+
 void mouse_install()
 {
   byte _status;  //unsigned char
@@ -109,5 +112,4 @@ void mouse_install()
 
 
 
-extern void irq_mouse();
 

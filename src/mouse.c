@@ -2,6 +2,9 @@
  * Mouse driver
  */
 #include <system.h>
+
+typedef byte unsigned char
+typedef sbyte signed char
 //Mouse.inc by SANiK
 //License: Use as you wish, except to cause damage
 byte mouse_cycle=0;     //unsigned char
