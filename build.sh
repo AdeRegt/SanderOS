@@ -27,7 +27,7 @@ echo ""
 echo ""
 nasm -felf32 src/boot.asm -o build/boot.o
 nasm -felf32 src/interrupt.asm -o build/interrupt.o
-nasm -felf32 src/mouse.lib -o build/mouse.o
+#nasm -felf32 src/mouse.lib -o build/mouse.o
 as src/switch.s -o build/switch.o --32 #-mtune=i386 --32
 cc -c src/kernel.c -o build/kernel.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/screen.c -o build/screen.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
@@ -38,7 +38,7 @@ cc -c src/pci.c -o build/pci.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra 
 cc -c src/keyboard.c -o build/keyboard.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/atapi.c -o build/atapi.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/ata.c -o build/ata.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
-#cc -c src/mouse.c -o build/mouse.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
+cc -c src/mouse.c -o build/mouse.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/iso.c -o build/iso.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/elf.c -o build/elf.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/module.c -o build/module.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
