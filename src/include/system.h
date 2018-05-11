@@ -282,5 +282,7 @@ void setCurY(int a);
 unsigned char* fopen(unsigned char* path);
 unsigned char getc();
 
-void mouse_init();
+void mouse_install();
 //extern void mouselib_install_driver();
+
+
