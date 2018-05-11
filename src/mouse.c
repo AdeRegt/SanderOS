@@ -34,7 +34,7 @@ void mouse_handler() //struct regs *a_r (not used but just there)
 
 inline void mouse_wait(unsigned char a_type) //unsigned char
 {
-  dword _time_out=100000; //unsigned int
+  unsigned long _time_out=100000; //unsigned int
   if(a_type==0)
   {
     while(_time_out--) //Data
