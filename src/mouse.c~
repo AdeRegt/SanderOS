@@ -3,6 +3,20 @@
  */
 #include <system.h>
 
+
+typedef enum {
+	LEFT_CLICK   = 0x01,
+	RIGHT_CLICK  = 0x02,
+	MIDDLE_CLICK = 0x04
+} mouse_click_t;
+
+typedef struct {
+	unsigned long magic;
+	signed char x_difference;
+	signed char y_difference;
+	mouse_click_t buttons;
+} mouse_device_packet_t;
+
 unsigned char mouse_cycle = 0;
 signed char  mouse_byte[3];
 

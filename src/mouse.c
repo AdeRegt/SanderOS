@@ -3,6 +3,7 @@
  */
 #include <system.h>
 
+#define MOUSE_MAGIC 0xFEED1234
 
 typedef enum {
 	LEFT_CLICK   = 0x01,
