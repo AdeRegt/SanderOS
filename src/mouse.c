@@ -6,7 +6,7 @@
 //Mouse.inc by SANiK
 //License: Use as you wish, except to cause damage
 unsigned char mouse_cycle=0;     //unsigned char
-signed char mouse_unsigned char[3];    //signed char
+signed char mouse_char[3];    //signed char
 signed char mouse_x=0;         //signed char
 signed char mouse_y=0;         //signed char
 
@@ -16,17 +16,17 @@ void mouse_handler() //struct regs *a_r (not used but just there)
   switch(mouse_cycle)
   {
     case 0:
-      mouse_unsigned char[0]=inportb(0x60);
+      mouse_char[0]=inportb(0x60);
       mouse_cycle++;
       break;
     case 1:
-      mouse_unsigned char[1]=inportb(0x60);
+      mouse_char[1]=inportb(0x60);
       mouse_cycle++;
       break;
     case 2:
-      mouse_unsigned char[2]=inportb(0x60);
-      mouse_x=mouse_unsigned char[1];
-      mouse_y=mouse_unsigned char[2];
+      mouse_char[2]=inportb(0x60);
+      mouse_x=mouse_char[1];
+      mouse_y=mouse_char[2];
       mouse_cycle=0;
       break;
   }
