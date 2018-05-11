@@ -43,6 +43,12 @@ void detectDevices(){
 						}else if(suclassID==0x01){
 							printf("PCI: Paralelcontroller\n");
 						}
+					}else if(classID==0x09){
+						if(suclassID==0x00){
+							printf("PCI: Keyboardcontroller\n");
+						}else if(suclassID==0x02){
+							printf("PCI: Mousecontroller\n");
+						}
 					}
 					i = i + 1;
 				}
