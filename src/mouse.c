@@ -2,9 +2,6 @@
  * Mouse driver
  */
 #include <system.h>
-#include <logging.h>
-#include <pipe.h>
-#include <mouse.h>
 
 unsigned char mouse_cycle = 0;
 signed char  mouse_byte[3];
