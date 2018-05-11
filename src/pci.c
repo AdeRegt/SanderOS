@@ -15,8 +15,10 @@ void detectDevices(){
 							detectATAPI();
 						}else if(suclassID==0x02){
 							// FLOPPY OPSLAG
+							printf("PCI: Floppy\n");
 						}else{
 							// UNKNOWN
+							printf("PCI: Unknown\n");
 						}
 					}
 					i = i + 1;
