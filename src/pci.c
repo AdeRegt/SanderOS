@@ -20,6 +20,11 @@ void detectDevices(){
 							// UNKNOWN
 							printf("PCI: Unknown\n");
 						}
+					}else if(classID==0x02){
+						if(suclassID==0x00){
+							printf("e1000 controller\n");
+							for(;;);
+						}
 					}
 					i = i + 1;
 				}

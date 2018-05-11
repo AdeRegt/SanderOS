@@ -18,6 +18,11 @@ void detectDevices(){
 							printf("PCI: Floppy\n");
 						}else{
 							// UNKNOWN
+							printf("PCI: Unknown\n");
+						}
+					}else if(classID==0x02){
+						if(suclassID==0x00){
+							printf("e1000 controller\n");
 						}
 					}
 					i = i + 1;
