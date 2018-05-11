@@ -28,7 +28,7 @@ void kernel_main(){
 	}
 	setupIDT();
 	detectDevices();
-	if(1){
+	if(0){
 		mouse_install();
 		for(;;);
 	}else{

@@ -28,22 +28,27 @@ void kernel_main(){
 	}
 	setupIDT();
 	detectDevices();
-	initialiseKeyboard();
-	cls();
-	initTasking();
-	createTask( 1,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-	createTask( 2,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-//	createTask( 3,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-//	createTask( 4,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-//	createTask( 5,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-//	createTask( 6,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-//	createTask( 7,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-//	createTask( 8,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-//	createTask( 9,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-//	createTask(10,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-//	createTask(11,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-//	yield(1);
-	mouse_install();
-	for(;;);
+	if(1){
+		mouse_install();
+		for(;;);
+	}else{
+		initialiseKeyboard();
+		cls();
+		initTasking();
+		createTask( 1,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+		createTask( 2,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	//	createTask( 3,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	//	createTask( 4,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	//	createTask( 5,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	//	createTask( 6,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	//	createTask( 7,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	//	createTask( 8,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	//	createTask( 9,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	//	createTask(10,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	//	createTask(11,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+	//	yield(1);
+		mouse_install();
+		for(;;);
+	}
 }
 
