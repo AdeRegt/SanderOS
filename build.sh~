@@ -37,14 +37,14 @@ cc -c src/pci.c -o build/pci.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra 
 cc -c src/keyboard.c -o build/keyboard.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/atapi.c -o build/atapi.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/ata.c -o build/ata.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
-#cc -c src/mouse.c -o build/mouse.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
+cc -c src/mouse.c -o build/mouse.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/iso.c -o build/iso.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/elf.c -o build/elf.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/module.c -o build/module.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/memory.c -o build/memory.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/filesystem.c -o build/filesystem.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
 cc -c src/task.c -o build/task.o -std=gnu99 -ffreestanding -O2 -Wall -m32 -Wextra -mtune=i386 -Isrc/include
-ld -n -T src/linker.ld -o myos.bin -O2 -nostdlib build/boot.o build/kernel.o build/ata.o build/keyboard.o build/pci.o build/atapi.o build/idt.o build/interrupt.o build/screen.o build/ports.o build/iso.o build/elf.o build/module.o build/memory.o build/filesystem.o build/task.o build/switch.o -m elf_i386
+ld -n -T src/linker.ld -o myos.bin -O2 -nostdlib build/boot.o build/kernel.o build/ata.o build/keyboard.o build/pci.o build/atapi.o build/idt.o build/interrupt.o build/screen.o build/ports.o build/iso.o build/elf.o build/module.o build/memory.o build/filesystem.o build/task.o build/switch.o build/mouse.o -m elf_i386
 if grub-file --is-x86-multiboot myos.bin; then
   	
 
