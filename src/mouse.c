@@ -8,6 +8,7 @@ void mouselib_int_wait_1(){
 }
 	
 void mouse_init(){
+	printf(">>STARTING<<");
 	asm volatile("cli");
 	mouselib_int_wait_1();
 	outportb(0x64,0xA8);
