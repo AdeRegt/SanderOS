@@ -43,6 +43,11 @@ void mouse_init(){
 	outportb(0x64,0x60);
 	mouselib_int_wait_1();
 	outportb(0x60,x);
+	mouselib_int_write(0xF6);
+	mouselib_int_read();
+	mouselib_int_write(0xF4);
+	mouselib_int_read();
+	setInterrupt(32+12,(unsigned long) &irq_mouse);
 	asm volatile("sti");
 	printf(">>READY<<");
 }

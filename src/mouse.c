@@ -29,6 +29,10 @@ unsigned char mouselib_int_read(){
 	mouselib_int_wait_0();
 	return inportb(0x60);
 }
+
+void mouse_int(){
+	
+}
 	
 void mouse_init(){
 	printf(">>STARTING<<");
@@ -47,6 +51,7 @@ void mouse_init(){
 	mouselib_int_read();
 	mouselib_int_write(0xF4);
 	mouselib_int_read();
+	setInterrupt(32+12,(unsigned long) &irq_mouse);
 	asm volatile("sti");
 	printf(">>READY<<");
 }
