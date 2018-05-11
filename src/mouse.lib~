@@ -1,3 +1,4 @@
+[bits 32]
 ; MikeOS Mouse Library
 ; Created by Joshua Beck
 ; Version 1.1.1
