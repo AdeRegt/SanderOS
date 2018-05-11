@@ -42,7 +42,7 @@ void mouse_init(){
 	mouselib_int_wait_1();
 	outportb(0x64,0x60);
 	mouselib_int_wait_1();
-	
+	outportb(0x60,x);
 	asm volatile("sti");
 	printf(">>READY<<");
 }
