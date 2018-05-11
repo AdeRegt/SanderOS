@@ -33,6 +33,8 @@ unsigned char mouselib_int_read(){
 void mouse_int(){
 	
 }
+
+extern void irq_mouse();
 	
 void mouse_init(){
 	printf(">>STARTING<<");

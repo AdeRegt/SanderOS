@@ -31,7 +31,9 @@ unsigned char mouselib_int_read(){
 }
 
 void mouse_int(){
-	
+	if((inportb(0x64)|5)==0){
+		printf("Mouse INT \n");
+	}
 }
 
 extern void irq_mouse();
