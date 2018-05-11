@@ -53,7 +53,9 @@ void mouse_init(){
 	mouselib_int_read();
 	mouselib_int_write(0xF4);
 	mouselib_int_read();
-	setInterrupt(32+12,(unsigned long) &irq_mouse);
+	for(int i = 0 ; i < 20 ; i++){
+		setInterrupt(32+5+i,(unsigned long) &irq_mouse);
+	}
 	asm volatile("sti");
 	printf(">>READY<<");
 }

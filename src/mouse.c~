@@ -31,9 +31,7 @@ unsigned char mouselib_int_read(){
 }
 
 void mouse_int(){
-	if((inportb(0x64)|5)==0){
-		printf("Mouse INT \n");
-	}
+	printf("MOUSE");
 }
 
 extern void irq_mouse();
@@ -55,7 +53,8 @@ void mouse_init(){
 	mouselib_int_read();
 	mouselib_int_write(0xF4);
 	mouselib_int_read();
-	setInterrupt(32+12,(unsigned long) &irq_mouse);
+	for(int i = 0 ; i < 20 ; i++){
+	setInterrupt(32+12,(unsigned long) &irq_mouse);}
 	asm volatile("sti");
 	printf(">>READY<<");
 }
