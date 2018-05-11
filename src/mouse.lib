@@ -70,7 +70,7 @@ mouselib_install_driver:
 	call mouselib_int_read		; Acknowledge
 	
 	; Setup the mouse handler
-	cli
+;	cli
 ;	push es
 ;	mov ax, 0x0000
 ;	mov es, ax
@@ -83,7 +83,7 @@ mouselib_install_driver:
 ;	mov word [es:0x01D0], mouselib_int_handler
 ;	mov word [es:0x01D2], 0x2000
 ;	pop es
-	sti
+;	sti
 	
 	popa
 	ret
