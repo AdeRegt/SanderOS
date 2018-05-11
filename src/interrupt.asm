@@ -37,7 +37,7 @@ irq_keyboard:
     iret
     
 global irq_mouse
-extern mouse_int
+extern mouse_handler
 irq_mouse:
     pusha
     push ds
@@ -47,7 +47,7 @@ irq_mouse:
     push eax
     mov al,0x20
     out 0x20,al
-    call mouse_int
+    call mouse_handler
     pop eax
     pop gs
     pop fs
