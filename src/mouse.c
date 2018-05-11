@@ -44,6 +44,7 @@ inline void mouse_wait(unsigned char a_type) //unsigned char
         return;
       }
     }
+    printf("TIMEOUT: A\n");
     return;
   }
   else
@@ -55,6 +56,7 @@ inline void mouse_wait(unsigned char a_type) //unsigned char
         return;
       }
     }
+    printf("TIMEOUT: B\n");
     return;
   }
 }
