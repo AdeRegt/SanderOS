@@ -143,4 +143,5 @@ void mouse_install() {
 	mouse_write(0xF4);
 	mouse_read();
 	setInterrupt(MOUSE_IRQ, irq_mouse);
+	printf("READY");
 }
