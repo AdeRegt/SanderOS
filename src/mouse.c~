@@ -38,7 +38,8 @@ signed char  mouse_byte[3];
 void mouse_wait(unsigned char a_type) {
 	unsigned long timeout = 100000;
 	if (!a_type) {
-		while (--timeout) {
+		while(1){
+//		while (--timeout) {
 			if ((inportb(MOUSE_STATUS) & MOUSE_BBIT) == 1) {
 				return;
 			}
@@ -46,7 +47,8 @@ void mouse_wait(unsigned char a_type) {
 		printf("mouse timeout");
 		return;
 	} else {
-		while (--timeout) {
+		while(1){
+//		while (--timeout) {
 			if (!((inportb(MOUSE_STATUS) & MOUSE_ABIT))) {
 				return;
 			}
