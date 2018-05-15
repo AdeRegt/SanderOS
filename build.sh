@@ -71,8 +71,10 @@ if grub-file --is-x86-multiboot myos.bin; then
 	echo "-------------------------"
 	echo ""
 	echo ""
+	nasm -O0 -w+orphan-labels -f bin -o src/bootloader/usb/kernel.bin src/bootloader/usb/kernel.asm
 	mkdir innerloop
 	sudo mount -o loop mikeos.flp innerloop
+	sudo cp src/bootloader/usb/kernel.bin innerloop/kernel.bin
 	sudo umount innerloop
 	rm -r innerloop
 
