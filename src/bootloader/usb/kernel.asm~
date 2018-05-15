@@ -1,4 +1,4 @@
-use 16
+BITS 16
 
 os_main:
 	cli				; Clear interrupts
@@ -16,7 +16,9 @@ os_main:
 	mov fs, ax			; live entirely in 64K
 	mov gs, ax
 
-	cmp dl, 0
+	mov byte [bootdevice],dl
 	
 	cli
 	hlt
+	
+bootdevice db 0x00
