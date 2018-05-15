@@ -1,4 +1,4 @@
-use 16
+BITS 16
 
 os_main:
 	cli				; Clear interrupts

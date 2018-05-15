@@ -1,3 +1,5 @@
+use 16
+
 os_main:
 	cli				; Clear interrupts
 	mov ax, 0
