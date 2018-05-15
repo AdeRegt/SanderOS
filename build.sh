@@ -66,7 +66,15 @@ if grub-file --is-x86-multiboot myos.bin; then
 	cp ../fasm/source/SanderOS/fasm.o isodir/programs/fasm.sef
 	grub-mkrescue -o myos.iso isodir
 	
-	
+	echo "========================="
+	echo "CREATING USB LEGACY"
+	echo "-------------------------"
+	echo ""
+	echo ""
+	mkdir innerloop
+	sudo mount -o loop mikeos.flp innerloop
+	sudo umount innerloop
+	rm -r innerloop
 
 	echo "========================="
 	echo "STARTING EMULATOR"
