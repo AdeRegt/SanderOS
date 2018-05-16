@@ -62,7 +62,17 @@ os_main:
 	hlt
 	msgx3 db "LEES FOUT",0x00
 	nxt3:
-	mov si,succes
+	
+	;
+	; INTRODUCTIE
+	;
+	mov si,tell1
+	call print_string
+	mov si,filename
+	call print_string
+	mov si,tell2
+	call print_string
+	mov si,0x5000
 	call print_string
 	jmp $
 
@@ -73,7 +83,9 @@ jmp $
 
 failure db "BOOT FAILURE",0x00
 welcomestring db "Stage2                                              Sanderslando bootloader v1.0",0x00
-succes db "Het ziet er naar uit dat het werkt?!",0x00
+tell1 db "Poging doen om ",0x00
+filename db "KERNEL   BIN",0x00
+tell2 db " te vinden en te laden!",0x00
 bootdev db 0x00
 
 
@@ -99,5 +111,5 @@ db 0
 blkcnt dw 1
 addrx dw 0x5000
 dw 0
-lba1 dd 1
+lba1 dd 19
 lba2 dd 0
