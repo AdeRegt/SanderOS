@@ -136,7 +136,7 @@ fatal_disk_error:
 read_fat_ok:
 	popa
 
-	mov ax, buffer			; Segment where we'll load the kernel
+	mov ax, 0x5000			; Segment where we'll load the kernel
 	mov es, ax
 	mov bx, 0
 
@@ -158,7 +158,7 @@ load_file_sector:
 
 	call l2hts			; Make appropriate params for int 13h
 
-	mov ax, buffer			; Set buffer past what we've already read
+	mov ax, 0x5000			; Set buffer past what we've already read
 	mov es, ax
 	mov bx, word [pointer]
 
@@ -186,7 +186,7 @@ calculate_next_cluster:
 	mul bx
 	mov bx, 2
 	div bx				; DX = [cluster] mod 2
-	mov si, buffer
+	mov si, 0x5000
 	add si, ax			; AX = word in FAT for the 12 bit entry
 	mov ax, word [ds:si]
 
@@ -320,7 +320,7 @@ DriveNo			dw 0		; Drive No: 0
 Signature		db 41		; Drive signature: 41 for floppy
 
 checkheader:
-mov si,buffer
+mov si,0x5000
 call print_string
 
 cli
