@@ -76,15 +76,15 @@ os_main:
 	;
 	; LOOK FOR KERNEL
 	;
-	mov cx,10
+	mov cx,16
 	mov di,0x5000
 	lookagain:
-		push cx
+		pusha
 		mov si, filename
 		mov cx, 11
 		rep cmpsb
-		pop cx
 		je found_file_to_load
+		popa
 		mov ax,32
 		add di,ax
 	loop lookagain
