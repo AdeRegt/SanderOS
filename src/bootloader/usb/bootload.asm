@@ -46,7 +46,8 @@ mov si,failmes
 call print_string
 cli
 hlt
-	
+
+failmes db "<<FATAL>>",0x00	
 hello db "Hello world!",0x00
 bootdev db 0x00
 	
