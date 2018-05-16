@@ -99,5 +99,5 @@ db 0
 blkcnt dw 1
 addrx dw 0x5000
 dw 0
-lba1 dd 0
+lba1 dd 1
 lba2 dd 0
