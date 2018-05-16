@@ -321,22 +321,7 @@ Signature		db 41		; Drive signature: 41 for floppy
 
 checkheader:
 mov si,buffer
-mov byte al,byte [si]
-cmp al,0x7f
-jne corruptelf
-inc si
-mov byte al,byte [si]
-cmp al,0x45
-jne corruptelf
-inc si
-mov byte al,byte [si]
-cmp al,0x4C
-jne corruptelf
-inc si
-mov byte al,byte [si]
-cmp al,0x46
-jne corruptelf
-inc si
+call print_string
 
 cli
 hlt
