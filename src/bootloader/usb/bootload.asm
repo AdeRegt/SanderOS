@@ -64,6 +64,7 @@ bootloader_start:
 	cli
 	hlt
 hello db "Hello world!",0x00
+bootdev db 0x00
 	
 print_string:				; Output string in SI to screen
 	pusha

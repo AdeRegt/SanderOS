@@ -59,8 +59,27 @@ bootloader_start:
 	; NOTE: A few early BIOSes are reported to improperly set DL
 
 	mov [bootdev], dl		; Save boot device number
+	mov si,hello
+	call print_string
 	cli
 	hlt
+hello db "Hello world!",0x00
+	
+print_string:				; Output string in SI to screen
+	pusha
+
+	mov ah, 0Eh			; int 10h teletype function
+
+.repeat:
+	lodsb				; Get char from string
+	cmp al, 0
+	je .done			; If char is zero, end of string
+	int 10h				; Otherwise, print it
+	jmp short .repeat
+
+.done:
+	popa
+	ret
 times 510-($-$$) db 0	; Pad remainder of boot sector with zeros
 dw 0AA55h		; Boot signature (DO NOT CHANGE!)
 
