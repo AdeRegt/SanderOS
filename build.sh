@@ -71,11 +71,13 @@ if grub-file --is-x86-multiboot myos.bin; then
 	echo "-------------------------"
 	echo ""
 	echo ""
-	nasm -O0 -w+orphan-labels -f bin -o src/bootloader/usb/kernel.bin src/bootloader/usb/kernel.asm
+	nasm -O0 -w+orphan-labels -f bin -o src/bootloader/usb/stage2.bin src/bootloader/usb/stage2.asm
+	nasm -O0 -w+orphan-labels -f bin -o src/bootloader/usb/bootload.bin src/bootloader/usb/bootload.asm
 	mkdir innerloop
 	sudo dd if=src/bootloader/usb/bootload.bin of=/dev/sdb
 	sudo mount /dev/sdb innerloop
-	sudo cp src/bootloader/usb/kernel.bin innerloop/kernel.bin
+	sudo cp src/bootloader/usb/stage2.bin innerloop/stage2.bin
+	sudo cp myos.bin innerloop/kernel.bin
 	sudo umount innerloop
 	rm -r innerloop
 
