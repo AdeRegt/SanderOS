@@ -72,7 +72,7 @@ call print_string
 jmp $
 
 failure db "BOOT FAILURE",0x00
-welcomestring db "Stage2                                                Sanderslando bootloader v1.0",0x00
+welcomestring db "Stage2                                              Sanderslando bootloader v1.0",0x00
 succes db "Het ziet er naar uit dat het werkt?!",0x00
 bootdev db 0x00
 
@@ -96,7 +96,7 @@ print_string:				; Output string in SI to screen
 datapacket:
 db 0x10
 db 0
-blkcnt dw 0
+blkcnt dw 1
 addrx dw 0x5000
 dw 0
 lba1 dd 0
