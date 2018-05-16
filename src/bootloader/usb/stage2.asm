@@ -72,7 +72,24 @@ os_main:
 	call print_string
 	mov si,tell2
 	call print_string
-	mov si,0x5000
+	
+	;
+	; LOOK FOR KERNEL
+	;
+	mov cx,10
+	mov di,0x5000
+	lookagain:
+		mov si, filename
+		mov cx, 11
+		rep cmpsb
+		je found_file_to_load
+		mov ax,32
+		mov di,0x5000
+		add di,ax
+	loop lookagain
+	jmp fail
+	found_file_to_load:
+	mov si,YAY
 	call print_string
 	jmp $
 
@@ -86,6 +103,7 @@ welcomestring db "Stage2                                              Sanderslan
 tell1 db "Poging doen om ",0x00
 filename db "KERNEL   BIN",0x00
 tell2 db " te vinden en te laden!",0x00
+YAY db "GEVONDEN",0x00
 bootdev db 0x00
 
 
