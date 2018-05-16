@@ -10,7 +10,7 @@ os_main:
 	cld				; The default direction for string operations
 					; will be 'up' - incrementing address in RAM
 
-	mov ax, buffer			; Set all segments to match where kernel is loaded
+	mov ax, 0x2000			; Set all segments to match where kernel is loaded
 	mov ds, ax			; After this, we don't need to bother with
 	mov es, ax			; segments ever again, as MikeOS and its programs
 	mov fs, ax			; live entirely in 64K
