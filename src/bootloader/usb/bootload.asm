@@ -38,6 +38,13 @@ bootloader_start:
 	int 0x13
 	jc fail
 	
+	mov si,seemsok
+	call print_string
+	
+	mov si,buffer
+	mov al,byte [si]
+	cmp al,0x7f
+	jne och
 	cli
 	hlt
 	
@@ -47,7 +54,15 @@ call print_string
 cli
 hlt
 
+och:
+mov si,failmes2
+call print_string
+cli
+hlt
+
+seemsok db "TOT ZOVER ALLES GOED",0x00
 failmes db "<<FATAL>>",0x00	
+failmes2 db "<<SUM>>",0x00	
 hello db "Hello world!",0x00
 bootdev db 0x00
 	
