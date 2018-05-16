@@ -103,6 +103,7 @@ welcomestring db "Stage2                                              Sanderslan
 tell1 db "Poging doen om ",0x00
 filename db "KERNEL   BIN",0x00
 tell2 db " te vinden en te laden!",0x00
+YAY db "GEVONDEN",0x00
 bootdev db 0x00
 
 
