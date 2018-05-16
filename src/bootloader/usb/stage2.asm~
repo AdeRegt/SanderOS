@@ -320,8 +320,21 @@ DriveNo			dw 0		; Drive No: 0
 Signature		db 41		; Drive signature: 41 for floppy
 
 checkheader:
-mov byte al, [buffer]
+mov byte al,byte [buffer+0]
+cmp al,byte 0x7F
+jne corruptelf
+mov byte al,byte [buffer+1]
+cmp al,byte 'E'
+jne corruptelf
+mov byte al,byte [buffer+2]
+cmp al,byte 'L'
+jne corruptelf
+mov byte al,byte [buffer+3]
+cmp al,byte 'F'
+jne corruptelf
 
+cli
+hlt
 corruptelf:
 mov si,corrupt
 call print_string
