@@ -77,6 +77,7 @@ if grub-file --is-x86-multiboot myos.bin; then
 	sudo dd if=src/bootloader/usb/bootload.bin of=/dev/sdb
 	sudo mount /dev/sdb innerloop
 	sudo cp src/bootloader/usb/stage2.bin innerloop/stage2.bin
+	sudo cp myos.bin innerloop/kernel.bin
 	sudo umount innerloop
 	rm -r innerloop
 

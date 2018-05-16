@@ -246,7 +246,12 @@ end:					; We've got the file to load!
 	hlt
 ;	jmp 2000h:0000h			; Jump to entry point of loaded kernel!
 gevonden db "GEVONDEN",0x00
-
+invalidregex:
+mov si,noe
+call print_string
+cli
+hlt
+noe db "INVALID TOKENS",0x00
 ; ------------------------------------------------------------------
 ; BOOTLOADER SUBROUTINES
 
