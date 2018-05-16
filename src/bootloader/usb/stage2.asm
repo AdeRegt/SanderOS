@@ -27,8 +27,13 @@ os_main:
 	mov ah,0x00
 	mov dl,byte [bootdev]
 	int 0x13
-	jc fail 
-	
+	jnc nxt1
+	mov si,msgx1
+	call print_string
+	cli
+	hlt
+	msgx1 db "RESET FOUT",0x00
+	nxt1:
 	;
 	; Kijken of extensions er zijn
 	;
@@ -36,8 +41,13 @@ os_main:
 	mov dl,byte [bootdev]
 	mov bx,55AAh
 	int 0x13
-	jc fail
-	
+	jnc nxt2
+	mov si,msgx2
+	call print_string
+	cli
+	hlt
+	msgx2 db "EXT FOUT",0x00
+	nxt2:
 	;
 	; SECTOR LEZEN
 	;
@@ -45,8 +55,13 @@ os_main:
 	mov ah,0x42
 	mov dl,byte [bootdev]
 	int 0x13
-	jc fail
-	
+	jnc nxt3
+	mov si,msgx3
+	call print_string
+	cli
+	hlt
+	msgx3 db "LEES FOUT",0x00
+	nxt3:
 	mov si,succes
 	call print_string
 	jmp $
