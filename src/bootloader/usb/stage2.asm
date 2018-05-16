@@ -20,6 +20,8 @@ os_main:
 	mov ah, 8			; Get drive parameters
 	int 13h
 	jc fatal_disk_error
+	mov si,welcome
+	call print_string
 	and cx, 3Fh			; Maximum sector number
 	mov [SectorsPerTrack], cx	; Sector numbers start at 1
 	movzx dx, dh			; Maximum head number
@@ -216,11 +218,9 @@ end:					; We've got the file to load!
 	pop ax				; Clean up the stack (AX was pushed earlier)
 	mov dl, byte [bootdev]		; Provide kernel with boot device info
 
-	mov si,success
+	mov si,file_is_found
 	call print_string
-	cli
-	hlt
-	jmp buffer:0000h			; Jump to entry point of loaded kernel!
+	jmp checkheader			; Jump to entry point of loaded kernel!
 
 
 ; ------------------------------------------------------------------
@@ -296,8 +296,10 @@ l2hts:			; Calculate head, track and sector settings for int 13h
 	kern_filename	db "KERNEL  BIN"	; MikeOS kernel filename
 
 	disk_error	db "Floppy error! Press any key...", 0
-	file_not_found	db "KERNEL.BIN not found!", 0
-	success		db "Kernelimage loaded",0
+	file_not_found	db "KERNEL.BIN niet gevonden!", 0
+	file_is_found	db "KERNEL.BIN is gevonden",0x0a,0x00
+	welcome		db "KERNEL.BIN opzoeken",0x0a,0x00
+	corrupt		db "KERNEL.BIN is corrupt!",0x0a,0x00
 	bootdev		db 0 	; Boot device number
 	cluster		dw 0 	; Cluster of the file we want to load
 	pointer		dw 0 	; Pointer into Buffer, for loading kernel
@@ -317,6 +319,27 @@ LargeSectors		dd 0		; Number of LBA sectors
 DriveNo			dw 0		; Drive No: 0
 Signature		db 41		; Drive signature: 41 for floppy
 
+checkheader:
+mov byte al,byte [buffer]
+cmp al,0x7F
+jne corruptelf
+mov byte al,byte [buffer+1]
+cmp al,'E'
+jne corruptelf
+mov byte al,byte [buffer+2]
+cmp al,'L'
+jne corruptelf
+mov byte al,byte [buffer+3]
+cmp al,'F'
+jne corruptelf
+
+cli
+hlt
+corruptelf:
+mov si,corrupt
+call print_string
+cli
+hlt
 
 buffer:				; Disk buffer begins (8k after this, stack starts)
 
