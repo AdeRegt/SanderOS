@@ -138,7 +138,8 @@ fatal_disk_error:
 read_fat_ok:
 	popa
 
-	mov ax, 2000h			; Segment where we'll load the kernel
+;	mov ax, 2000h			; Segment where we'll load the kernel
+	mov ax, 5000h			; Segment where we'll load the kernel
 	mov es, ax
 	mov bx, 0
 
@@ -160,7 +161,8 @@ load_file_sector:
 
 	call l2hts			; Make appropriate params for int 13h
 
-	mov ax, 2000h			; Set buffer past what we've already read
+;	mov ax, 2000h			; Set buffer past what we've already read
+	mov ax, 5000h			; Set buffer past what we've already read
 	mov es, ax
 	mov bx, word [pointer]
 
@@ -222,9 +224,27 @@ end:					; We've got the file to load!
 
 	mov si,gevonden
 	call print_string
+	
+	mov si,0x5000
+	mov al,byte [si]
+	cmp al,0x7f
+	jne invalidregex
+	inc si
+	mov al,byte [si]
+	cmp al,'E'
+	jne invalidregex
+	inc si
+	mov al,byte [si]
+	cmp al,'L'
+	jne invalidregex
+	inc si
+	mov al,byte [si]
+	cmp al,'F'
+	jne invalidregex
+	inc si
 	cli
 	hlt
-	jmp 2000h:0000h			; Jump to entry point of loaded kernel!
+;	jmp 2000h:0000h			; Jump to entry point of loaded kernel!
 gevonden db "GEVONDEN",0x00
 
 ; ------------------------------------------------------------------

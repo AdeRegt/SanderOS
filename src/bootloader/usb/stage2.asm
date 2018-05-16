@@ -224,11 +224,34 @@ end:					; We've got the file to load!
 
 	mov si,gevonden
 	call print_string
+	
+	mov si,0x5000
+	mov al,byte [si]
+	cmp al,0x7f
+	jne invalidregex
+	inc si
+	mov al,byte [si]
+	cmp al,'E'
+	jne invalidregex
+	inc si
+	mov al,byte [si]
+	cmp al,'L'
+	jne invalidregex
+	inc si
+	mov al,byte [si]
+	cmp al,'F'
+	jne invalidregex
+	inc si
 	cli
 	hlt
 ;	jmp 2000h:0000h			; Jump to entry point of loaded kernel!
 gevonden db "GEVONDEN",0x00
-
+invalidregex:
+mov si,noe
+call print_string
+cli
+hlt
+noe db "INVALID TOKENS",0x00
 ; ------------------------------------------------------------------
 ; BOOTLOADER SUBROUTINES
 
