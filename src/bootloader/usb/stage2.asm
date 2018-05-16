@@ -85,4 +85,4 @@ blkcnt dw 0
 addrx dw 0x5000
 dw 0
 lba1 dd 0
-lba2 dd0
+lba2 dd 0

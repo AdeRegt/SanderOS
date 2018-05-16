@@ -52,11 +52,11 @@ os_main:
 	jmp $
 
 fail:
-mov si,fail
+mov si,failure
 call print_string
 jmp $
 
-fail db "BOOT FAILURE",0x00
+failure db "BOOT FAILURE",0x00
 welcomestring db "Stage2                                                Sanderslando bootloader v1.0",0x00
 succes db "Het ziet er naar uit dat het werkt?!",0x00
 bootdev db 0x00
