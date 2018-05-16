@@ -124,10 +124,17 @@ print_string:				; Output string in SI to screen
 	popa
 	ret
 	
+;datapacket:
+;db 0x10
+;db 0
+;blkcnt dw 1
+;addrx dw 0x5000
+;lba1 dd 19
+;lba2 dd 0
+
+; LBA parameter block
 datapacket:
-db 0x10
-db 0
-blkcnt dw 1
-addrx dw 0x5000
-lba1 dd 19
-lba2 dd 0
+dw 0x0018               ; 2b reserved
+dw 0x0001               ; 2b nr of blocks read.
+dw 0x5000               ; 4b 4bytes Transfer buffer
+dw 0x0000,19  ; 8b LBA  
