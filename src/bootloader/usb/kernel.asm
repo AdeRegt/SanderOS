@@ -20,11 +20,23 @@ os_main:
 	
 	mov si,welcomemessage
 	call print_string
+	
+	mov ah,0x00
+	mov dl,byte [bootdevice]
+	int 0x13
+	jc fatalerror
+	
+	jmp $
+	
+	fatalerror:
+	mov si,fatalstring
+	call print_string
 	cli
 	hlt
 	
 bootdevice db 0x00
-welcomemessage db "Tot nutoe lijkt alles gewoon goed te werken!",0x00
+fatalstring db " >HARDWAREFOUT< ",0x00
+welcomemessage db "SanderOS word geladen...",0x00
 
 print_string:				; Output string in SI to screen
 	pusha
