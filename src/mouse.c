@@ -92,9 +92,9 @@ void mouse_install()
   //Enable the auxiliary mouse device
   mouse_wait(1);
   outportb(0x64, 0xA8);
-printf("__A__"); 
   //Enable the interrupts
   mouse_wait(1);
+printf("__A__"); 
   outportb(0x64, 0x20);
   mouse_wait(0);
   
