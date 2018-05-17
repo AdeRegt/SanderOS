@@ -95,15 +95,15 @@ void mouse_install()
   //Enable the interrupts
   mouse_wait(1);
 printf("__A__"); 
-  outportb(0x64, 0x20);
-  mouse_wait(0);
+//  outportb(0x64, 0x20);
+//  mouse_wait(0);
   
 printf("__B__");
-  _status=(inportb(0x60) | 2);
-  mouse_wait(1);
-  outportb(0x64, 0x60);
-  mouse_wait(1);
-  outportb(0x60, _status);
+//  _status=(inportb(0x60) | 2);
+//  mouse_wait(1);
+//  outportb(0x64, 0x60);
+//  mouse_wait(1);
+//  outportb(0x60, _status);
  
 printf("__C__");
   //reset
