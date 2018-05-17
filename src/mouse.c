@@ -86,12 +86,13 @@ extern void irq_mouse();
 
 void mouse_install()
 {
+
   unsigned char _status;  //unsigned char
 
   //Enable the auxiliary mouse device
   mouse_wait(1);
   outportb(0x64, 0xA8);
- 
+printf("__A__"); 
   //Enable the interrupts
   mouse_wait(1);
   outportb(0x64, 0x20);
@@ -102,6 +103,10 @@ void mouse_install()
   mouse_wait(1);
   outportb(0x60, _status);
  
+printf("__B__");
+  //reset
+  mouse_write(0xFF);
+  mouse_read();  //Acknowledge
   //Tell the mouse to use default settings
   mouse_write(0xF6);
   mouse_read();  //Acknowledge

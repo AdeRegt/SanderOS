@@ -30,6 +30,7 @@ void mouse_handler() //struct regs *a_r (not used but just there)
       mouse_cycle=0;
       break;
   }
+  printf("YAY?");
 }
 
 inline void mouse_wait(unsigned char a_type) //unsigned char
@@ -101,6 +102,9 @@ void mouse_install()
   mouse_wait(1);
   outportb(0x60, _status);
  
+  //reset
+  mouse_write(0xFF);
+  mouse_read();  //Acknowledge
   //Tell the mouse to use default settings
   mouse_write(0xF6);
   mouse_read();  //Acknowledge
