@@ -90,18 +90,18 @@ void mouse_install()
   unsigned char _status;  //unsigned char
 
   //Enable the auxiliary mouse device
-  mouse_wait(1);
-  outportb(0x64, 0xA8);
-printf("__A__"); 
+//  mouse_wait(1);
+//  outportb(0x64, 0xA8);
+//printf("__A__"); 
   //Enable the interrupts
-  mouse_wait(1);
-  outportb(0x64, 0x20);
-  mouse_wait(0);
-  _status=(inportb(0x60) | 2);
-  mouse_wait(1);
-  outportb(0x64, 0x60);
-  mouse_wait(1);
-  outportb(0x60, _status);
+//  mouse_wait(1);
+//  outportb(0x64, 0x20);
+//  mouse_wait(0);
+//  _status=(inportb(0x60) | 2);
+//  mouse_wait(1);
+//  outportb(0x64, 0x60);
+//  mouse_wait(1);
+//  outportb(0x60, _status);
  
 printf("__B__");
   //reset
