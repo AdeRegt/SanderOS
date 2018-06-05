@@ -28,7 +28,7 @@ void kernel_main(){
 	}
 	setupIDT();
 	detectDevices();
-		initialiseKeyboard();
+	//	initialiseKeyboard();
 		cls();
 		initTasking();
 	//	createTask( 1,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
