@@ -14,13 +14,14 @@ void detectDevices(){
 							// ATA OPSLAG
 							printf("PCI: ATA\n");
 							detectATAPI();
-						}else if(suclassID==0x02){
-							// FLOPPY OPSLAG
-							printf("PCI: Floppy\n");
-						}else{
-							// UNKNOWN
-							printf("PCI: Unknown\n");
 						}
+						//else if(suclassID==0x02){
+						//	// FLOPPY OPSLAG
+						//	printf("PCI: Floppy\n");
+						//}else{
+						//	// UNKNOWN
+						//	printf("PCI: Unknown\n");
+						//}
 					}
 //					else if(classID==0x02){
 //						if(suclassID==0x00){
