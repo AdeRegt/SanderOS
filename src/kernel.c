@@ -27,12 +27,12 @@ void kernel_main(){
 		printf("\n");
 	}
 	setupIDT();
-	detectDevices();
-	//	initialiseKeyboard();
+	//detectDevices();
+		initialiseKeyboard();
 		cls();
-	//	initTasking();
-	//	createTask( 1,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
-	//	createTask( 2,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+		initTasking();
+		createTask( 1,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
+		createTask( 2,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
 	////	createTask( 3,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
 	////	createTask( 4,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
 	////	createTask( 5,loadExecutable((unsigned char*)"/PROGRAMS/INIT.SEF"));
