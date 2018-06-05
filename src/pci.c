@@ -1,6 +1,6 @@
 #include <system.h>
 
-void detectDevices(){
+void detectDevices(){}void detectDev(){
 	unsigned long i = 0;
 	for(unsigned char busses = 0 ; busses < 250 ; busses++){
 		for(unsigned char slots = 0 ; slots < 32 ; slots++){
