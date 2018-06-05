@@ -27,7 +27,7 @@ void kernel_main(){
 		printf("\n");
 	}
 	setupIDT();
-	//detectDevices();
+	detectDevices();
 		initialiseKeyboard();
 		cls();
 		initTasking();

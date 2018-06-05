@@ -13,7 +13,7 @@ void detectDevices(){
 						if(suclassID==0x01){
 							// ATA OPSLAG
 							printf("PCI: ATA\n");
-							detectATAPI();
+//							detectATAPI();
 						}else if(suclassID==0x02){
 							// FLOPPY OPSLAG
 							printf("PCI: Floppy\n");
