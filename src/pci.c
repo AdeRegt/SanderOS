@@ -13,7 +13,7 @@ void detectDevices(){
 						if(suclassID==0x01){
 							// ATA OPSLAG
 							printf("PCI: ATA\n");
-//							detectATAPI();
+							detectATAPI();
 						}else if(suclassID==0x02){
 							// FLOPPY OPSLAG
 							printf("PCI: Floppy\n");
@@ -21,35 +21,36 @@ void detectDevices(){
 							// UNKNOWN
 							printf("PCI: Unknown\n");
 						}
-					}else if(classID==0x02){
-						if(suclassID==0x00){
-							printf("PCI: e1000 controller\n");
-						}
-					}else if(classID==0x03){
-						if(suclassID==0x00){
-							printf("PCI: VGA controller\n");
-						}
-					}else if(classID==0x04){
-						if(suclassID==0x03){
-							printf("PCI: Audio controller\n");
-						}
-					}else if(classID==0x05){
-						if(suclassID==0x00){
-							printf("PCI: RAM controller\n");
-						}
-					}else if(classID==0x07){
-						if(suclassID==0x00){
-							printf("PCI: Serialcontroller\n");
-						}else if(suclassID==0x01){
-							printf("PCI: Paralelcontroller\n");
-						}
-					}else if(classID==0x09){
-						if(suclassID==0x00){
-							printf("PCI: Keyboardcontroller\n");
-						}else if(suclassID==0x02){
-							printf("PCI: Mousecontroller\n");
-						}
 					}
+//					else if(classID==0x02){
+//						if(suclassID==0x00){
+//							printf("PCI: e1000 controller\n");
+//						}
+//					}else if(classID==0x03){
+//						if(suclassID==0x00){
+//							printf("PCI: VGA controller\n");
+//						}
+//					}else if(classID==0x04){
+//						if(suclassID==0x03){
+//							printf("PCI: Audio controller\n");
+//						}
+//					}else if(classID==0x05){
+//						if(suclassID==0x00){
+//							printf("PCI: RAM controller\n");
+//						}
+//					}else if(classID==0x07){
+//						if(suclassID==0x00){
+//							printf("PCI: Serialcontroller\n");
+//						}else if(suclassID==0x01){
+//							printf("PCI: Paralelcontroller\n");
+//						}
+//					}else if(classID==0x09){
+//						if(suclassID==0x00){
+//							printf("PCI: Keyboardcontroller\n");
+//						}else if(suclassID==0x02){
+//							printf("PCI: Mousecontroller\n");
+//						}
+//					}
 					i = i + 1;
 				}
 			}
