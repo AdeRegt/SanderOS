@@ -133,7 +133,21 @@ unsigned char  getc(){
 
 extern void irq_keyboard();
 
+// START https://github.com/frednora/gramado/blob/master/gsrc/core/kernel/k/execve/dd/unb/ldisc.c
+#define outanyb(p) __asm__ __volatile__( "outb %%al,%0" : : "dN"((p)) : "eax" )
+void kbdc_wait(unsigned char type){
+	if(type==0){
+        	while(!inportb(0x64)&1)outanyb(0x80);
+    	}else{
+        	while(inportb(0x64)&2)outanyb(0x80);
+	};
+};
+// STOP https://github.com/frednora/gramado/blob/master/gsrc/core/kernel/k/execve/dd/unb/ldisc.c
+
 void initialiseKeyboard(){
+	// Eerst PS2 instellen
+	
+	// Dan toetsenbord instellen
 	setInterrupt(32+1, (unsigned long) &irq_keyboard);
 	keyboard_send_cmd(0xFF);
 	while(inportb(0x60)!=0xAA);
