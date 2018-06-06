@@ -132,6 +132,7 @@ unsigned char  getc(){
 }
 
 extern void irq_keyboard();
+extern void irq_mouse();
 
 // START https://github.com/frednora/gramado/blob/master/gsrc/core/kernel/k/execve/dd/unb/ldisc.c
 #define outanyb(p) __asm__ __volatile__( "outb %%al,%0" : : "dN"((p)) : "eax" )
@@ -155,6 +156,10 @@ unsigned char mouse_read(){
 	return inportb(0x60);
 };
 // STOP https://github.com/frednora/gramado/blob/master/gsrc/core/kernel/k/execve/dd/unb/ldisc.c
+
+void mouse_int(){
+	printf("MICE");
+}
 
 void initialiseKeyboard(){
 	// Eerst PS2 instellen
@@ -184,6 +189,7 @@ void initialiseKeyboard(){
 	while(inportb(0x60)!=0xFA);
 	keyboard_send_cmd(0xF4);
 	// Als laatste de muis
+	setInterrupt(32+12, (unsigned long) &irq_mouse);
   	kbdc_wait(1);
   	mouse_write(0xff);
   	while (mouse_read() != 0xaa);
