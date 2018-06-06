@@ -142,6 +142,18 @@ void kbdc_wait(unsigned char type){
         	while(inportb(0x64)&2)outanyb(0x80);
 	};
 };
+
+void mouse_write(unsigned char write){
+	kbdc_wait(1);
+	outportb(0x64,0xD4);
+	kbdc_wait(1);
+	outportb(0x60,write);
+};
+
+unsigned char mouse_read(){
+	kbdc_wait(0);
+	return inportb(0x60);
+};
 // STOP https://github.com/frednora/gramado/blob/master/gsrc/core/kernel/k/execve/dd/unb/ldisc.c
 
 void initialiseKeyboard(){
