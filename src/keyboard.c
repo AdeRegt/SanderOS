@@ -146,7 +146,24 @@ void kbdc_wait(unsigned char type){
 
 void initialiseKeyboard(){
 	// Eerst PS2 instellen
-	
+	unsigned char status;
+	kbdc_wait(1);
+	outportb(0x64,0xAD);
+	kbdc_wait(1);
+	outportb(0x64,0xA7);
+	kbdc_wait(1);    
+	outportb(0x64,0x20); 
+	kbdc_wait(0);
+	status = inportb(0x60)|2; 
+	kbdc_wait(1);
+	outportb(0x64,0x60); 
+	kbdc_wait(1);
+	outportb(0x60,status);  
+	kbdc_wait(1);
+	outportb(0x64,0xAE);  
+	kbdc_wait(1);
+	outportb(0x64,0xA8);  
+	kbdc_wait(1); 
 	// Dan toetsenbord instellen
 	setInterrupt(32+1, (unsigned long) &irq_keyboard);
 	keyboard_send_cmd(0xFF);
@@ -154,5 +171,18 @@ void initialiseKeyboard(){
 	keyboard_send_cmd(0xF6);
 	while(inportb(0x60)!=0xFA);
 	keyboard_send_cmd(0xF4);
-	
+	// Als laatste de muis
+  	kbdc_wait(1);
+  	mouse_write(0xff);
+  	while (mouse_read() != 0xaa);
+	kbdc_wait(1);
+  	mouse_write(0xf6);
+  	while (mouse_read() != 0xfa);
+  	kbdc_wait(1);
+  	mouse_write(0xf4);
+  	while (mouse_read() != 0xfa);
+	kbdc_wait(1);
+	outportb(0x64,0xAE);
+	kbdc_wait(1);
+	outportb(0x64,0xA8); 
 }
